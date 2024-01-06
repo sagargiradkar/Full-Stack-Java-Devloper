@@ -1,0 +1,46 @@
+======================
+||      Class 5     ||
+======================
+
+=> Agenda  => Fundamental of JAva
+           =>Operators 
+           => Loops => conditional statments => Pattern Printing
+           => Loops + conditional + Operators => Start of programming
+
+System.out.println("Hello"); new line
+
+System.out.print("Hello"); Same line
+
+for()
+while()
+do-while()
+for - each(enhanced for loop)
+
+Start => Condition => True => Update Body
+                    => Fale => Terminante
+
+for(int i=0 ; i<5 ; i++){   for(initialization ; condition ; update){
+    System.out.print(i);            System.out.print(i);
+}                                }
+
+i<5
+0<5
+1<5
+2<5
+3<5
+4<5
+5<5 => False => Terminante Loop
+
+=> Printing starts in Same line 
+
+while() loop =>
+do-while() loop =>
+int i=0;
+int n=5;
+while(i<n){
+    System.out.print(i);
+    i++;
+}
+
+
+
