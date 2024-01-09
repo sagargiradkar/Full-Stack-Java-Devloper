@@ -8,3 +8,84 @@ Pattern Programming
 Classes & Objects 
 JVM Dataareas 
 What is Class And Objects 
+
+Today's topic of discussion
+---------------------------
+Introduction to oops(classws and Objects) -> Navin Sir
+Types of Variables
+    Division - 1
+        a.primitive variables
+        b.reference variables
+        c.static variables
+JVM Area for execution
+    a.MethodAred
+    b.Heap Area
+    c.Stack Area
+    d.PC-Register
+    e.Native method Area
+
+Code snippits (30 min)
+
+
+OOPs
+------
+It is actually theoty concept,which is implemented by many Programming languages like c++,Java,Python,.....
+Any real time Problem can be solved if we follow oop's principles.
+In OOPs , while solving the problem 
+    1.We need to first make the Objects.
+    2.Every Object we mark should have 2 parts
+            a.HAS-PART /Fields/attributes/(store the information as variables)
+            b.DOES-PART /Behaviours(represent them as method)
+    3.To represent an Object , first we need have a blueprint of an Object.
+
+
+
+What is Objects ?
+        Physical existance of any element we say as Object.
+            eg: book,Car,Computer,Dog,Students......
+
+
+What is HAS_PART And What is DOES-Part of an object represents ?
+
+    HAS-PART => Indicates what it can hold
+    DOES-PART => Indicates what it can do 
+        eg.Student
+            |=>sid,name,age,gender,email,address(variables/identifier)
+            |=>play,stydy,drink,sleep(Sleep) (methods)
+
+What is blueprint in Java and how to represent it ?
+    in Java to represent a blueprint we have a reserve word called "class" .
+    Conventions followed by Java devlopers while writting a class is 
+        a.className should be in "PascalConvention" .
+            eg:BufferReader,FileReader,InputStream,OutputStrim,String
+        b.variables are represent in "camelCase"
+            eg:regNo,firstName,lastName,length,studId,javaFullStack,..........
+        c.methods are represeted in "camelCase",
+            eg:toUpper(),toLower(),toString(),nextInt(),.....
+
+
+
+class Student {
+    int sid,
+    String name;
+    int age;
+    char gender;
+    String address;
+
+    void play(){}
+    void study(){}
+    void 
+    
+}
+
+
+
+
+
+realtime example : BookMyShow
+        Objects : Person , Ticket , TicketIssuer ,CinemaHall , 3D-glass,Screen ,......
+
+Note :  Software measns collection of many programs
+        Programs means set of instructions.
+        To write instructions we need to have a languages.
+
