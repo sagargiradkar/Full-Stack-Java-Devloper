@@ -89,7 +89,9 @@ To create an object in java we use "new" keyword
 Syntax : 
     ClassName variable = new ClassName();
 
-
+new -> it is a signal to JVM to create some space for the Object in the heap area.
+    Tell the className , we inform the className,JVM create the object and sends the "hashCode" to the user .
+    User should collect the hashcode through "reference variable".
 
 realtime example : BookMyShow
         Objects : Person , Ticket , TicketIssuer ,CinemaHall , 3D-glass,Screen ,......
