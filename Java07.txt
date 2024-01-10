@@ -37,7 +37,7 @@ In OOPs , while solving the problem
             a.HAS-PART /Fields/attributes/(store the information as variables)
             b.DOES-PART /Behaviours(represent them as method)
     3.To represent an Object , first we need have a blueprint of an Object.
-
+    4.We use "new" keyword/reserve word to create an Object for a blueprint
 
 
 What is Objects ?
@@ -64,21 +64,30 @@ What is blueprint in Java and how to represent it ?
             eg:toUpper(),toLower(),toString(),nextInt(),.....
 
 
+EG#1. 
 
-class Student {
+//blueprint of Student Object
+class Student { //Student -> PascalConvention
+
+    //HAS_PART ----> camelCaseConvention
     int sid,
     String name;
     int age;
     char gender;
     String address;
 
+    //DOES-PART // camelCaseConvention
     void play(){}
     void study(){}
-    void 
+    void drink(){}
+    void sleep(){}
     
 }
 
-
+To create an object in java we use "new" keyword
+    int x = 10; (primitive)
+Syntax : 
+    ClassName variable = new ClassName();
 
 
 
