@@ -15,6 +15,15 @@ class Calculator{
 		System.out.println(c);
 		
 	}
+	void add(int a,int b) {
+		c=a+b;
+		
+		System.out.println(c);
+	}
+	int add1() {
+		int res = a+b;
+		return res;
+	}
 }
 
 
@@ -26,9 +35,8 @@ public class Main {
 	Calculator calc	= new Calculator();
 	
 	calc.add();
-	
-	calc.disp();
-		
+	calc.add(5, 15);
+	System.out.println(calc.add1());
 	}
 
 }
