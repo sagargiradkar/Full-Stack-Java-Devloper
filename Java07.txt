@@ -141,3 +141,18 @@ When will the memmory for instance variable be given ?
 Ans. When the object is created JVM will create a memmory and by Default JVM will also assign the default value
     based on the datatype of the variable   
         eg: int -> 0 , float-> 0.0f , boolean ->false,char-> , String->null,....  
+
+Note : scope of instance variable would be available only when we have reference pointing to the object,
+        if the object reference become null,then we can't access instance variable
+
+key points about instance variables 
+===================================
+eg:
+    public class Test {
+        int i=10; // Instance variable
+        public static voidmain(String[] args){
+            Sysystem.out.println(i);//CE :instance variable cant be accessed directly in static context
+            Test t = new Test();//Object 
+            System.out.ptint(t.i);//10
+        }
+    }
