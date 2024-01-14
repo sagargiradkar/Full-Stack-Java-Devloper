@@ -71,7 +71,7 @@ EG#1.
 //blueprint of Student Object
 class Student { //Student -> PascalConvention
 
-    //HAS_PART ----> camelCaseConvention
+    //HAS_PART ----> camelCaseConvention -> (Instance variable)
     int sid,
     String name;
     int age;
@@ -109,3 +109,35 @@ Types of variables
 =====================
 int a=10;
 Student std = new Student();
+
+1] Primitive variables
+2] Reference variables
+
+Primitive variables :
+Primitive variables can be used to represent primitive values.
+
+Example: int x=10;
+
+Reference variable:
+Reference variable can be used to refer objects.
+Example: Student s=new Student();
+
+instance variable
+    if the variable is declare inside the class , but outside the methods such variables are called as "instance variables".
+            or
+    if the value of the variables changes from object to object then such variables are called as "instance variable"
+eg#.
+    Student std1 = new Student();// id = 10 , name = sagar
+    Student std2 = new Student();// 
+
+
+Student std1 = new Student();
+
+// filling the value to id , name 
+    std1.name = "Sagar"
+    std1.id = 10;
+
+When will the memmory for instance variable be given ?
+Ans. When the object is created JVM will create a memmory and by Default JVM will also assign the default value
+    based on the datatype of the variable   
+        eg: int -> 0 , float-> 0.0f , boolean ->false,char-> , String->null,....  
