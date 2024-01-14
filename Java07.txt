@@ -122,7 +122,8 @@ Reference variable:
 Reference variable can be used to refer objects.
 Example: Student s=new Student();
 
-instance variable
+instance variable :
+==================
     if the variable is declare inside the class , but outside the methods such variables are called as "instance variables".
             or
     if the value of the variables changes from object to object then such variables are called as "instance variable"
@@ -156,3 +157,14 @@ eg:
             System.out.ptint(t.i);//10
         }
     }
+
+local variable:
+===============
+1.variables which are created inside the stack are called local variable
+2.During the execution of the method the memmory for local variables will be given , ans=d after the execution of 
+    the method for variables will be taken out from the stack.
+3.Local variables default value will not be given by the JVM ,programmer should give the default value.
+4.If the programmer doesn't give the default value and if he uses the variable inside the method then program would result in "CE".
+
+eg#1:
+    
