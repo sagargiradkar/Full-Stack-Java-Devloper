@@ -18,10 +18,10 @@ Types of Variables
         b.reference variables
         c.static variables
 JVM Area for execution
-    a.MethodAred
-    b.Heap Area
-    c.Stack Area
-    d.PC-Register
+    a.MethodAred (.class data /static data)
+    b.Heap Area (instance variables / object data)
+    c.Stack Area (local variable)
+    d.PC-Register 
     e.Native method Area
 
 Code snippits (30 min)
@@ -38,6 +38,8 @@ In OOPs , while solving the problem
             b.DOES-PART /Behaviours(represent them as method)
     3.To represent an Object , first we need have a blueprint of an Object.
     4.We use "new" keyword/reserve word to create an Object for a blueprint
+    5.Every object should always be in constant interaction
+    6.Useless Object doesn't exists.
 
 
 What is Objects ?
@@ -100,3 +102,10 @@ Note :  Software measns collection of many programs
         Programs means set of instructions.
         To write instructions we need to have a languages.
 
+
+Student std = new Student(); // Object 
+
+Types of variables
+=====================
+int a=10;
+Student std = new Student();
