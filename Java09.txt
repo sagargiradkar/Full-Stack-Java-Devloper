@@ -27,7 +27,8 @@ X -> Variable
         =>Objects =>Heap
 
 [] =>Array => Collection of data 
-       int[] a = new int[5];                    ----------
+       int[] a = new int[5];    
+                       ----------
                                                 | | | | |
                                                 ----------
 
@@ -58,3 +59,34 @@ int[][] arr = new int[3][4];
 memory map :-
 
 int [3][4][3] arr = new int[3][4][3];
+
+int [][][]arr = new int[3][][];
+
+arr[0] = new int [2][];
+arr[1] = new int[4][];
+
+arr[2] = new int[3][];
+
+arr[0][] = new int [4];
+arr[0][1] = new int [2];
+arr[1][0] = new int[3];
+arr[1][1] = new int[1];
+arr[1][2] = new int[2];
+arr[2][0] = new int[3];
+arr[2][1] = new int[4];
+arr[2][2] = new int[5];
+
+
+
+int[][][]arr = new int [3][4][];
+
+arr[0][0] = new int[4];
+
+
+=> 1D , 2D , 3D => Regular 
+        2D , 3D => Jagged
+        4D      => 
+
+=> Need of Array => 
+index based datastructure to store linear , Homogeneous type of data 
+
