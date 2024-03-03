@@ -1,0 +1,18 @@
+Class 10 
+
+user input from console
+
+=>
+class Scanner 
+{
+    nextInt();
+    nextFloat();
+}
+
+Scanner => methods 
+->
+Scanner scan = new Scanner(System.in);
+
+int a = scan.nextInt();
+int b = scan.nextFloat();
+

@@ -90,3 +90,4 @@ arr[0][0] = new int[4];
 => Need of Array => 
 index based datastructure to store linear , Homogeneous type of data 
 
+=> User input from console 
