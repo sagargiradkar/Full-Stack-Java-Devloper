@@ -1,5 +1,6 @@
-Class 10 
-
+--------------
+|| Class 10 ||
+--------------
 user input from console
 
 =>
@@ -15,4 +16,8 @@ Scanner scan = new Scanner(System.in);
 
 int a = scan.nextInt();
 int b = scan.nextFloat();
+
+=> lenghth is a property of array 
+
+int[] ab = new int[6];
 
