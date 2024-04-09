@@ -1,7 +1,8 @@
 --------------
 || Class 10 ||
 --------------
-user input from console
+user input from console Scanner Class in Java 
+
 
 =>
 class Scanner 
@@ -17,7 +18,11 @@ Scanner scan = new Scanner(System.in);
 int a = scan.nextInt();
 int b = scan.nextFloat();
 
-=> lenghth is a property of array 
+=> lenght is a property of array 
 
 int[] ab = new int[6];
 
+System.out.println("Please enter Number :");
+
+
+=> To store class of students 
