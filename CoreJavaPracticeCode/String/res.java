@@ -5,7 +5,7 @@ class Demo {
     }
 }
 
-public class Test {
+public class res {
     public static void main(String[] args) {
         System.out.println("Test Class");
         char[] ch ={'j','a','v','a'};
