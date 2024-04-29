@@ -35,8 +35,12 @@ public class Test1 {
         String state = "   Karnataka  ";
         String state1 = "   Karnataka  ";
         System.out.println(state.length());
-        System.out.print(state.trim());
-        System.out.print(state1);
+        System.out.println(state.trim());
+        System.out.println(state1.trim().length());
+
+        System.out.println(state.indexOf('a'));
+        System.out.println(state.lastIndexOf('a'));
+
 
     }
 }
