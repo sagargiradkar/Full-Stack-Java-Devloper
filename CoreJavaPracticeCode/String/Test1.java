@@ -45,6 +45,14 @@ public class Test1 {
         System.out.println();
         System.out.println(state.lastIndexOf('Z'));
 
+        Student std = new Student();
+        System.out.println(std);
+        System.out.println(std.toString());//Student@HexadecimalValue 30tudent f39991 
 
+        
     }
+}
+class Student {
+    String name = "sachin";
+    int id = 10;
 }
