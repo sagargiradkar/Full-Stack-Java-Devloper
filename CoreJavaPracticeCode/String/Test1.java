@@ -25,6 +25,18 @@ public class Test1 {
         System.out.println("name1 :: "+name1.toLowerCase());
 
 
-        
+        String name2 = "iNeuron IND";
+        System.out.println(name2.length());
+
+        System.out.println();
+
+        System.out.println(name2.trim());
+
+        String state = "   Karnataka  ";
+        String state1 = "   Karnataka  ";
+        System.out.println(state.length());
+        System.out.print(state.trim());
+        System.out.print(state1);
+
     }
 }
