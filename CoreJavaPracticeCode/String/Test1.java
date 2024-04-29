@@ -12,6 +12,19 @@ public class Test1 {
         System.out.println(s2.substring(0, 15));
         System.out.println(s2.codePointAt(2));
         System.out.println(s2.concat(s));
+
+        String name = "sachin";
+        System.out.println(name.replace('a', 'z'));
+
+        String data = "aabbccdd";
+        System.out.println(data.replace('a', 'x'));
+        System.out.println(data.repeat(10));
+
+        String name1 = "sAchIn";
+        System.out.println("name1 :: "+name1.toUpperCase());
+        System.out.println("name1 :: "+name1.toLowerCase());
+
+
         
     }
 }
