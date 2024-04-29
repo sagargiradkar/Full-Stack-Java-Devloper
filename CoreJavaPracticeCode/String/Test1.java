@@ -31,15 +31,19 @@ public class Test1 {
         System.out.println();
 
         System.out.println(name2.trim());
-
+        System.out.println();
         String state = "   Karnataka  ";
         String state1 = "   Karnataka  ";
         System.out.println(state.length());
         System.out.println(state.trim());
         System.out.println(state1.trim().length());
 
+        System.out.println();
         System.out.println(state.indexOf('a'));
         System.out.println(state.lastIndexOf('a'));
+
+        System.out.println();
+        System.out.println(state.lastIndexOf('Z'));
 
 
     }
