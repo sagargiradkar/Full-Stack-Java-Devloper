@@ -330,3 +330,20 @@ org.eclipse.jgit.errors.TransportException: https://github.com/sagargiradkar/ful
 
 !ENTRY org.eclipse.egit.ui 4 0 2024-05-28 14:57:20.858
 !MESSAGE Can't connect to any repository: https://github.com/sagargiradkar/full-stack-java-devloper.git (https://github.com/sagargiradkar/full-stack-java-devloper.git: git-receive-pack not permitted on 'https://github.com/sagargiradkar/full-stack-java-devloper.git/')
+
+!ENTRY org.eclipse.egit.core 4 0 2024-05-28 14:58:15.736
+!MESSAGE An exception occurred during push on URI https://github.com/sagargiradkar/full-stack-java-devloper.git: https://github.com/sagargiradkar/full-stack-java-devloper.git: git-receive-pack not permitted on 'https://github.com/sagargiradkar/full-stack-java-devloper.git/'
+!STACK 0
+org.eclipse.jgit.errors.TransportException: https://github.com/sagargiradkar/full-stack-java-devloper.git: git-receive-pack not permitted on 'https://github.com/sagargiradkar/full-stack-java-devloper.git/'
+	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:702)
+	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:637)
+	at org.eclipse.jgit.transport.TransportHttp.openPush(TransportHttp.java:541)
+	at org.eclipse.jgit.transport.PushProcess.execute(PushProcess.java:140)
+	at org.eclipse.jgit.transport.Transport.push(Transport.java:1557)
+	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:269)
+	at org.eclipse.egit.ui.internal.push.PushJob.performJob(PushJob.java:86)
+	at org.eclipse.egit.ui.internal.jobs.RepositoryJob.run(RepositoryJob.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.egit.ui 4 0 2024-05-28 14:58:15.739
+!MESSAGE Can't connect to any repository: https://github.com/sagargiradkar/full-stack-java-devloper.git (https://github.com/sagargiradkar/full-stack-java-devloper.git: git-receive-pack not permitted on 'https://github.com/sagargiradkar/full-stack-java-devloper.git/')
