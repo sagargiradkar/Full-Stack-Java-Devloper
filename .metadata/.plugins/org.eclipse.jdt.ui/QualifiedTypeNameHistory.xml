@@ -3,4 +3,6 @@
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.StringIndexOutOfBoundsException"/>
+    <fullyQualifiedTypeName name="in.ineuron.bean.Account"/>
+    <fullyQualifiedTypeName name="in.ineuron.bean.Employee"/>
 </qualifiedTypeNameHistroy>
