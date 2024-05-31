@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>WrapperClasses</name>
+	<name>LambdaExpression</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -16,7 +16,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1717087101599</id>
+			<id>1717137475894</id>
 			<name></name>
 			<type>30</type>
 			<matcher>

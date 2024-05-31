@@ -72,6 +72,15 @@ public class TestApp {
 		System.out.println(b11);
 		System.out.println(b111);
 		System.out.println(b1111);
+		
+		
+		
+		String sa = String.valueOf(true);
+		System.out.println(sa);
+		
+		String data = String.valueOf(sa);
+		System.out.println(data);
+		
 	}
 
 }
