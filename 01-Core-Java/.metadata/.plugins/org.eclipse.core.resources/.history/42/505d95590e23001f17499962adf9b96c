@@ -1,0 +1,50 @@
+/*Functional Interface 
+=========================
+
+=> If an interface contains only one abstract method then such interfaces are called as "Functional Interface".
+
+
+
+
+public interface java.util.function.Predicate<T> {
+  public abstract boolean test(T);
+  public default java.util.function.Predicate<T> and(java.util.function.Predicate<? super T>);
+  public default java.util.function.Predicate<T> negate();
+  public default java.util.function.Predicate<T> or(java.util.function.Predicate<? super T>);
+  public static <T> java.util.function.Predicate<T> isEqual(java.lang.Object);
+  public static <T> java.util.function.Predicate<T> not(java.util.function.Predicate<? super T>);
+}
+*/
+
+
+import java.util.function.*;
+class MyPredicate implements Predicate<Integer>
+{
+	@Override
+	public boolean test(Integer i) {
+		if(i>10)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+}
+public class FunctionalInterface {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Predicate p = new MyPredicate();
+		System.out.println(p.test(10));//false
+		
+		System.out.println(p.test(100));//true 
+		
+//		System.out.println(p.test(true));//CE 		
+//		System.out.println(p.test("Sagar"));//CE
+		
+	}
+
+}

@@ -1,0 +1,34 @@
+class Demo<T extends Number>{
+	
+}
+class Sample<T extends Runnable>
+{
+	
+}
+public class Generic2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Demo<Integer> d1 = new Demo<Integer>();
+		
+		Sample<Runnable> s1=new Sample<Runnable>();
+		
+		Sample<Tread> s2 =new Sample<Tread>();
+		
+		Sample<String> s3=new Sample<String>();
+
+	}
+
+}
+
+/*
+ * Demo<String> d1 = new Demo<String>();
+ * 
+ * Exception in thread "main" java.lang.Error: Unresolved compilation problems:
+ * Bound mismatch: The type String is not a valid substitute for the bounded
+ * parameter <T extends Number> of the type Demo<T> Duplicate local variable d1
+ * Bound mismatch: The type String is not a valid substitute for the bounded
+ * parameter <T extends Number> of the type Demo<T>
+ * 
+ * at Generic2.main(Generic2.java:9)
+ */

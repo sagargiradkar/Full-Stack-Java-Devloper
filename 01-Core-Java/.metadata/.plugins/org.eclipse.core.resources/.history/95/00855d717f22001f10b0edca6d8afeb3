@@ -1,0 +1,50 @@
+/*
+
+Annotation 
+
+Annotation --> Annotation --> Parent of all Annotations
+Annotations --> Build in 
+			--> Custome (our own)
+
+
+//This I have writtern for demo 
+
+@CricketPlayer
+class Virat
+{
+	
+}
+
+*/ 
+@FunctionalInterface
+interface Trial
+{
+	int getNum();
+}
+class Demo 
+{
+	//This i have written for displaying t
+	void disp()
+	{
+		
+	}
+}
+public class Annotation {
+
+	public static void main(String[] args) {
+		
+		System.out.println(" Annotation ");
+		
+		//this variable i have created for storing int data 
+		
+		int a=10;
+		Trial t =()-> {
+			System.out.println("This is Lambda expression");
+			return 10;
+		};
+		System.out.println(t);
+	
+		
+	}
+
+}

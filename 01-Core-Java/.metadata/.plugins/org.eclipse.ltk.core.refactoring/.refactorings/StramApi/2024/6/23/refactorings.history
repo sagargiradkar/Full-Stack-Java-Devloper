@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;constructorReference&apos; to &apos;MethodReference&apos;&#x0D;&#x0A;- Original project: &apos;StramApi&apos;&#x0D;&#x0A;- Original element: &apos;constructorReference&apos;&#x0D;&#x0A;- Renamed element: &apos;MethodReference&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Rename similarly named elements&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;constructorReference&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{constructorReference.java[constructorReference" matchStrategy="1" name="MethodReference" qualified="false" references="true" similarDeclarations="true" stamp="1717642595236" textual="true" version="1.0"/>
+</session>

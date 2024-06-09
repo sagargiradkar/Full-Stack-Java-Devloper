@@ -1,0 +1,21 @@
+class Parents
+{
+	public void display()
+	{
+		System.out.println("Hellow");
+	}
+}
+class Child extends Parents
+{
+	
+}
+public class methodHiding {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Parents p=new Child(); 
+		
+		p.display();
+	}
+
+}

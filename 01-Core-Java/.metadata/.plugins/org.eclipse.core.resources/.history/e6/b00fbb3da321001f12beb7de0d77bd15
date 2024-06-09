@@ -1,0 +1,17 @@
+import java.util.ArrayList;
+
+public class Launch3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList al4 = new ArrayList();
+		al4.add(11);
+		al4.add(22);
+		al4.add(33);
+		al4.add(44);
+		System.out.println("Existing data :: "+al4);
+		System.out.println(al4.contains(44));
+		System.out.println(al4.indexOf(22));
+	}
+
+}

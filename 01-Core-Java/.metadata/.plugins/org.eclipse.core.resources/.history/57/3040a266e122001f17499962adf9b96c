@@ -1,0 +1,20 @@
+import java.util.*;
+public class Generic5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<String> al = new ArrayList<String>(); 
+		al.add("Sachin");
+		al.add(52);
+		m1(al);
+		System.out.println(al);
+	}
+	
+	public static void m1(ArrayList al)
+	{
+		al.add(10);
+		al.add(25);
+		al.add("Sagar");
+	}
+
+}

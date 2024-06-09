@@ -1,0 +1,66 @@
+class ThreadB extends Thread
+{
+	int total = 0;
+	@Override
+	public void run()
+	
+	{
+		synchronized(this) 
+		{
+			System.out.println("Child Thread Started Calculation .....");
+		for(int i=0 ; i<=100 ;i++)
+		{
+			total+=i;
+			System.out.println("Total sum at every iteration :: "+i+" :: "+total);
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println("Total sum :: "+total);
+		System.out.println("Child thread give notificayopn call");
+		this.notify();
+		}
+	}
+}
+public class Test5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ThreadB b = new ThreadB();
+		b.start();
+		
+		synchronized(b)
+		{
+			System.out.println("main method calling wait( ) method ");
+			try {
+				Thread.sleep(50);
+				b.wait();
+				
+				System.out.println("Main thtread called notification");
+				System.out.println(b.total);
+				int total = 0;
+				for(int i=0 ; i<=100 ;i++)
+				{
+					total+=i;
+					System.out.println("Total sum at every iteration :: "+i+" :: "+total);
+					try {
+						Thread.sleep(50);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				System.out.println("Total sum :: "+b.total);
+
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+	}
+
+}

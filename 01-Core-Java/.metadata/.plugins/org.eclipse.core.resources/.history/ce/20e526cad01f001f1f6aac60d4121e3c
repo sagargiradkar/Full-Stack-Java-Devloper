@@ -1,0 +1,50 @@
+/*Execption Handling 
+==================
+
+1.try with resourse.
+2.try with multi-catch block
+3.Rules of Overwriding in exception
+ 
+*/
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+public class tryWithResources {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+
+		BufferedReader br = null;
+		try {
+			br = new BufferedReader(new FileReader("sample.txt"));
+			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}catch(Exception e1) {
+			e1.printStackTrace();
+		}finally {
+			if(br!=null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		try(BufferedReader br1= new BufferedReader(new FileReader("sample.txt")))
+		{
+			//use br based on ur requirement 
+			//br will be closed automaticaally 			
+		}catch(IOException e) {
+			e.printStackTrace();
+		}catch(Exception e1) {
+			e1.printStackTrace();
+		}
+		
+	}
+
+}

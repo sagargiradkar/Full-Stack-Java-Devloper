@@ -1,0 +1,21 @@
+/*
+public interface java.util.Comparator<T> {
+  public abstract int compare(T, T);
+  public abstract boolean equals(java.lang.Object);
+  
+  class MyComparator implements Comparator{
+  
+  @Override
+  public int compare (Object obj1,Object obj2){
+  ;;;;
+  ;;;
+  }
+}*/
+public class Comparator {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println(" ...... Comparator ..... ");
+	}
+
+}

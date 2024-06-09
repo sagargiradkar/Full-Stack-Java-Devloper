@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+class Alpha
+{
+	void alpha()
+	{
+		System.out.println("Exception Handling");
+		try {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter first number to divide :: ");
+		int num1 = sc.nextInt();
+		
+		
+		System.out.print("Enter sercond number to divide :: ");
+		int num2 = sc.nextInt();
+		int result = num1/num2;
+		System.out.println("The result is :: "+(result));
+		System.out.println("Error Occured");
+		}
+		catch(Exception E) {
+			System.out.println(E);
+		}
+		System.out.println("Connection terminated");
+		
+		
+	}
+}
+class Beta
+{
+	void beta()
+	{
+		Alpha a=new Alpha();
+		a.alpha();
+	}
+}
+public class Launch2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Beta b=new Beta();
+		b.beta();
+
+}

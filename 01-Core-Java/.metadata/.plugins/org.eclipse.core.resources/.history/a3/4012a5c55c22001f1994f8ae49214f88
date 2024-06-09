@@ -1,0 +1,13 @@
+import java.util.*;
+public class LaunchHT {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Hashtable ht = new Hashtable();
+		ht.put(11, "sAGAR");
+		ht.put(12, "Prakash");
+		ht.put(13, "Giradkat");
+		System.out.println(ht);
+	}
+
+}

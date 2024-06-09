@@ -1,0 +1,21 @@
+// Write a p to compute length of string 
+interface CLS
+{
+	int getLenghth(String str);
+}
+class LOS implements CLS{
+	public int getLenghth(String str) {
+		int length = str.length();
+		return length;
+		
+	}
+}
+public class Lambada1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		LOS obj = new LOS();
+		System.out.println(obj.getLenghth("SAGAR"));
+	}
+
+}

@@ -1,0 +1,16 @@
+import java.util.*;
+public class Generic6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		ArrayList al1 = new ArrayList<Integer>();
+		
+		ArrayList<Integer> al2 = new ArrayList<>();
+		al2.add(25);
+		//al2.add("Sagar");
+		System.out.println(al2);
+		
+	}
+
+}

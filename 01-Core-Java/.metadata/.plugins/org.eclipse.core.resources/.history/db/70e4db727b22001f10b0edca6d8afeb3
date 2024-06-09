@@ -1,0 +1,20 @@
+enum  Result 
+{
+	PASS,FAIL,NR;//static final
+	//PASS --> public static final Result PASS = new Result();
+	//FAIL --> static final Result FAIL = new Result();
+	//NR --> static final Result NR = new Result();
+	Result()
+	{
+		System.out.println("COnstructor is Called");
+	}
+}
+public class Enum2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Result rs = Result.PASS;
+		System.out.println(rs);
+	}
+
+}

@@ -1,0 +1,23 @@
+@FunctionalInterface
+interface Add
+
+{
+	void add();
+}
+
+
+public class TestLambda {
+
+	public static void main(String[] args) {
+		Add a=()->{
+			int num1=10;
+			int num2=30;
+			int result=num1+num2;
+			System.out.println(result);
+		};
+		
+		a.add();
+
+	}
+
+}

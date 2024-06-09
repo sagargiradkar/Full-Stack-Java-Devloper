@@ -1,0 +1,42 @@
+
+
+class MyThread extends Thread
+{
+	@Override
+	public void start()
+	{
+		super.start();
+		System.out.println("Start method called");
+		run();
+	}
+	@Override
+	public void run()
+	{
+		//Job of a thread 
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println("Chlid Thread :: "+i);
+		}
+//		run(5);
+	}
+	
+	public void run(int i)
+	{
+		System.out.println("Argument with method");
+	}
+}
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyThread t = new MyThread();
+		
+		t.start();
+		t.run(2365);
+		for(int i=1;i<=10;i++)
+		{
+			System.out.println("In Main thread :: "+i);
+		}
+	}
+
+}

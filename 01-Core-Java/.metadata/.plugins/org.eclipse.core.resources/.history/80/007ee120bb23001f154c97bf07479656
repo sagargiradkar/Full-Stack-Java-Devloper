@@ -1,0 +1,30 @@
+import java.util.ArrayList;
+
+public class StramAPiArrayStram {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<Integer> al = new ArrayList<Integer>();
+		al.add(10);
+		al.add(0);
+		al.add(15);
+		al.add(5);
+		al.add(20);
+		System.out.println(al);
+		Object[] objArray = al.stream().toArray();
+		for(Object obj:objArray)
+		{
+			System.out.println(obj);
+		}
+		
+		
+		Integer[] objArra = al.stream().toArray();
+		for(Integer obj:objArra)
+		{
+			System.out.println(obj);
+		}
+		
+	
+	}
+
+}

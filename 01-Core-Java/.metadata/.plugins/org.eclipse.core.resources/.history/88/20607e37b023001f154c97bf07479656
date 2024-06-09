@@ -1,0 +1,23 @@
+import java.util.*;
+public class constructorReference {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<String> names = new ArrayList<String>();
+		names.add("sachin");
+		names.add("Dhoni");
+		names.add("Kohli");
+		names.add("dravid");
+		
+		//Traditional Approach
+		Consumer<String> consumer = new MyConsumer();
+		names.forEach(consumer);
+		
+		//lambda expression 
+		names.forEach(name->System.out.println(name));
+		
+		//method reference 
+		names.forEach(System.out::println);
+	}
+
+}

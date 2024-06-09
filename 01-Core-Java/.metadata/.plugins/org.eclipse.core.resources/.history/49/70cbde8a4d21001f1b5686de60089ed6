@@ -1,0 +1,33 @@
+class MyThread3 extends Thread
+{
+	@Override
+	public void run() {
+	for(int i=1;i<=15;i++)
+	{
+		System.out.println("I am Sleeping Child Thread :: "+i);
+		//Thread.sleep(3000);
+	}
+	System.out.println("Entering into Sleeping State ");
+
+		try
+		{
+			Thread.sleep(3000);
+
+		}
+		catch(Exception e)
+		{
+			System.out.println("I got interrupted ....");
+		}
+	}
+}
+public class Test3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		MyThread3 t = new MyThread3();
+		t.start();
+		//t.interrupt();
+		System.out.println("End of Main Thread");
+	}
+
+}

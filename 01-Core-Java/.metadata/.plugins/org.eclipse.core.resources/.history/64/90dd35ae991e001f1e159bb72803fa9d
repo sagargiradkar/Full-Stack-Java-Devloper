@@ -1,0 +1,26 @@
+
+public class TestApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		// Number system
+		//=> base-2 ,base-8,base-10,base-16
+		
+		Integer i1 = Integer.valueOf("100",2);
+		System.out.println(i1);
+		System.out.println("MAX_RADIX => "+ Character.MAX_RADIX);
+		System.out.println("MIN_RADIX => "+ Character.MIN_RADIX);
+		
+		
+		Integer i = new Integer(130);
+		
+		System.out.println(i.byteValue());
+		System.out.println(i.shortValue());
+		System.out.println(i.intValue());
+		System.out.println(i.longValue());
+		System.out.println(i.floatValue());
+		System.out.println(i.doubleValue());
+	}
+
+}

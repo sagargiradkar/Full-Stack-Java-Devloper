@@ -1,0 +1,23 @@
+import java.util.*;
+public class Generic4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<? > al = new ArrayList<Integer>();
+		
+		ArrayList<? extends Number > al1 = new ArrayList<Integer>();
+		
+		ArrayList<? super Number> al2 = new ArrayList<Object>();
+		
+		System.out.println(al);
+		
+		
+	}
+	public void m1(ArrayList al)
+	{
+		al.add(12);
+		al.add(45);
+		al.add("Sagar");
+	}
+
+}

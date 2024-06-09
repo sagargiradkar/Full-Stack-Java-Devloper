@@ -1,0 +1,46 @@
+import java.util.*;
+
+/*
+interface Comparable {
+  public  int compareTo(Object obj);
+}
+if we keep objects inside TreeSet , Internally JVM uses comparedTo() and it 
+sorts the object based on the sorting result the object will stored in TreeSet.
+
+obj1.comparedTo(obj2)
+		|=> returns -ve value , if obj1 has to come before obj2
+		|=> returns +ve values , if obj1 has to come after obj2
+		|=> return 0 value , if both obj1 and obj2 are equal
+*/
+public class Comparable {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+		System.out.println("A".compareTo("Z"));
+		System.out.println("A".compareTo("B"));
+
+		System.out.println("A".compareTo("X"));
+
+		System.out.println("A".compareTo("QA"));
+
+		System.out.println("A".compareTo("A"));
+		/*output :: 
+			-25
+		-1
+		-23
+		-16
+		 0
+	*/	
+		
+		TreeSet ts = new TreeSet();
+		ts.add("A");
+		ts.add("Z");
+		ts.add("L");
+		ts.add("K");
+		
+		System.out.println(ts);
+	}
+
+}

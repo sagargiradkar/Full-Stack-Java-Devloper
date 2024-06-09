@@ -1,0 +1,87 @@
+import java.util.*;
+public class Launch5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList al = new ArrayList();
+		al.add(10);
+		al.add(10.5);
+		al.add('c');
+		al.add(10.5f);
+		System.out.println(al);
+		
+		ArrayList al2 = new ArrayList();
+		al2.add(10);
+		al2.add(20);
+		al2.add(30);
+		al2.add(40);
+		al2.add(50);
+		
+		System.out.println(al2);
+		//Different way to access the data present within the collection 
+		
+		//loops normal
+		System.out.println("Size of array list :: "+al2.size());
+		System.out.print("Accessing data through for loop :: ");
+
+		for(int i=0 ;i<al2.size();i++) 
+		{
+			System.out.print(al2.get(i)+",");
+		}
+		System.out.println();
+		//for each 
+		System.out.print("Accessing data through for each loop :: ");
+		for(Object obj :al2)
+		{
+			System.out.print(obj+",");
+		}
+		
+		//Iterator
+		Iterator itr1 = al2.iterator();
+		
+		if(itr1.hasNext()==true)
+		{
+			itr1.next();
+			
+		}
+		System.out.println();
+		System.out.print("Accessing data through Iterator :: ");
+
+		while(itr1.hasNext())
+		{
+			Object obj = itr1.next();
+			System.out.print(obj+",");
+		}
+		System.out.println();
+		System.out.println("Reverse");
+		ListIterator litr = al2.listIterator(al2.size());
+		
+		while(litr.hasPrevious())
+		{
+			System.out.println(litr.previous());
+		}
+		
+		//What if i want to reverse or access data of other classes
+		
+		ArrayDeque ad = new ArrayDeque();
+		ad.add(10);
+		ad.add(55);
+		ad.add(265);
+		ad.add(558);
+		ad.add(84);
+		ad.add(87);
+		
+		Iterator it = ad.iterator();
+		while(it.hasNext())
+		{
+		Integer i=(Integer)it.next();
+		System.out.println("AAray De "+i);
+		}
+		
+		LinkedList ll = new LinkedList();
+		ll.addAll(ad);
+		System.out.println(ll);
+		
+	}
+
+}

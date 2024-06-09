@@ -1,0 +1,27 @@
+
+class MyThread1 extends Thread
+{	@Override
+	public void run()
+	{
+		String name = Thread.currentThread().getName();
+		System.out.println("run()  excecuted by Thread :: "+name);
+		System.out.println("Run method called ......");
+	}
+}
+public class Test1 {
+	
+	public static void main(String[] args) {
+		MyThread1 t = new MyThread1();
+		System.out.println("Name of Thread is :: "+t.getName());
+//		Thread t1 = new Thread();
+		t.start();
+//		t1.start();
+		String name = Thread.currentThread().getName();
+		System.out.println("Main() Thread ..... is excecuted by Thread :: "+name);
+		
+		Thread.currentThread().setName("Sagar Tread");
+		System.out.println("Name of main thread is changed to :: "+Thread.currentThread().getName(););
+		
+		
+	}
+}

@@ -1,0 +1,35 @@
+import java.util.*;
+import java.util.stream.Collectors;
+public class StreamAPI3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<String> names = new ArrayList<String>();
+		names.add("Sachin");
+		names.add("Ram");
+		names.add("Sham");
+		names.add("Samirr");
+		System.out.println(names);
+		
+		
+		System.out.println();
+		
+		ArrayList<String>  upperCaseNames = new ArrayList<String>();
+		
+		for(String name:upperCaseNames) {
+			upperCaseNames.add(name.toUpperCase());
+		}
+		System.out.println(upperCaseNames);
+		
+		System.out.println();
+		
+		List<String> stramList  = names.stream().map(name->name.toUpperCase()).collect(Collectors.toList());
+		
+		System.out.println(stramList);
+		System.out.println();
+		stramList.forEach(name->System.out.println(name));
+		System.out.println();
+		stramList.forEach(System.out::println);
+	}
+
+}

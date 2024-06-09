@@ -1,0 +1,17 @@
+/*
+
+Todays topic 
+============
+1.import statment
+2.static import
+3.pacages and its usage
+4.instanceof vs isInstance()
+
+*/
+public class TestApp {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

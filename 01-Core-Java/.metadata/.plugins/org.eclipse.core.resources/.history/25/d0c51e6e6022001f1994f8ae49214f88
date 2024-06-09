@@ -1,0 +1,37 @@
+package iNTERFACE;
+interface Hyder
+{
+	void teaches();
+	void writesCode();
+
+	default void display()
+	{
+		System.out.println("Normal method allowed");
+	}
+}
+class Student implements Hyder
+{
+	public void teaches()
+	{
+		System.out.println("Hyder teaches Java");
+	}
+	public void writesCode()
+	{
+		System.out.println("Hyder writes a code");
+	}
+	
+	public void display()
+	{
+		System.out.println("I can Oveeride the implementing a program .......");
+	}
+	
+}
+public class LaunchInterface {
+	public static void main(String[] args)
+	{
+		Student s = new Student();
+		s.teaches();
+		s.writesCode();
+		s.display();
+	}
+}

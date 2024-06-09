@@ -1,0 +1,24 @@
+//To use any of the collection classes we need to implement package
+import java.util.*;
+public class Launch1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList<Integer> al1 = new ArrayList<Integer>();
+		al1.add(10);
+		al1.add(20);
+		al1.add(30);
+		al1.add(40);
+		al1.add(50);
+		al1.add(60);
+		//Homegeneous type of data is allowd 
+		System.out.println(al1);
+		System.out.println("=====================================");
+		ArrayList al2 = new ArrayList();
+		al2.add("iNeuron");
+		al2.add(al1);
+		al2.add(al1);
+		System.out.println(al2);
+	}
+
+}

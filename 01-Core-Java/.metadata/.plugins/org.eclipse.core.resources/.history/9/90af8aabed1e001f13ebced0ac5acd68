@@ -1,0 +1,30 @@
+class Demo
+{
+	public void add(int... a)
+	{
+		System.out.println(a);
+		System.out.println("Var-Arg Approach");
+	}
+//	
+//	public void add(int a,int b,int c)
+//	{
+//		System.out.println(a+b+c);
+//	}
+//	
+//	public void add(int a,int b,int c,int d)
+//	{
+//		System.out.println(a+b+c+d);
+//	}
+}
+public class varargAproch {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Demo d = new Demo();
+		d.add();
+		d.add(25);
+		d.add(435,565);
+		d.add(40,55,50);
+	}
+
+}

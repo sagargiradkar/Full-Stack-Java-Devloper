@@ -1,0 +1,20 @@
+import java.util.ArrayList;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Boolean b1 = Boolean.valueOf(true);
+		
+		if(b1) {
+			System.out.println("Hello");
+		}
+		
+		ArrayList<E> a1 = new ArrayList();
+		a1.add(10);
+		System.out.println(a1);
+		
+	}
+
+}

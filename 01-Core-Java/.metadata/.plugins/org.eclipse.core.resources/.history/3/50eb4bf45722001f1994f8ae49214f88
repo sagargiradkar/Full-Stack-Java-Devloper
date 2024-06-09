@@ -1,0 +1,90 @@
+import java.util.*;
+import java.util.Map.Entry;
+
+class Information
+{
+	private String name;
+	private int age;
+	private String fatherName;
+	private String LastName;
+	private String City;
+	public Information(String name, int age, String fatherNAme, String lastName, String city) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.fatherName = fatherNAme;
+		LastName = lastName;
+		City = city;
+	}
+	public String getName() {
+		return name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public String getFatherNAme() {
+		return fatherName;
+	}
+	public String getLastName() {
+		return LastName;
+	}
+	public String getCity() {
+		return City;
+	}
+	@Override
+	public String toString()
+	{
+		return name + " "+ age +" "+ fatherName +" "+LastName+" "+City ;
+	}
+	
+}
+class key
+{
+	int key;
+	public key(int key)
+	{
+		this.key=key;
+	}
+}
+public class LaunchPassword {
+
+	public static void main(String[] args) {
+		
+		Information info1 = new Information("Rohan",25,"Prakash","Giradkar","Bhandara");
+		Information info2 = new Information("Sagar",25,"Prakash","Giradkar","Bhandara");
+		Information info3 = new Information("Premkant",25,"Prakash","Giradkar","Bhandara");
+		Information info4 = new Information("Prakash",25,"Devram","Giradkar","Bhandara");
+		
+		HashMap hm = new HashMap();
+		hm.put(4729, info1);
+		hm.put(5550, info2);
+		hm.put(5340, info3);
+		hm.put(9923, info4);
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Welcome to passport details App");
+		System.out.println("Please enter the passport number");
+		Integer k = sc.nextInt();
+		
+		boolean flag = false;
+		Set s = hm.entrySet();
+		Iterator itr = s.iterator();
+		while(itr.hasNext())
+		{
+			Map.Entry passport = (Entry) itr.next();
+			Integer key = (Integer) passport.getKey();
+			if(k==key)
+			{
+				flag=true;
+				System.out.println("Passport Number   "+passport.getKey() + " : "+ passport.getValue());
+
+			}
+			
+		}
+		if(flag ==true ) {
+			System.out.println("Password is not found ");
+		}
+		
+	}
+
+}

@@ -1,0 +1,36 @@
+/*
+
+Todays topic 
+============
+1.import statment
+2.static import
+3.pacages and its usage
+4.instanceof vs isInstance()
+
+*/
+
+import java.util.ArrayList;
+
+class Student
+{
+	static 
+	{
+		System.out.println("Student .class file is loading");
+	}
+	
+	Student()
+	{
+		System.out.println("Student constructor called");
+	}
+}
+public class TestApp {
+	
+	static
+	{
+		System.out.println("TestApp.class file id loading by jvm");
+	}
+	public static void main(String[] args) {
+		ArrayList a1 = new ArrayList();
+	}
+
+}

@@ -1,0 +1,16 @@
+import java.util.*;
+
+/*
+interface Comparable {
+  public  int compareTo(Object obj);
+}
+
+*/
+public class Comparable {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("A".compareTo("Z"));
+	}
+
+}
