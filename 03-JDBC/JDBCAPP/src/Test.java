@@ -12,7 +12,7 @@ class Test {
             System.out.println("Driver loaded successfully ...");
 
             // Step 2. Establish the Connection with database
-            String url = "jdbc:mysql://localhost:3306/ineuron";
+            String url = "jdbc:mysql:///ineuron";
             String userName = "root";
             String password = "9402";
             connection = DriverManager.getConnection(url, userName, password);
@@ -20,7 +20,8 @@ class Test {
             System.out.println("The implementation class name is :: " + connection.getClass().getName());
 
             // Step 3. Create statement object and send the query
-            String sqlSelectQuery = "SELECT ID, FNAME FROM student";
+            String sqlSelectQuery = "SELECT ID, FNAME,LNAME,AGE,CITY FROM student";
+           // String sqlSelectQuery = "SELECT * FROM student";
             statement = connection.createStatement();
             resultSet = statement.executeQuery(sqlSelectQuery);
 
@@ -28,7 +29,10 @@ class Test {
             while (resultSet.next()) {
                 Integer id = resultSet.getInt("ID");
                 String firstName = resultSet.getString("FNAME");
-                System.out.println(id + " " + firstName);
+                String lastName = resultSet.getString("LNAME");
+                Integer age = resultSet.getInt("AGE");
+                String city = resultSet.getString("CITY");
+                System.out.println(id + "\t" + firstName + "\t"+lastName+"\t"+age+"\t"+city);
             }
         } catch (ClassNotFoundException ce) {
             ce.printStackTrace();
