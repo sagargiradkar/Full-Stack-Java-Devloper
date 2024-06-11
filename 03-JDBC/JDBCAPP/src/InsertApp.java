@@ -26,7 +26,7 @@ public class InsertApp {
         
             statement = connection.createStatement();
             
-            String sqlInsertQuery = "insert into student(`id`,`FNAME`,`LNAME`,`AGE`,`CITY`) values(20,'PRAKAS','Giradkar',50,'BHANDAR')";
+            String sqlInsertQuery = "insert into student(`id`,`FNAME`,`LNAME`,`AGE`,`CITY`) values(2,'PRAKAS','Giradkar',50,'BHANDAR')";
             
             int rowAffected = statement.executeUpdate(sqlInsertQuery);
             

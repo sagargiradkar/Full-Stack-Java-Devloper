@@ -1,6 +1,6 @@
 import java.sql.*;
 
-public class DeleteApp {
+public class UpdateApp {
 
 	public static void main(String[] args) {
 	
@@ -22,13 +22,13 @@ public class DeleteApp {
         
             statement = connection.createStatement();
             
-            String sqlDeleteQuery = "delete from student where ID = -58";
+            String sqlUpdateQuery = "update student set FNAME = 'RAHUL' where ID = 7";
             
-            int rowAffected = statement.executeUpdate(sqlDeleteQuery);
+            int rowAffected = statement.executeUpdate(sqlUpdateQuery);
             
 
             // Step 4. Process the ResultSet
-            System.out.println("No of rows affected is :: "+rowAffected);
+            System.out.println("No of rows updated  is :: "+rowAffected);
             
             System.out.println("Closing a connection ......");
         } catch (SQLException se) {
