@@ -1,0 +1,50 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+import in.ineuron.util.JdbcUtil;
+
+public class InsertApp {
+
+	public static void main(String[] args) {
+	
+	
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try 
+		{
+			Scanner sc = new Scanner(System.in);
+			connection = JdbcUtil.getJdbcConnection();
+			if(connection !=null)
+				statement = connection.createStatement();
+			if(statement != null)
+				resultSet = statement.executeQuery("select * from student");
+			if(resultSet!=null) {
+				System.out.println("ID\tFNAME\tLNAME\tAGE\tCITY");
+				while(resultSet.next())
+				{
+					Integer id = resultSet.getInt("ID");
+	                String firstName = resultSet.getString("FNAME");
+	                String lastName = resultSet.getString("LNAME");
+	                Integer age = resultSet.getInt("AGE");
+	                String city = resultSet.getString("CITY");
+	                System.out.println(id + "\t" + firstName + "\t"+lastName+"\t"+age+"\t"+city);
+				}
+			}
+
+				
+		}
+		catch(SQLException se)
+		{
+			se.printStackTrace();
+		}
+
+       
+    }
+	}
+
+
