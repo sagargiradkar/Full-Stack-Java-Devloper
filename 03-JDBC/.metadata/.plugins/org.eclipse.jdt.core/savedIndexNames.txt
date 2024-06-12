@@ -1,2 +1,0 @@
-INDEX VERSION 1.134+C:\Users\sagar\Documents\full-stack-java-devloper1\03-JDBC\.metadata\.plugins\org.eclipse.jdt.core
-1865797976.index
