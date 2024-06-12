@@ -6,15 +6,16 @@ import java.util.Scanner;
 
 import in.ineuron.util.JdbcUtil;
 
-public class InsertApp {
+public class UpdateApp {
 
 	public static void main(String[] args) {	
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
+		Scanner sc = new Scanner(System.in);
 		try 
 		{
-			Scanner sc = new Scanner(System.in);
+			
 			connection = JdbcUtil.getJdbcConnection();
 			
 			String sqlInsertQuery = "insert into student (`ID`,`FNAME`,`LNAME`,`AGE`,`CITY`) values(?,?,?,?,?)";
@@ -24,11 +25,30 @@ public class InsertApp {
 			
 			if(pstmt !=null)
 				//use precompiled query to set the values
-				pstmt.setInt(1, 757);
-				pstmt.setString(2, "LALITA");
-				pstmt.setString(3, "CHANDEWAR");
-				pstmt.setInt(4, 20);
-				pstmt.setString(5, "CHANDRAPUR");
+            
+            System.out.println("Enter the student ID ::");
+            int ID = sc.nextInt();
+            
+            System.out.println("Enter the name of the student ::");
+            String FNAME = sc.next();
+//            FNAME = "'"+FNAME+"'";
+            System.out.println("Enter the Lname of the student ::");
+            String LNAME = sc.next();
+//            LNAME = "'"+LNAME+"'";
+
+            System.out.println("Enter the age of student ::");
+            int AGE = sc.nextInt();
+            
+            
+
+            System.out.println("Enter the City of the student ::");
+            String CITY = sc.next();
+//            CITY = "'"+CITY+"'";
+				pstmt.setInt(1, ID);
+				pstmt.setString(2, FNAME);
+				pstmt.setString(3, LNAME);
+				pstmt.setInt(4, AGE);
+				pstmt.setString(5, CITY);
 				
 				
 				System.out.println(sqlInsertQuery);

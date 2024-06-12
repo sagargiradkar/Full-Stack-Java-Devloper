@@ -25,7 +25,7 @@ public class JdbcUtil {
 
 	public static Connection getJdbcConnection() throws SQLException, IOException
 	{
-		FileInputStream fis = new FileInputStream("C:\\Users\\sagar\\Documents\\full-stack-java-devloper1\\03-JDBC\\PreparedStatment\\src\\in\\ineuron\\application\\application.properties");
+		FileInputStream fis = new FileInputStream("C:\\Users\\sagar\\Documents\\full-stack-java-devloper1\\03-JDBC\\JDBCStandardApp\\application.properties");
 		
 		Properties properties = new Properties();
 		
@@ -35,7 +35,7 @@ public class JdbcUtil {
 		// Step 2. Establish the Connection with database
         connection = DriverManager.getConnection(properties.getProperty("url"), properties.getProperty("user"), properties.getProperty("password"));
 
-       // System.out.println("The implementation class name is :: " + connection.getClass().getName());
+        System.out.println("The implementation class name is :: " + connection.getClass().getName());
         System.out.println("Connection object created ....");
         
         return connection;

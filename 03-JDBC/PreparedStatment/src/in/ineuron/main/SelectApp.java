@@ -6,37 +6,42 @@ import java.util.Scanner;
 
 import in.ineuron.util.JdbcUtil;
 
-public class InsertApp {
+public class SelectApp {
 
 	public static void main(String[] args) {	
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
+		Scanner sc = new Scanner(System.in);
 		try 
 		{
-			Scanner sc = new Scanner(System.in);
+			
 			connection = JdbcUtil.getJdbcConnection();
 			
-			String sqlInsertQuery = "insert into student (`ID`,`FNAME`,`LNAME`,`AGE`,`CITY`) values(?,?,?,?,?)";
+			String sqlSelectQuery = "select ID,FNAME,LNAME,AGE,CITY from student where ID = ?";
 			System.out.println("\nConnection Established .....\n");
 			if(connection !=null)
-				pstmt = connection.prepareStatement(sqlInsertQuery);
+				pstmt = connection.prepareStatement(sqlSelectQuery);
 			
 			if(pstmt !=null)
 				//use precompiled query to set the values
-				pstmt.setInt(1, 757);
-				pstmt.setString(2, "LALITA");
-				pstmt.setString(3, "CHANDEWAR");
-				pstmt.setInt(4, 20);
-				pstmt.setString(5, "CHANDRAPUR");
 				
-				
-				System.out.println(sqlInsertQuery);
+				System.out.println("Enter the value of id :: ");
+				int sid = sc.nextInt();
+				pstmt.setInt(1, sid);
+	
+				System.out.println(sqlSelectQuery);
 				//execute the query
-				int rowCount = pstmt.executeUpdate();
-				System.out.println("\nNo of row updated is :: "+rowCount);
-				
-				
+				resultSet = pstmt.executeQuery();
+			if(resultSet!=null)
+			{
+				if(resultSet.next()){
+					System.out.println("ID\tFNAME\tLNAME\tAGE\tCITY");
+					System.out.println(resultSet.getInt(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getString(3)+"\t"+resultSet.getInt(4)+"\t"+resultSet.getString(5));
+				}else {
+					System.out.println("Record not available for the given id :: "+sid);
+				}
+			}
 		}
 		catch(IOException ie){
 			ie.printStackTrace();
@@ -50,7 +55,7 @@ public class InsertApp {
 			e.printStackTrace();
 		}finally {
 			try {
-				JdbcUtil.cleanUp(connection, null, null);
+				JdbcUtil.cleanUp(connection, pstmt, resultSet);
 				System.out.println();
 				System.out.println("Closing the Resorces .........");
 			} catch (SQLException e) {

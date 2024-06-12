@@ -6,35 +6,37 @@ import java.util.Scanner;
 
 import in.ineuron.util.JdbcUtil;
 
-public class InsertApp {
+public class DeleteApp {
 
 	public static void main(String[] args) {	
 		Connection connection = null;
 		PreparedStatement pstmt = null;
 		ResultSet resultSet = null;
+		Scanner sc = new Scanner(System.in);
 		try 
 		{
-			Scanner sc = new Scanner(System.in);
+			
 			connection = JdbcUtil.getJdbcConnection();
 			
-			String sqlInsertQuery = "insert into student (`ID`,`FNAME`,`LNAME`,`AGE`,`CITY`) values(?,?,?,?,?)";
+			String sqlDeleteQuery = "delete from student where ID = ?";
 			System.out.println("\nConnection Established .....\n");
 			if(connection !=null)
-				pstmt = connection.prepareStatement(sqlInsertQuery);
+				pstmt = connection.prepareStatement(sqlDeleteQuery);
 			
 			if(pstmt !=null)
 				//use precompiled query to set the values
-				pstmt.setInt(1, 757);
-				pstmt.setString(2, "LALITA");
-				pstmt.setString(3, "CHANDEWAR");
-				pstmt.setInt(4, 20);
-				pstmt.setString(5, "CHANDRAPUR");
+            
+            System.out.println("Enter the student ID ::");
+            int ID = sc.nextInt();
+           
+				pstmt.setInt(1, ID);
 				
 				
-				System.out.println(sqlInsertQuery);
+				
+				System.out.println(sqlDeleteQuery);
 				//execute the query
 				int rowCount = pstmt.executeUpdate();
-				System.out.println("\nNo of row updated is :: "+rowCount);
+				System.out.println("\nNo of row deleted is :: "+rowCount);
 				
 				
 		}
