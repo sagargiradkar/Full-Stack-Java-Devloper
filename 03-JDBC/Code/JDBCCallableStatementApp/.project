@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>JDBCCRUDAPP</name>
+	<name>JDBCCallableStatementApp</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -16,7 +16,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1718346076459</id>
+			<id>1718246201808</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
