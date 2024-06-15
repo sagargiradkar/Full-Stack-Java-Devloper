@@ -24,7 +24,7 @@ public class UpdatableResultSetApp {
 			if(connection != null)
 			{
 				//Expecting ResultSet to be SCROLLABLE AND UPDATABLE
-				stmt = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+				stmt = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 				
 			}
 			
@@ -35,51 +35,24 @@ public class UpdatableResultSetApp {
 				resultSet = stmt.executeQuery(sqlQuery);
 			
 			if(resultSet != null) {
-				System.out.println("Moving IN FORWARD DIRECTION........");
+				System.out.println("Records Before Updation .....");
 				System.out.println("ID\tNAME\tAGE\tADDRESS");
 				while(resultSet.next()) {
 					System.out.println(resultSet.getInt(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getInt(3)+"\t"+resultSet.getString(4));
 				}
-				
 				System.out.println();
-				System.out.println("MOVING IN BACKWORD DIRECTION.......");
+				System.out.println("Application is in pausing state, please update database");
+				System.in.read();
 				
-				while(resultSet.previous()) {
+				System.out.println("Records After Updation .....");
+				resultSet.beforeFirst();
+				
+				System.out.println("ID\tNAME\tAGE\tADDRESS");
+				while(resultSet.next()) {
+					resultSet.refreshRow();
 					System.out.println(resultSet.getInt(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getInt(3)+"\t"+resultSet.getString(4));
 				}
-				System.out.println();
 				
-				resultSet.first();
-				System.out.println(resultSet.getInt(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getInt(3)+"\t"+resultSet.getString(4));
-				System.out.println();
-				resultSet.last();
-				System.out.println(resultSet.getInt(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getInt(3)+"\t"+resultSet.getString(4));
-
-				System.out.println();
-				resultSet.absolute(3);
-				System.out.println(resultSet.getInt(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getInt(3)+"\t"+resultSet.getString(4));
-				System.out.println();
-				resultSet.relative(2);
-				System.out.println(resultSet.getInt(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getInt(3)+"\t"+resultSet.getString(4));
-				
-				resultSet.first();
-				resultSet.absolute(2);
-				System.out.println(resultSet.getInt(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getInt(3)+"\t"+resultSet.getString(4));
-
-				resultSet.absolute(-1);
-				System.out.println(resultSet.getInt(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getInt(3)+"\t"+resultSet.getString(4));
-
-				
-				resultSet.absolute(5);
-				System.out.println(resultSet.getInt(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getInt(3)+"\t"+resultSet.getString(4));
-
-				
-				resultSet.relative(-2);
-				System.out.println(resultSet.getInt(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getInt(3)+"\t"+resultSet.getString(4));
-
-				resultSet.relative(1);
-				System.out.println(resultSet.getInt(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getInt(3)+"\t"+resultSet.getString(4));
-
 			}
 			
 			
