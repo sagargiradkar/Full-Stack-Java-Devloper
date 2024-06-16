@@ -11,7 +11,7 @@ Welcome to my Full Stack Java Developer Learning Repository! This repository is 
     - [Core Java](#core-java)
     - [SQL](#sql)
     - [JDBC](#jdbc)
-    - [JSP \& JEE](#jsp--jee)
+    - [Servlet \& JSP](#servlet--jsp)
     - [Spring Framework](#spring-framework)
     - [Spring MVC](#spring-mvc)
     - [Spring Data JPA](#spring-data-jpa)
@@ -79,7 +79,7 @@ JDBC (Java Database Connectivity) is the Java API for connecting and executing q
   - Using PreparedStatement and CallableStatement
   - Managing database connections with connection pools
 
-### JSP & JEE
+### Servlet , JSP & JEE
 
 JSP (JavaServer Pages) and JEE (Java Enterprise Edition) are used for building dynamic web applications.
 
