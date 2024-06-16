@@ -155,3 +155,35 @@ Architecture of WEBSERVER (TOMCAT)
         It is also known as JSP Engine
         It is responsible for managing and executing jsp componets
         Tomcat jsp containe namse is "JASPER".
+
+Note :
+Start the tomcat server by opening bin folder and selecting tomcat9 and double clicks on it .
+now send the request by opening browser of ur choice and hit the request as shown below
+http://localhost:9999./
+
+
+Servlet
+========
+
+        It is an API which helps the programmer to build wenApplications.
+        ServleteAPI provides 2 packages
+        a.javax.servlet.*;
+        b.javax.servlet.http.*
+
+javax.servlet.*;
+=================
+        1.Servlet(I)
+        2.GenericServlet(AC)
+        3.ServleteConfig(I)
+        4.ServletContext(I)
+        5.RequestDispatcher(I)
+        6.ServleteRequest(I)
+        7.ServleteResponse(I)
+
+javax.servlet.http.*
+=====================
+        1.HttpServleteRequest(I)
+        2.HttpServleteResponse(I)
+        3.HttpSession
+        4.HttpServlet(AC)
+        
