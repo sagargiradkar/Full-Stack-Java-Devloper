@@ -1,189 +1,130 @@
-# Differemnt types of application built using java
+### Different Types of Applications Built Using Java
 ===================================================
-  ###  a.standalone applications (JSE)
-         1.CUI Applications
-         2.GUI Applications
- ###   b.Enterprise applications (JEE and Frameworks)
-         1.Web Applications
-         2.Distributed Applications
-    
-Difference b/w web application and Distrubuted applications?
 
-# Web Application
-===============
+Java, as a versatile and powerful programming language, enables the development of various types of applications. These applications can be broadly categorized into two main types: standalone applications and enterprise applications. Each category serves different purposes and is built using specific Java editions and frameworks.
 
-WebApplication is a server side application,it will be designed without distrubuting logicc over multiple no of jvms.
-To build webapplication we need to use technologies like CGI , Servelet ,JSP and so on ,....
-Thae meain purpose of webapplication is to generate dynamic response from server machine
-WebApplication provides services to webclients only (using the browser we need to send a request)
-        eg:BMS(webApp) -----> to send the request to this application u need to used browser + intyernet mobile based app(internet)
-        WebApp => Client to server model
+#### a. Standalone Applications (JSE)
+-----------------------------------
 
-In case of webApplication to execute the progrtam we need "webApplication"
+Standalone applications are programs that run independently on a user's desktop or laptop without needing any external support like web servers or application servers. They utilize Java Standard Edition (JSE) and can be further divided into two types:
 
-# Distrubuted applications
-========================
+##### 1. CUI (Character User Interface) Applications
+These applications operate in a console or command line interface, accepting input and providing output as text. Examples include simple utility programs like file managers, text editors, and command-line tools.
 
-Distributed application is a server side application , it wioll be designed by distributed application logic over muiltiple no of jvms 
-To build Distrubuted application  we need to use technologies like RMI(remote method invocation ),EJB's ,Web Services ..
-The main purpose of distributed application is to establed the communication b/w local machine and remote machine to access the remote services .
-Distribuuted app will provide service to any type of clients.
-        Distributed App => bussiness to bussiness model.
-In case of DA to execute the program we need "application servers".
+##### 2. GUI (Graphical User Interface) Applications
+GUI applications feature graphical elements like windows, buttons, and menus to interact with users. Java provides libraries such as AWT (Abstract Window Toolkit), Swing, and JavaFX to build these applications. Examples include desktop software like media players, graphic editors, and IDEs (Integrated Development Environments).
 
-client => A program which sends the request is called "client".
-server => A program process the request and the send the response is called "server".
+#### b. Enterprise Applications (JEE and Frameworks)
+-----------------------------------
 
+Enterprise applications are large-scale, distributed, and typically business-oriented applications. They are built using Java Enterprise Edition (JEE) and various frameworks to meet complex requirements. They are divided into two main types:
 
-# WebApplication
+##### 1. Web Applications
+Web applications run on web servers and are accessed through web browsers over a network. Technologies like Servlets, JSP (JavaServer Pages), and frameworks such as Spring MVC are used to build these applications. Examples include e-commerce sites, online banking portals, and content management systems.
+
+##### 2. Distributed Applications
+Distributed applications are designed to run on multiple JVMs (Java Virtual Machines) across different networked computers. They involve complex interactions and communication between different components. Technologies like RMI (Remote Method Invocation), EJB (Enterprise JavaBeans), and Web Services are used to build these applications. Examples include large-scale enterprise systems, cloud-based services, and integrated business applications.
+
+### Difference Between Web Application and Distributed Applications
+----------------------------------------------------------------
+
+Although both web and distributed applications are enterprise-level solutions, they differ significantly in their architecture and purposes.
+
+#### Web Application
+Web applications are designed to generate dynamic responses and provide services to web clients using a client-server model. They are server-side applications that do not distribute their logic across multiple JVMs. They utilize technologies like CGI, Servlet, JSP, and modern frameworks to handle client requests and produce dynamic content. A typical example is an online booking system where users interact through a web browser.
+
+**Key Characteristics:**
+- Runs on a single server or cluster.
+- Uses web servers like Apache Tomcat, Jetty.
+- Serves web clients only (browsers).
+- Generates dynamic responses.
+
+#### Distributed Applications
+Distributed applications, on the other hand, distribute their logic across multiple JVMs and systems to ensure scalability and robustness. They enable communication between different local and remote systems to access services and resources. Technologies like RMI, EJB, and Web Services facilitate the building of these applications. An example is a banking system where different services (e.g., account management, transaction processing) run on different servers.
+
+**Key Characteristics:**
+- Runs on multiple servers/JVMs.
+- Uses application servers like JBoss, WebLogic.
+- Serves various types of clients (web, desktop, mobile).
+- Ensures communication between local and remote services.
+
+### Web Application
 =================
 
-        The application which is devloed only using web base technologies like html.css,js,servelet,jsp etc is called "webApplication."
+Web applications are server-side applications designed using web-based technologies to generate dynamic responses. They are accessed by clients through web browsers and run on web servers. The primary purpose is to serve dynamic content based on user requests.
 
+#### WebServer
+A web server provides an environment to run web applications. It handles HTTP requests from clients and serves them with the appropriate web content. Examples include Apache Tomcat, Jetty, GlassFish, and JBoss.
 
-application ====> Collection of many programs
+#### Development and UnDeployment
+- **Deployment**: The process of placing a web application inside a web server to make it available for users.
+- **UnDeployment**: The process of removing a web application from the web server.
 
-WebServer
-=========
-If we want these application to execute , we need one special software only we called as "webServer'.
-webserver provides envirnment to run webapplications
-        eg:tomcat.resin,jetty,glassfish ,jboss,
+#### WebClient
+A web client, typically a web browser (like Mozilla Firefox, Google Chrome, or Safari), sends requests to the web server and displays the server's responses.
 
+### Web Programming for Static and Dynamic Responses
+================================================
 
-Devlopment and UnDeployment
-===========================
-The process of placing the webapplicatiobn inside webserver is called "Deployment".
-The process of removing webApplication from the webserver is called "UnDeployment".
+#### Static Response
+A static response does not change based on user input or over time. Examples include the login page of Gmail or the homepage of a bank. 
 
-WebClient
-==========
-To send the requewst from the user we need to have special software installed in the client machine .
-The special software is only called as "browser".
-eg:Mozilla , crome , safari ......
+**Flow Diagram for Static Page:**
+1. Client sends a request for a static file to the server.
+2. Server searches for the requested resource.
+3. If found, the server provides the file as a response.
+4. If not found, a 404 status code is returned.
 
-web programming for static response
-===================================
-static response 
-===============
-        The response which won't be changed from person to person and time to time , such type of response is called as "static response".
-        eg : login page of gmail
-                home page oof icci banc
+#### Dynamic Response
+A dynamic response varies based on user input and other factors. Examples include the inbox page of Gmail or the balance information page of a bank.
 
-dynamic response
-=================
-The response which is valid from person to person and tinme to time such type of response is called as "dynamic response."
-        eg:Inbox page of gmail
-           balance information of icic bank
-Flow diagram of static page
-=============================
-1.clients send the request for static file to the server
-2.Serever searches whether the requested resourse is available or not.
-3.If the request resouse is available then server will provide that files as response .
-4.If the requesr=ted resourse is not available then we will get 404 status code saying requested resource not available
+**Flow Diagram for Dynamic Page:**
+1. Client sends a request to the web server.
+2. Web server determines if the request is for a static or dynamic resource.
+3. For static resources, the server handles the request; for dynamic resources, the request is forwarded to a web container.
+4. Web container searches for the appropriate helper application.
+5. If found, the helper application is executed, and the response is sent back to the server and then to the client.
+6. If not found, a 404 status code is returned.
+7. Any execution issues result in a 500 status code.
 
-Note : To server static files , no processig is required at the server side , hence webserever always loves to server static files.
+#### Technologies for Dynamic Responses
+To generate dynamic responses, web developers use technologies such as:
+- **CGI (Common Gateway Interface)**: A server-side technology built on top of C language, which is process-based and can be resource-intensive.
+- **Servlet**: A Java-based, thread-based technology that creates threads instead of processes, improving server performance.
+- **JSP (JavaServer Pages)**: A technology for presenting dynamic content with a focus on separating presentation logic from business logic.
 
-web programming for dynamic response
-===================================
+### Architecture of WebServer (Tomcat)
+=================================
 
-1.client send the request for webserver
-2.webserver will checks whether the request is for static resourse or dynamic resourse (based on url).
-3.If it is static resourse , then webserver only will reserch for static resourse , if it is available serevre will provide the static files content (copy and paste) as the response the client.
-If it is not available , then 404 status code will be sent as the response to the client saying the requested resourse is not available.
+Apache Tomcat is a popular web server with specific components for handling different aspects of web applications:
 
-4.If the requested resourses is dynamic informatiob , then webserver will forward the request to webcontainer.
-5.webconatiner will serach the helper application , which needs to be executed .
-If it is not available , then 404 status code will be sent as the response to the client saying the requested resourse is not available.
-6.The requested helper application will be executed and it will be sent as the response to the webserver and webserver inreturns will send as the response to the end user.
-7.During the execution if any problem occurs then it would result in execution and status code 500 would be sent as a response toi the end user by the server
+1. **WebContainer**: Manages and executes Servlets and JSPs.
+2. **ServletContainer**: Known as ServletEngine, manages and executes Servlets. Tomcat's Servlet container is named "Catalina."
+3. **JSPContainer**: Known as JSP Engine, manages and executes JSPs. Tomcat's JSP container is named "Jasper."
 
-Note:
-        To generate the dynamic response at the server side we need some helper applications .To build these applications which are capable of generationg dynamic response we need to ;earn technologies like 
-        A.CGI
-        B.SERVLET
-        C.JSP
+**Starting Tomcat Server:**
+- Open the bin folder.
+- Run the "tomcat9" executable.
+- Access the server through a web browser at `http://localhost:9999`.
 
-To design a webapp , we already have CGI then what is the nedd to go for servlet ?
-CGI => It stands for common Gateway Interface 
-CGI is a server side web tech it buit on top of c language c languge is a process based lanuage , which intern make CGI as Process based tech
-If we deoploy any CGI app then container woill create seperate process for every request 
-Process is heavy weight component , to handle single process sysytem has to consume a lot of memmory and execution time.
-Due to the above reason , more the request comes server would be getting a butden of creating a process which intern reduce the system performance abd increase the response time for the client.
-
-To reduce the burden on server and to increase the performance we need to use server side called "Servelet"
-
-Servelet is a server side rechnology which is build on top of "JAVA Lainguage";
-java is Thread based tech
-If we deployed Sevlete app at the server side then for every request servlet container will generate a seperate thread on thr respective Servlet Object .
-In the above context , if we increse no of requests contain er will creaste a seperate thread instead of process.
-When compared to process threads are lioght weight , since it is light weight , server would not be burdernded.
-Server would provide quick response for client request which increase the performance of the request response 
-
-To design a webapp , we already have Servelet then what is the nedd to go for JSP 
-
-
-Sevlet 
-        1.To buld web application we need to have a knowledge of Java Properly
-        2.Servelet mainly meant for Processing logic(Pick the request and process the request.)
-        3.Any modification done in the Servlet , we need to perform compilation and reloading on server explicitly.
-        4.If we build webApp using MVC design pattern , then Servlet will placed inside Controller logic.
-        5.In case of Servlet , we are unable to seperate both presentatiion logic and bussiness logic.
-
-
-
-JSP 
-        1.To build web application using JSP , it is not required to have any java Knowledge only presentation skills are enoufgh.
-        2.JSP is maily meant for providing dynamic response to the client with good look and feel (only prsentation).
-        3.Any modification done in the JSP , then it is not required to do compilation and realoding bz jsp pages are "AutoCompiled".
-        4.If we build webApps using MVC design pattern , then JSP will placed inside View Logic.
-        5.In case of JSP , there will be a clear cut seperation b/w presentation logic and bussiness logic bz presentation logic deals with html and bussiness logic deals with "JSP tags".
-
-Architecture of WEBSERVER (TOMCAT)
-==================================
-
-        Tomcat
-1.It is a webserver provided by apache foundation.
-2.Every Webserver will have webcontainer
-        a.webcontainer  is responsible to manage and execute servelet and jsps.
-        b.jsper container (jsp container)
-4.ServletContainer 
-        It is also known as ServletEngine.
-        It is responsible for managing and executing servlete components.
-        Tomcat servlet container name id "CATALINA".
-
-5.JSP Container
-        It is also known as JSP Engine
-        It is responsible for managing and executing jsp componets
-        Tomcat jsp containe namse is "JASPER".
-
-Note :
-Start the tomcat server by opening bin folder and selecting tomcat9 and double clicks on it .
-now send the request by opening browser of ur choice and hit the request as shown below
-http://localhost:9999./
-
-
-Servlet
+### Servlet
 ========
 
-        It is an API which helps the programmer to build wenApplications.
-        ServleteAPI provides 2 packages
-        a.javax.servlet.*;
-        b.javax.servlet.http.*
+Servlet is a Java API for building web applications, providing the following packages:
 
-javax.servlet.*;
-=================
-        1.Servlet(I)
-        2.GenericServlet(AC)
-        3.ServleteConfig(I)
-        4.ServletContext(I)
-        5.RequestDispatcher(I)
-        6.ServleteRequest(I)
-        7.ServleteResponse(I)
+#### javax.servlet.*;
+- **Servlet(I)**
+- **GenericServlet(AC)**
+- **ServletConfig(I)**
+- **ServletContext(I)**
+- **RequestDispatcher(I)**
+- **ServletRequest(I)**
+- **ServletResponse(I)**
 
-javax.servlet.http.*
-=====================
-        1.HttpServleteRequest(I)
-        2.HttpServleteResponse(I)
-        3.HttpSession
-        4.HttpServlet(AC)
-        
+#### javax.servlet.http.*;
+- **HttpServletRequest(I)**
+- **HttpServletResponse(I)**
+- **HttpSession**
+- **HttpServlet(AC)**
+
+These components form the backbone of building, deploying, and managing Java-based web and distributed applications.
