@@ -234,7 +234,7 @@ Here are some resources that I find useful in my learning journey:
 
 ## Contributing
 
-I welcome contributions from others who are also passionate about full-stack Java development. If you have any suggestions, improvements, or want to share your own learning experiences, please feel free to submit a pull request.
+I welcome contributions from others who are also passionate about full-stack Java development. If you have any suggestions, improvements, or want to share your own learning experiences, please feel free to submit a pull request....
 
 ### How to Contribute
 1. Fork this repository.
