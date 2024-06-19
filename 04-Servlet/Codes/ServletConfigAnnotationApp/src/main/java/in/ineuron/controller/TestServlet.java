@@ -47,8 +47,7 @@ public class TestServlet extends HttpServlet {
 	}
 
 	@Override
-	public void doPost(jakarta.servlet.http.HttpServletRequest request,
-			jakarta.servlet.http.HttpServletResponse response) throws ServletException, IOException {
+	public void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 
 //		PrintWriter out = response.getWriter();
 //		out.println()
