@@ -7,26 +7,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class TestApp
- */
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
+
+
 @WebServlet("/test")
 public class TestApp extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
-    public TestApp() {
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	@Override
+	public void doGet(jakarta.servlet.http.HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Controll in servlet 1");
+		
+		String userName = request.getParameter("userName");
+		String userPass = request.getParameter("userPass");
+		
+		System.out.println("userNeme :: "+userName+"userPass :: "+userPass);
+		
+		if(userName.equals("sagar")&& userPass.equals("javaDev")) {
+			RequestDispatcher requestDisp = request.getRequestDispatcher("/home.jsp");
+		}else {
+			ServletContext servletContext = request.getServletContext();
+			RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/error.jsp");
+			
+			requestDispatcher.forward(request, response);
+			
+		}
 	}
 
 }
