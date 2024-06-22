@@ -10,8 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 
 public class TragetServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	static{
+		System.out.println("Target Servlet .class file is loading ....");
+	}
+	public TragetServlet(){
+		
+	}
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	
 		PrintWriter out = response.getWriter();
