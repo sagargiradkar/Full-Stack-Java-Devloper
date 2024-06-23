@@ -359,3 +359,123 @@ public class UserController {
 ### Conclusion
 
 JavaServer Pages (JSP) is a powerful technology for creating dynamic web content in Java. By adhering to best practices and leveraging the capabilities of JSP and associated technologies like JSTL and custom tags, developers can build robust, maintainable, and scalable web applications. This comprehensive guide has covered the essential aspects of JSP, from basic syntax and lifecycle to advanced topics and best
+
+
+JSP Scripting
+==============
+1.Template Text
+2.Scripting Elements
+3.Standard and custom action
+4.Expess language elements
+
+JSP (JavaServer Pages) is a technology used to create dynamic web pages in Java. It allows embedding Java code directly into HTML pages using various scripting elements and actions. Here is an overview of the key concepts you mentioned:
+
+### 1. Template Text
+Template text in JSP refers to the static content of a JSP page, which includes HTML, CSS, JavaScript, or any other static content. This text is sent directly to the client without any processing.
+
+**Example:**
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Welcome to My Website</h1>
+    <p>This is a static content on a JSP page.</p>
+</body>
+</html>
+```
+
+### 2. Scripting Elements
+Scripting elements allow embedding Java code into a JSP page. There are three main types of scripting elements in JSP:
+
+#### a. Declarations
+Declarations are used to declare variables and methods. The code written inside declarations is inserted into the servlet's class definition.
+
+**Syntax:**
+```jsp
+<%! declaration %>
+```
+
+**Example:**
+```jsp
+<%! 
+    int counter = 0; 
+    public void incrementCounter() {
+        counter++;
+    }
+%>
+```
+
+#### b. Scriptlets
+Scriptlets contain Java code that is executed every time the JSP page is requested. The code inside scriptlets is inserted into the `_jspService` method of the generated servlet.
+
+**Syntax:**
+```jsp
+<% code %>
+```
+
+**Example:**
+```jsp
+<%
+    out.println("Current counter value: " + counter);
+    incrementCounter();
+%>
+```
+
+#### c. Expressions
+Expressions are used to output values directly to the client. The expression is evaluated, and the result is converted to a string and inserted into the output.
+
+**Syntax:**
+```jsp
+<%= expression %>
+```
+
+**Example:**
+```jsp
+<p>Counter value: <%= counter %></p>
+```
+
+### 3. Standard and Custom Actions
+Actions in JSP are XML-like tags that control the behavior of the servlet engine. They can be standard actions defined by the JSP specification or custom actions created using tag libraries.
+
+#### a. Standard Actions
+Standard actions are predefined in the JSP specification and include actions like `jsp:include`, `jsp:forward`, `jsp:param`, etc.
+
+**Example:**
+```jsp
+<jsp:include page="header.jsp" />
+<jsp:forward page="anotherPage.jsp" />
+<jsp:param name="username" value="JohnDoe" />
+```
+
+#### b. Custom Actions
+Custom actions are user-defined tags created using Java classes and tag libraries (usually using JSTL or other tag libraries).
+
+**Example using JSTL:**
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:if test="${userLoggedIn}">
+    <p>Welcome, <c:out value="${username}" />!</p>
+</c:if>
+```
+
+### 4. Expression Language (EL) Elements
+Expression Language (EL) is a feature in JSP that allows accessing application data stored in JavaBeans components, as well as other objects such as request parameters, session attributes, and more, in a concise and readable manner.
+
+**Syntax:**
+```jsp
+${expression}
+```
+
+**Example:**
+```jsp
+<p>Welcome, ${user.name}!</p>
+<p>Your cart total is ${cart.total}.</p>
+```
+
+EL provides a simple syntax for accessing data without embedding Java code directly in the JSP page, promoting a cleaner separation of presentation and logic.
+
+### Summary
+Combining these elements allows for the creation of dynamic, interactive web pages using JSP. Template text ensures a base of static content, while scripting elements and actions bring in the dynamic aspect, and EL provides an elegant way to access and manipulate application data.
