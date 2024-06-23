@@ -479,3 +479,68 @@ EL provides a simple syntax for accessing data without embedding Java code direc
 
 ### Summary
 Combining these elements allows for the creation of dynamic, interactive web pages using JSP. Template text ensures a base of static content, while scripting elements and actions bring in the dynamic aspect, and EL provides an elegant way to access and manipulate application data.
+
+# Directives in JSP
+
+Directives in JSP are special instructions to the JSP container that provide global information about the entire JSP page. They control how the JSP page is processed and translated into a servlet. There are three main types of directives in JSP: page, include, and taglib.
+
+### 1. Page Directive
+The page directive defines attributes that apply to an entire JSP page. It can include settings for importing classes, setting the content type, and more.
+
+**Syntax:**
+```jsp
+<%@ page attribute="value" %>
+```
+
+**Common Attributes:**
+
+- **import**: Specifies the Java packages to import.
+- **contentType**: Defines the MIME type and character encoding of the response.
+- **session**: Indicates whether the JSP page participates in HTTP sessions.
+- **errorPage**: Specifies a JSP page to handle errors thrown by the current page.
+- **isErrorPage**: Indicates if the current page is an error page.
+- **language**: Defines the scripting language used in the JSP page (usually "java").
+- **isELIgnored**: Specifies whether the Expression Language is ignored.
+- **buffer**: Defines the size of the buffer used by the out object.
+- **autoFlush**: Specifies whether the buffer should be flushed automatically when full.
+
+**Example:**
+```jsp
+<%@ page import="java.util.*, java.text.*" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page session="true" %>
+<%@ page errorPage="error.jsp" %>
+<%@ page isErrorPage="false" %>
+<%@ page language="java" %>
+<%@ page isELIgnored="false" %>
+<%@ page buffer="8kb" autoFlush="true" %>
+```
+
+### 2. Include Directive
+The include directive includes the content of another file (static or dynamic) at translation time. This is different from the `jsp:include` action, which includes the content at request time.
+
+**Syntax:**
+```jsp
+<%@ include file="relativeURL" %>
+```
+
+**Example:**
+```jsp
+<%@ include file="header.jsp" %>
+```
+
+### 3. Taglib Directive
+The taglib directive declares a custom tag library, allowing the use of custom tags defined in the library within the JSP page. Custom tags encapsulate complex behavior and make the JSP page cleaner and easier to maintain.
+
+**Syntax:**
+```jsp
+<%@ taglib uri="uri" prefix="prefix" %>
+```
+
+**Example using JSTL:**
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+```
+
+### Summary
+Directives in JSP provide a way to configure and control various aspects of a JSP page, from setting up necessary imports and handling error pages to including other files and integrating custom tag libraries. By using directives effectively, you can manage the behavior and presentation of your JSP pages in a more organized and maintainable manner.
