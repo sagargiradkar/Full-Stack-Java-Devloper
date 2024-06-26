@@ -778,5 +778,3 @@ Sure, here are ten examples for each of the JSP implicit objects:
     ```java
     out.println("An error occurred: " + exception.getMessage());
     ```
-
-These examples illustrate the common usage of each JSP implicit object, helping developers leverage their functionalities to build dynamic web applications effectively.
