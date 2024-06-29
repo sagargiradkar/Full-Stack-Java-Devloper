@@ -94,3 +94,40 @@ public class Calculator {
 - **Maintainability**: Changes to the business logic can be made in the Java class without affecting the JSP page and vice versa.
 
 This approach adheres to best practices in JSP development, promoting a clean separation between the business and presentation layers of the application.
+
+
+
+<%@ page language="java" import="in.ineuron.bean.Calculator"%>
+
+<h1>
+	The Square of 5 is ::<%=new Calculator().squaeIt(5) %><br/>
+	The Sqaure of 6 is ::<%=new Calculator().squaeIt(6) %><br/>
+</h1>
+
+
+package in.ineuron.bean;
+
+public class Calculator {
+	public int squaeIt(int x){
+	return x*x;
+	}
+}
+
+<%@ page language="java"%>
+
+<jsp:useBean id="calculator" class="in.ineuron.bean.Calculator"/>
+<h1>
+	The Square of 5 is ::<%= calculator.squaeIt(5) %><br/>
+	The Sqaure of 6 is ::<%= calculator.squaeIt(6) %><br/>
+</h1>
+
+package in.ineuron.bean;
+
+public class Calculator {
+	public int squaeIt(int x){
+	return x*x;
+	}
+}
+
+JSP Standards
+=============
