@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>HTML-JSP-DB</display-name>
+	<servlet>
+		<servlet-name>DB</servlet-name>
+		<jsp-file>/WEB-INF/pages/employee_process.jsp</jsp-file>
+		<init-param>
+			<param-name>jdbcUrl</param-name>
+			<param-value>jdbc:mysql:///ineuron</param-value>
+		</init-param>
+
+		<init-param>
+			<param-name>user</param-name>
+			<param-value>root</param-value>
+		</init-param>
+		<init-param>
+			<param-name>password</param-name>
+			<param-value>9402</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DB</servlet-name>
+		<url-pattern>/employeeurl</url-pattern>
+	</servlet-mapping>
+</web-app>
