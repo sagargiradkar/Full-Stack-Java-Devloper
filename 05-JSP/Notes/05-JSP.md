@@ -587,3 +587,126 @@ public class CustomSimpleTag extends SimpleTagSupport {
 - **`SimpleTagSupport`**: Utility class that implements `SimpleTag` with default methods.
 
 These interfaces and classes provide a framework for creating custom JSP tags with varying levels of complexity, from simple tags to those that require body content processing and iteration.
+
+### Expression Language (EL) and scopes in JSP (JavaServer Pages) are fundamental concepts for developing dynamic web applications. Let's delve into each of these topics.
+
+### Expression Language (EL)
+
+Expression Language (EL) is used to simplify the accessibility and manipulation of data in JSP pages. EL allows developers to access JavaBeans components, request parameters, session attributes, and other objects using a simple, compact syntax.
+
+#### EL Syntax
+
+The basic syntax for EL expressions is `${expression}`. Here are some common uses of EL:
+
+- **Accessing JavaBeans Properties:**
+  ```jsp
+  ${user.name}
+  ```
+  If `user` is a JavaBean with a `getName()` method, this expression will evaluate to the value returned by `getName()`.
+
+- **Accessing Request Parameters:**
+  ```jsp
+  ${param.username}
+  ```
+  Retrieves the value of the request parameter `username`.
+
+- **Accessing Session Attributes:**
+  ```jsp
+  ${sessionScope.user}
+  ```
+  Retrieves the value of the session attribute `user`.
+
+- **Accessing Application Attributes:**
+  ```jsp
+  ${applicationScope.config}
+  ```
+  Retrieves the value of the application attribute `config`.
+
+- **Accessing Header Values:**
+  ```jsp
+  ${header["User-Agent"]}
+  ```
+  Retrieves the value of the `User-Agent` header from the request.
+
+#### EL Implicit Objects
+
+EL provides several implicit objects that can be used to access various scopes and properties:
+
+- **`pageContext`**: The context for the JSP page.
+- **`param`**: A map of request parameters.
+- **`paramValues`**: A map of request parameter values (arrays).
+- **`header`**: A map of request headers.
+- **`headerValues`**: A map of request header values (arrays).
+- **`cookie`**: A map of request cookies.
+- **`initParam`**: A map of context initialization parameters.
+- **`pageScope`**: Attributes in the page scope.
+- **`requestScope`**: Attributes in the request scope.
+- **`sessionScope`**: Attributes in the session scope.
+- **`applicationScope`**: Attributes in the application scope.
+
+### JSP Scopes
+
+JSP provides four main scopes for storing and retrieving attributes:
+
+1. **Page Scope**: Attributes are accessible only within the current JSP page and are discarded after the response is sent.
+   ```jsp
+   pageContext.setAttribute("attributeName", attributeValue);
+   ```
+
+2. **Request Scope**: Attributes are accessible across the current request, including any forwards or includes. They are discarded after the request is completed.
+   ```jsp
+   request.setAttribute("attributeName", attributeValue);
+   ```
+
+3. **Session Scope**: Attributes are accessible across multiple requests from the same user during a session. They are discarded when the session is invalidated or expires.
+   ```jsp
+   session.setAttribute("attributeName", attributeValue);
+   ```
+
+4. **Application Scope**: Attributes are accessible to all JSP pages and servlets in the web application. They are discarded when the application is shut down or restarted.
+   ```jsp
+   application.setAttribute("attributeName", attributeValue);
+   ```
+
+### Examples
+
+**Setting and Getting Attributes Using Scopes and EL**
+
+**Setting Attributes in a Servlet:**
+```java
+@WebServlet("/example")
+public class ExampleServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setAttribute("requestAttribute", "Request Scope Value");
+        request.getSession().setAttribute("sessionAttribute", "Session Scope Value");
+        getServletContext().setAttribute("applicationAttribute", "Application Scope Value");
+        request.getRequestDispatcher("/example.jsp").forward(request, response);
+    }
+}
+```
+
+**Accessing Attributes in a JSP Page:**
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EL and Scope Example</title>
+</head>
+<body>
+    <h1>Accessing Attributes Using EL</h1>
+    <p>Request Scope: ${requestScope.requestAttribute}</p>
+    <p>Session Scope: ${sessionScope.sessionAttribute}</p>
+    <p>Application Scope: ${applicationScope.applicationAttribute}</p>
+</body>
+</html>
+```
+
+### Summary
+
+- **EL** simplifies access to data in JSP pages with a compact syntax.
+- **Scopes** in JSP (Page, Request, Session, Application) determine the lifespan and accessibility of attributes.
+- **Implicit Objects** in EL provide easy access to request parameters, headers, cookies, and attributes in various scopes.
+
+Using EL and understanding JSP scopes are essential for developing efficient and maintainable JSP applications. If you have specific questions or need further examples, feel free to ask!
