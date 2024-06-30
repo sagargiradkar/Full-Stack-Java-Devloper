@@ -1299,3 +1299,74 @@ public class Functions {
 - **Custom Functions**: EL can be extended with custom functions defined in TLD files.
 
 Using EL in JSP makes your pages more readable and maintainable by separating business logic from presentation. If you need further examples or have specific questions, feel free to ask!
+
+In your provided JSP code, you are setting attributes in various scopes and then forwarding to another JSP (`disp.jsp`) to display those attributes. 
+
+Let's break down the code and its behavior:
+
+1. **Setting Attributes**:
+   - `pageContext.setAttribute("p", "page");`: Sets an attribute named "p" in the page scope with the value "page".
+   - `request.setAttribute("r", "request");`: Sets an attribute named "r" in the request scope with the value "request".
+   - `session.setAttribute("s", "session");`: Sets an attribute named "s" in the session scope with the value "session".
+   - `application.setAttribute("a", "application");`: Sets an attribute named "a" in the application scope with the value "application".
+
+2. **Forwarding to another JSP**:
+   - `pageContext.forward("./disp.jsp");`: Forwards the request to `disp.jsp`.
+
+3. **Displaying Attributes in `disp.jsp`**:
+   - `${requestScope.r}`: Retrieves the value of the attribute "r" from the request scope.
+   - `${applicationScope.a}`: Retrieves the value of the attribute "a" from the application scope.
+
+### Correct Implementation
+
+You should have the attributes set in one JSP and then forwarded to another JSP (`disp.jsp`) where you can retrieve and display those attributes.
+
+**index.jsp** (initial JSP that sets attributes and forwards)
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+    pageContext.setAttribute("p", "page");
+    request.setAttribute("r", "request");
+    session.setAttribute("s", "session");
+    application.setAttribute("a", "application");
+
+    // Forward to disp.jsp
+    pageContext.forward("./disp.jsp");
+%>
+```
+
+**disp.jsp** (JSP that displays the attributes)
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Display Attributes</title>
+</head>
+<body>
+    <h1>Data Retrieved from Request Scope: ${requestScope.r}</h1>
+    <h1>Data Retrieved from Application Scope: ${applicationScope.a}</h1>
+    <h1>Data Retrieved from Session Scope: ${sessionScope.s}</h1>
+    <h1>Data Retrieved from Page Scope: ${pageScope.p}</h1>
+</body>
+</html>
+```
+
+### Explanation
+
+- **index.jsp**: Sets attributes in different scopes and then forwards the request to `disp.jsp`.
+- **disp.jsp**: Retrieves and displays the attributes from their respective scopes using EL.
+
+### Expected Output
+
+When you visit `index.jsp`, it will set the attributes and forward to `disp.jsp`. The `disp.jsp` page will then display the values of the attributes:
+
+```html
+<h1>Data Retrieved from Request Scope: request</h1>
+<h1>Data Retrieved from Application Scope: application</h1>
+<h1>Data Retrieved from Session Scope: session</h1>
+<h1>Data Retrieved from Page Scope: page</h1>
+```
+
+This approach ensures that the attributes are correctly set in their respective scopes and then retrieved and displayed in the forwarded JSP page.
