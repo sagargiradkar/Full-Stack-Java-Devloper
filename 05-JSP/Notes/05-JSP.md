@@ -1119,3 +1119,48 @@ The order of scope resolution in JSP and servlets is:
 4. **Application Scope**
 
 When accessing an attribute without specifying a scope, the attribute in the narrowest scope is resolved first. Understanding this order is crucial for managing data correctly across different parts of a web application.
+
+The `pageContext.getAttribute("key")` and `pageContext.findAttribute("key")` methods in JSP have different behaviors when it comes to looking up attributes.
+
+### `pageContext.getAttribute("key")`
+
+- **Scope**: Page scope only.
+- **Behavior**: Retrieves the attribute with the specified key from the page scope only.
+- **Return Value**: Returns the attribute value if found in the page scope, otherwise returns `null`.
+
+**Example:**
+```jsp
+<% String value = (String) pageContext.getAttribute("key"); %>
+```
+In this example, `pageContext.getAttribute("key")` will look for the attribute "key" in the page scope only. If it does not exist in the page scope, it will return `null`.
+
+### `pageContext.findAttribute("key")`
+
+- **Scope**: Searches through multiple scopes in the following order: page, request, session, and application.
+- **Behavior**: Retrieves the attribute with the specified key by searching in the page scope first. If not found, it searches the request scope, then the session scope, and finally the application scope.
+- **Return Value**: Returns the attribute value if found in any of the scopes, otherwise returns `null`.
+
+**Example:**
+```jsp
+<% String value = (String) pageContext.findAttribute("key"); %>
+```
+In this example, `pageContext.findAttribute("key")` will look for the attribute "key" in the page scope first. If it is not found, it will continue to search in the request scope, session scope, and finally the application scope until it finds the attribute or returns `null` if the attribute does not exist in any of the scopes.
+
+### Summary
+
+- **`pageContext.getAttribute("key")`**:
+  - **Scope**: Page scope only.
+  - **Behavior**: Retrieves the attribute from the page scope.
+  - **Return Value**: Attribute value if found, otherwise `null`.
+
+- **`pageContext.findAttribute("key")`**:
+  - **Scope**: Searches in page, request, session, and application scopes (in that order).
+  - **Behavior**: Searches through multiple scopes until it finds the attribute.
+  - **Return Value**: Attribute value if found in any scope, otherwise `null`.
+
+### Use Cases
+
+- Use `pageContext.getAttribute("key")` when you are certain that the attribute should only exist in the page scope and you do not want to check other scopes.
+- Use `pageContext.findAttribute("key")` when you want to retrieve the attribute regardless of which scope it is stored in, providing a more flexible way to access attributes.
+
+Understanding the difference between these methods allows you to choose the appropriate one based on your specific requirements for attribute lookup in JSP.
