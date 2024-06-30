@@ -1164,3 +1164,138 @@ In this example, `pageContext.findAttribute("key")` will look for the attribute 
 - Use `pageContext.findAttribute("key")` when you want to retrieve the attribute regardless of which scope it is stored in, providing a more flexible way to access attributes.
 
 Understanding the difference between these methods allows you to choose the appropriate one based on your specific requirements for attribute lookup in JSP.
+
+### Expression Language (EL) in JSP (JavaServer Pages)
+ simplifies access to application data stored in various scopes (page, request, session, and application) and provides a concise way to manipulate data without using scriptlets. EL is a key part of modern JSP development, making JSP pages cleaner and easier to read.
+
+### Key Features of EL
+
+1. **Simplified Syntax**
+2. **Implicit Objects**
+3. **Operators**
+4. **Custom Functions**
+
+### 1. Simplified Syntax
+
+EL uses a simple syntax to access attributes and properties of JavaBeans, collections, and other objects. EL expressions are enclosed in `${}`.
+
+**Example:**
+```jsp
+${user.name}
+```
+This expression retrieves the `name` property of the `user` object.
+
+### 2. Implicit Objects
+
+EL provides several implicit objects that are automatically available within JSP pages:
+
+- **pageScope**: Maps containing page-scoped attributes.
+- **requestScope**: Maps containing request-scoped attributes.
+- **sessionScope**: Maps containing session-scoped attributes.
+- **applicationScope**: Maps containing application-scoped attributes.
+- **param**: Maps containing request parameters as strings.
+- **paramValues**: Maps containing request parameters as arrays of strings.
+- **header**: Maps containing request headers as strings.
+- **headerValues**: Maps containing request headers as arrays of strings.
+- **cookie**: Maps containing cookies.
+- **initParam**: Maps containing context initialization parameters.
+- **pageContext**: Provides access to the `PageContext` instance.
+
+**Example:**
+```jsp
+<p>Request Parameter 'id': ${param.id}</p>
+<p>Session Attribute 'username': ${sessionScope.username}</p>
+```
+
+### 3. Operators
+
+EL supports various operators for arithmetic, relational, logical, and empty checks.
+
+- **Arithmetic Operators**: `+`, `-`, `*`, `/`, `%`
+- **Relational Operators**: `==`, `!=`, `<`, `>`, `<=`, `>=`
+- **Logical Operators**: `&&`, `||`, `!`
+- **Empty Operator**: `empty`
+
+**Example:**
+```jsp
+<p>Sum of 10 and 20: ${10 + 20}</p>
+<p>Is username empty? ${empty sessionScope.username}</p>
+```
+
+### 4. Custom Functions
+
+EL allows you to define and use custom functions through the use of the JavaServer Pages Standard Tag Library (JSTL). These functions are defined in a TLD (Tag Library Descriptor) file and can be used in EL expressions.
+
+**Example TLD File (functions.tld):**
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+
+    <tlib-version>1.0</tlib-version>
+    <short-name>fn</short-name>
+    <uri>http://example.com/functions</uri>
+
+    <function>
+        <name>toUpperCase</name>
+        <function-class>com.example.Functions</function-class>
+        <function-signature>java.lang.String toUpperCase(java.lang.String)</function-signature>
+    </function>
+</taglib>
+```
+
+**Example Java Class (Functions.java):**
+```java
+package com.example;
+
+public class Functions {
+    public static String toUpperCase(String input) {
+        return input == null ? null : input.toUpperCase();
+    }
+}
+```
+
+**Using Custom Functions in JSP:**
+```jsp
+<%@ taglib uri="http://example.com/functions" prefix="fn" %>
+<p>Uppercase Name: ${fn:toUpperCase(user.name)}</p>
+```
+
+### Example JSP Page Using EL
+
+**users.jsp:**
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+</head>
+<body>
+    <h1>User List</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        <c:forEach var="user" items="${userList}">
+            <tr>
+                <td>${user.name}</td>
+                <td>${user.age}</td>
+            </tr>
+        </c:forEach>
+    </table>
+</body>
+</html>
+```
+
+### Summary
+
+- **Simplified Syntax**: EL provides a concise way to access and manipulate data.
+- **Implicit Objects**: EL includes built-in objects for accessing different scopes and request parameters.
+- **Operators**: EL supports various operators for arithmetic, relational, logical, and empty checks.
+- **Custom Functions**: EL can be extended with custom functions defined in TLD files.
+
+Using EL in JSP makes your pages more readable and maintainable by separating business logic from presentation. If you need further examples or have specific questions, feel free to ask!
