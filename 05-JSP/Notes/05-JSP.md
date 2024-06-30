@@ -588,7 +588,7 @@ public class CustomSimpleTag extends SimpleTagSupport {
 
 These interfaces and classes provide a framework for creating custom JSP tags with varying levels of complexity, from simple tags to those that require body content processing and iteration.
 
-### Expression Language (EL) and scopes in JSP (JavaServer Pages) are fundamental concepts for developing dynamic web applications. Let's delve into each of these topics.
+### Expression Language (EL) and scopes in JSP (JavaServer Pages)   are fundamental concepts for developing dynamic web applications. Let's delve into each of these topics.
 
 ### Expression Language (EL)
 
@@ -710,3 +710,118 @@ public class ExampleServlet extends HttpServlet {
 - **Implicit Objects** in EL provide easy access to request parameters, headers, cookies, and attributes in various scopes.
 
 Using EL and understanding JSP scopes are essential for developing efficient and maintainable JSP applications. If you have specific questions or need further examples, feel free to ask!
+
+Combining Expression Language (EL), JavaServer Pages Standard Tag Library (JSTL), and HTML in a JSP page allows you to create dynamic and interactive web applications. Below is an example demonstrating how to use EL and JSTL along with HTML to display data dynamically in a JSP page.
+
+### Example Scenario
+
+Let's create a simple web application where we display a list of users. We'll use a servlet to set the user data in the request scope and then use EL and JSTL to render this data in the JSP page.
+
+### Step 1: Create a Servlet to Set User Data
+
+**User.java (JavaBean):**
+```java
+package com.example;
+
+public class User {
+    private String name;
+    private int age;
+
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+```
+
+**UserServlet.java:**
+```java
+package com.example;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+@WebServlet("/users")
+public class UserServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        List<User> users = new ArrayList<>();
+        users.add(new User("Alice", 30));
+        users.add(new User("Bob", 25));
+        users.add(new User("Charlie", 35));
+
+        request.setAttribute("userList", users);
+        request.getRequestDispatcher("/users.jsp").forward(request, response);
+    }
+}
+```
+
+### Step 2: Create the JSP Page to Display User Data
+
+**users.jsp:**
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+</head>
+<body>
+    <h1>User List</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        <c:forEach var="user" items="${userList}">
+            <tr>
+                <td>${user.name}</td>
+                <td>${user.age}</td>
+            </tr>
+        </c:forEach>
+    </table>
+</body>
+</html>
+```
+
+### Explanation
+
+1. **Servlet (UserServlet.java):**
+   - This servlet handles GET requests and sets a list of `User` objects in the request scope.
+   - The list of users is then forwarded to the `users.jsp` page for rendering.
+
+2. **JSP Page (users.jsp):**
+   - The `<%@ taglib %>` directive is used to declare the JSTL core tag library with the prefix `c`.
+   - A basic HTML table is created to display the list of users.
+   - The `<c:forEach>` JSTL tag iterates over the `userList` attribute set in the request scope.
+   - Inside the loop, EL expressions `${user.name}` and `${user.age}` are used to access the `name` and `age` properties of each `User` object.
+
+### Summary
+
+- **Servlet** sets the user data in the request scope.
+- **JSP page** uses JSTL to loop through the list of users and EL to access and display their properties in an HTML table.
+
+This example demonstrates a basic integration of EL, JSTL, and HTML in a JSP page. You can extend this example by adding more complex data manipulation, form handling, and interaction logic as needed. If you have specific requirements or need further examples, feel free to ask!
