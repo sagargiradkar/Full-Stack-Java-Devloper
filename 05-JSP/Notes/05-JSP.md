@@ -1010,3 +1010,112 @@ public class ServletExample extends HttpServlet {
 - **Page Scope (JSP only)**: Lives for a single page. Visible only within the same JSP page.
 
 Using these scopes correctly ensures that data is managed appropriately across different parts of your web application, enhancing efficiency and maintainability. If you have specific questions or need further examples, feel free to ask!
+
+In JSP and servlets, the order of scope refers to the hierarchy or precedence of scopes when resolving attribute values. The order from narrowest to broadest scope is as follows:
+
+1. **Page Scope**
+2. **Request Scope**
+3. **Session Scope**
+4. **Application Scope**
+
+### Detailed Explanation
+
+1. **Page Scope**:
+   - **Lifetime**: From the start of processing a JSP page until the response is sent.
+   - **Visibility**: Accessible only within the JSP page that creates the attribute.
+   - **Usage**: Typically used for attributes that are needed only within a single JSP page.
+
+2. **Request Scope**:
+   - **Lifetime**: From the start of processing a request until the response is sent back to the client.
+   - **Visibility**: Accessible to all resources (JSP pages, servlets, etc.) that handle the same request.
+   - **Usage**: Commonly used to pass data between servlets and JSPs during a single request/response cycle.
+
+3. **Session Scope**:
+   - **Lifetime**: From the creation of a session until the session is invalidated or times out.
+   - **Visibility**: Accessible to all resources (JSP pages, servlets, etc.) that participate in the same session.
+   - **Usage**: Used to store user-specific data that needs to persist across multiple requests (e.g., user login information, shopping cart data).
+
+4. **Application Scope**:
+   - **Lifetime**: From the startup of the web application until it is shut down.
+   - **Visibility**: Accessible to all resources (JSP pages, servlets, etc.) in the entire web application.
+   - **Usage**: Used to store global data that needs to be shared across the entire application (e.g., application-wide configuration settings, global counters).
+
+### Example of Attribute Resolution Order
+
+Assume we have attributes with the same name set in different scopes. When we try to access this attribute in a JSP page, the attribute in the narrowest scope (i.e., the highest precedence) will be resolved first.
+
+**Example Servlet (Setting Attributes):**
+```java
+package com.example;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+
+@WebServlet("/scopeExample")
+public class ScopeExampleServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setAttribute("exampleAttribute", "Request Scope Value");
+        HttpSession session = request.getSession();
+        session.setAttribute("exampleAttribute", "Session Scope Value");
+        getServletContext().setAttribute("exampleAttribute", "Application Scope Value");
+        
+        request.getRequestDispatcher("/scopeExample.jsp").forward(request, response);
+    }
+}
+```
+
+**Example JSP Page (Resolving Attributes):**
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scope Example</title>
+</head>
+<body>
+    <h1>Scope Example</h1>
+
+    <!-- Page Scope -->
+    <% pageContext.setAttribute("exampleAttribute", "Page Scope Value"); %>
+    <p>Page Scope: ${pageScope.exampleAttribute}</p>
+
+    <!-- Request Scope -->
+    <p>Request Scope: ${requestScope.exampleAttribute}</p>
+
+    <!-- Session Scope -->
+    <p>Session Scope: ${sessionScope.exampleAttribute}</p>
+
+    <!-- Application Scope -->
+    <p>Application Scope: ${applicationScope.exampleAttribute}</p>
+
+    <!-- Default Resolution (Based on Scope Order) -->
+    <p>Default Resolution: ${exampleAttribute}</p>
+</body>
+</html>
+```
+
+### Explanation
+
+- **Page Scope**: The `exampleAttribute` is set to `"Page Scope Value"` within the JSP page.
+- **Request Scope**: The `exampleAttribute` is set to `"Request Scope Value"` within the servlet.
+- **Session Scope**: The `exampleAttribute` is set to `"Session Scope Value"` within the servlet.
+- **Application Scope**: The `exampleAttribute` is set to `"Application Scope Value"` within the servlet.
+
+When accessing `${exampleAttribute}` without specifying a scope, the attribute in the **narrowest scope** (i.e., the highest precedence) will be resolved first. In this case, the value from the **Page Scope** (`"Page Scope Value"`) will be displayed.
+
+### Summary
+
+The order of scope resolution in JSP and servlets is:
+
+1. **Page Scope**
+2. **Request Scope**
+3. **Session Scope**
+4. **Application Scope**
+
+When accessing an attribute without specifying a scope, the attribute in the narrowest scope is resolved first. Understanding this order is crucial for managing data correctly across different parts of a web application.
