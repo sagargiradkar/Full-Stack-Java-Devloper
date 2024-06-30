@@ -139,3 +139,94 @@ Expression Language (EL) simplifies the accessibility of data stored in JavaBean
 This page uses JSTL for iteration and conditionals, and EL to access and display user information.
 
 If you have specific questions or need more detailed explanations on any of these topics, feel free to ask!
+
+Creating a custom tag in JSP involves several steps, including defining a tag library descriptor (TLD), implementing a tag handler class, and using the tag in a JSP page. Let's go through the process step by step.
+
+### Step 1: Define a Tag Library Descriptor (TLD)
+
+A TLD file defines the custom tags and their attributes. It is an XML file placed in the `WEB-INF` directory.
+
+**example.tld:**
+```xml
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+    <tlib-version>1.0</tlib-version>
+    <short-name>example</short-name>
+    <uri>http://example.com/tags</uri>
+    <tag>
+        <name>hello</name>
+        <tag-class>com.example.HelloTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+</taglib>
+```
+
+### Step 2: Create the Tag Handler Class
+
+The tag handler class is a Java class that implements the tag's functionality. It extends `TagSupport` or `SimpleTagSupport`.
+
+**HelloTag.java:**
+```java
+package com.example;
+
+import javax.servlet.jsp.tagext.TagSupport;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import java.io.IOException;
+
+public class HelloTag extends TagSupport {
+    @Override
+    public int doStartTag() throws JspException {
+        JspWriter out = pageContext.getOut();
+        try {
+            out.print("Hello, World!");
+        } catch (IOException e) {
+            throw new JspException("Error: " + e.getMessage());
+        }
+        return SKIP_BODY; // Skip the body content of the tag
+    }
+}
+```
+
+### Step 3: Use the Custom Tag in a JSP Page
+
+To use the custom tag, you need to reference the tag library in your JSP page and then use the tag as defined.
+
+**index.jsp:**
+```jsp
+<%@ taglib uri="http://example.com/tags" prefix="ex" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Custom Tag Example</title>
+</head>
+<body>
+    <h1>Using Custom Tag</h1>
+    <ex:hello />
+</body>
+</html>
+```
+
+### Detailed Explanation
+
+1. **TLD File:**
+   - The `tlib-version` specifies the version of the tag library.
+   - The `short-name` is a short name for the tag library.
+   - The `uri` is a unique identifier for the tag library, used in the JSP page to reference the tag library.
+   - The `<tag>` element defines each custom tag, including the tag name (`<name>`), the tag handler class (`<tag-class>`), and the type of body content (`<body-content>`).
+
+2. **Tag Handler Class:**
+   - The `doStartTag` method is overridden to define the behavior when the tag is encountered in the JSP page.
+   - `pageContext.getOut()` is used to get the `JspWriter` object for writing content to the response.
+   - `SKIP_BODY` indicates that the body content of the tag (if any) should be skipped.
+
+3. **Using the Custom Tag:**
+   - The `taglib` directive in the JSP page references the tag library using its `uri` and assigns a prefix (`ex` in this case).
+   - The custom tag `<ex:hello />` is used in the JSP page, which triggers the `HelloTag` class to output "Hello, World!".
+
+This example demonstrates a basic custom tag that outputs a static message. You can enhance the tag by adding attributes, processing body content, and performing more complex operations as needed.
+
+If you need further customization or have specific requirements, feel free to ask!
