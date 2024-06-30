@@ -398,3 +398,192 @@ mvn package
 Now, you can place the generated JAR file into the `WEB-INF/lib` directory of your web application.
 
 This setup allows you to create a reusable library of custom tags that can be easily included in any JSP project. If you have any further questions or need more assistance, feel free to ask!
+
+Let's delve into the various interfaces and classes associated with JSP custom tags, including `JspTag`, `Tag`, `IterationTag`, `BodyTag`, `SimpleTag`, and their supporting classes. We'll go through each interface and class to understand their purpose and usage.
+
+### 1. JspTag Interface
+
+**`JspTag`** is the root interface for all JSP tag interfaces. It is a marker interface and doesn't contain any methods. All custom tag interfaces extend `JspTag`.
+
+### 2. Tag Interface
+
+**`Tag`** is the basic interface for defining a custom tag. It extends `JspTag` and provides the fundamental methods required for a tag handler.
+
+**Methods:**
+- `int doStartTag() throws JspException`: Called at the start of the tag.
+- `int doEndTag() throws JspException`: Called at the end of the tag.
+- `void release()`: Called to release resources.
+
+**Example Implementation:**
+```java
+public class SimpleTagHandler implements Tag {
+    private PageContext pageContext;
+    private Tag parent;
+
+    @Override
+    public void setPageContext(PageContext pageContext) {
+        this.pageContext = pageContext;
+    }
+
+    @Override
+    public void setParent(Tag parent) {
+        this.parent = parent;
+    }
+
+    @Override
+    public Tag getParent() {
+        return this.parent;
+    }
+
+    @Override
+    public int doStartTag() throws JspException {
+        // Tag processing logic
+        return SKIP_BODY;
+    }
+
+    @Override
+    public int doEndTag() throws JspException {
+        // Tag processing logic
+        return EVAL_PAGE;
+    }
+
+    @Override
+    public void release() {
+        // Cleanup resources
+    }
+}
+```
+
+### 3. IterationTag Interface
+
+**`IterationTag`** is an extension of `Tag` for tags that need to iterate over a body content.
+
+**Methods:**
+- `int doAfterBody() throws JspException`: Called after the body of the tag is evaluated.
+
+**Example Implementation:**
+```java
+public class IterationTagHandler extends TagSupport implements IterationTag {
+    @Override
+    public int doAfterBody() throws JspException {
+        // Iteration logic
+        return SKIP_BODY;
+    }
+}
+```
+
+### 4. BodyTag Interface
+
+**`BodyTag`** is an extension of `IterationTag` for tags that need access to their body content.
+
+**Methods:**
+- `void doInitBody() throws JspException`: Called before the body is evaluated.
+- `int doAfterBody() throws JspException`: Called after the body is evaluated.
+
+**Example Implementation:**
+```java
+public class BodyTagHandler extends BodyTagSupport {
+    @Override
+    public void doInitBody() throws JspException {
+        // Initialization logic
+    }
+
+    @Override
+    public int doAfterBody() throws JspException {
+        // Body iteration logic
+        return SKIP_BODY;
+    }
+}
+```
+
+### 5. SimpleTag Interface
+
+**`SimpleTag`** is an interface for defining simple tags. It provides a simplified lifecycle and doesn't support body content iteration.
+
+**Methods:**
+- `void doTag() throws JspException, IOException`: Called when the tag is encountered in the JSP.
+
+**Example Implementation:**
+```java
+public class SimpleTagHandler extends SimpleTagSupport {
+    @Override
+    public void doTag() throws JspException, IOException {
+        JspWriter out = getJspContext().getOut();
+        out.print("Hello, Simple Tag!");
+    }
+}
+```
+
+### 6. TagSupport Class
+
+**`TagSupport`** is a utility class that implements the `Tag` interface and provides default implementations for its methods. It can be extended to create custom tags.
+
+**Example:**
+```java
+public class CustomTag extends TagSupport {
+    @Override
+    public int doStartTag() throws JspException {
+        JspWriter out = pageContext.getOut();
+        try {
+            out.print("Hello, Custom Tag!");
+        } catch (IOException e) {
+            throw new JspException("Error: " + e.getMessage());
+        }
+        return SKIP_BODY;
+    }
+}
+```
+
+### 7. BodyTagSupport Class
+
+**`BodyTagSupport`** is a utility class that implements the `BodyTag` interface and provides default implementations for its methods. It can be extended to create custom body tags.
+
+**Example:**
+```java
+public class CustomBodyTag extends BodyTagSupport {
+    @Override
+    public void doInitBody() throws JspException {
+        // Initialization logic
+    }
+
+    @Override
+    public int doAfterBody() throws JspException {
+        BodyContent bodyContent = getBodyContent();
+        JspWriter out = bodyContent.getEnclosingWriter();
+        try {
+            out.print(bodyContent.getString());
+        } catch (IOException e) {
+            throw new JspException("Error: " + e.getMessage());
+        }
+        return SKIP_BODY;
+    }
+}
+```
+
+### 8. SimpleTagSupport Class
+
+**`SimpleTagSupport`** is a utility class that implements the `SimpleTag` interface and provides default implementations for its methods. It can be extended to create simple tags.
+
+**Example:**
+```java
+public class CustomSimpleTag extends SimpleTagSupport {
+    @Override
+    public void doTag() throws JspException, IOException {
+        JspWriter out = getJspContext().getOut();
+        out.print("Hello, Simple Tag!");
+    }
+}
+```
+
+### Summary
+
+- **`JspTag`**: Marker interface for all JSP tag interfaces.
+- **`Tag`**: Basic interface for defining custom tags.
+- **`IterationTag`**: Extends `Tag` for tags that iterate over body content.
+- **`BodyTag`**: Extends `IterationTag` for tags that need access to their body content.
+- **`SimpleTag`**: Interface for simple tags with a simplified lifecycle.
+- **`TagSupport`**: Utility class that implements `Tag` with default methods.
+- **`BodyTagSupport`**: Utility class that implements `BodyTag` with default methods.
+- **`SimpleTagSupport`**: Utility class that implements `SimpleTag` with default methods.
+
+These interfaces and classes provide a framework for creating custom JSP tags with varying levels of complexity, from simple tags to those that require body content processing and iteration.
