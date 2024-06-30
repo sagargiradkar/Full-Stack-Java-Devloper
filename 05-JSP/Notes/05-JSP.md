@@ -825,3 +825,188 @@ public class UserServlet extends HttpServlet {
 - **JSP page** uses JSTL to loop through the list of users and EL to access and display their properties in an HTML table.
 
 This example demonstrates a basic integration of EL, JSTL, and HTML in a JSP page. You can extend this example by adding more complex data manipulation, form handling, and interaction logic as needed. If you have specific requirements or need further examples, feel free to ask!
+
+In both servlets and JSP (JavaServer Pages), scopes define the lifespan and visibility of objects (attributes) that you can set and get in different parts of a web application. Understanding these scopes is essential for managing data correctly in a web application.
+
+### Scopes in Servlets
+
+1. **Request Scope**
+2. **Session Scope**
+3. **Application Scope**
+
+#### 1. Request Scope
+- **Lifetime**: From the moment a request is received until the response is sent back to the client.
+- **Visibility**: Accessible only during the lifecycle of a single request. This includes forwarding to other resources like JSPs or servlets.
+
+**Setting a Request Attribute:**
+```java
+request.setAttribute("attributeName", attributeValue);
+```
+
+**Getting a Request Attribute:**
+```java
+Object value = request.getAttribute("attributeName");
+```
+
+#### 2. Session Scope
+- **Lifetime**: From the moment a session is created until it is invalidated or times out.
+- **Visibility**: Accessible to any servlet, JSP, or other resources handling requests associated with the same session.
+
+**Setting a Session Attribute:**
+```java
+HttpSession session = request.getSession();
+session.setAttribute("attributeName", attributeValue);
+```
+
+**Getting a Session Attribute:**
+```java
+HttpSession session = request.getSession();
+Object value = session.getAttribute("attributeName");
+```
+
+#### 3. Application Scope
+- **Lifetime**: From the moment the application is deployed until it is undeployed or the server is shut down.
+- **Visibility**: Accessible to all servlets, JSPs, and other resources within the same web application.
+
+**Setting an Application Attribute:**
+```java
+ServletContext context = getServletContext();
+context.setAttribute("attributeName", attributeValue);
+```
+
+**Getting an Application Attribute:**
+```java
+ServletContext context = getServletContext();
+Object value = context.getAttribute("attributeName");
+```
+
+### Scopes in JSP
+
+In JSP, you also have access to the same scopes as in servlets: page, request, session, and application. Additionally, JSP introduces the **page scope**.
+
+1. **Page Scope**
+2. **Request Scope**
+3. **Session Scope**
+4. **Application Scope**
+
+#### 1. Page Scope
+- **Lifetime**: From the moment the JSP page is requested until the response is sent back to the client.
+- **Visibility**: Accessible only within the same JSP page.
+
+**Setting a Page Attribute:**
+```jsp
+<% pageContext.setAttribute("attributeName", attributeValue); %>
+```
+
+**Getting a Page Attribute:**
+```jsp
+<%= pageContext.getAttribute("attributeName") %>
+```
+
+#### 2. Request Scope
+- **Lifetime**: Same as in servlets.
+- **Visibility**: Accessible to all resources handling the same request.
+
+**Setting a Request Attribute:**
+```jsp
+<% request.setAttribute("attributeName", attributeValue); %>
+```
+
+**Getting a Request Attribute:**
+```jsp
+<%= request.getAttribute("attributeName") %>
+```
+
+#### 3. Session Scope
+- **Lifetime**: Same as in servlets.
+- **Visibility**: Accessible to all resources handling requests associated with the same session.
+
+**Setting a Session Attribute:**
+```jsp
+<% session.setAttribute("attributeName", attributeValue); %>
+```
+
+**Getting a Session Attribute:**
+```jsp
+<%= session.getAttribute("attributeName") %>
+```
+
+#### 4. Application Scope
+- **Lifetime**: Same as in servlets.
+- **Visibility**: Accessible to all resources within the same web application.
+
+**Setting an Application Attribute:**
+```jsp
+<% application.setAttribute("attributeName", attributeValue); %>
+```
+
+**Getting an Application Attribute:**
+```jsp
+<%= application.getAttribute("attributeName") %>
+```
+
+### Example: Using Scopes in a Servlet and JSP
+
+**ServletExample.java:**
+```java
+package com.example;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
+
+@WebServlet("/example")
+public class ServletExample extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Setting attributes in different scopes
+        request.setAttribute("requestAttribute", "Request Scope Value");
+        HttpSession session = request.getSession();
+        session.setAttribute("sessionAttribute", "Session Scope Value");
+        getServletContext().setAttribute("applicationAttribute", "Application Scope Value");
+
+        // Forwarding to JSP
+        request.getRequestDispatcher("/example.jsp").forward(request, response);
+    }
+}
+```
+
+**example.jsp:**
+```jsp
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scope Example</title>
+</head>
+<body>
+    <h1>Scope Example</h1>
+
+    <!-- Page Scope -->
+    <% pageContext.setAttribute("pageAttribute", "Page Scope Value"); %>
+    <p>Page Scope: <%= pageContext.getAttribute("pageAttribute") %></p>
+
+    <!-- Request Scope -->
+    <p>Request Scope: ${requestScope.requestAttribute}</p>
+
+    <!-- Session Scope -->
+    <p>Session Scope: ${sessionScope.sessionAttribute}</p>
+
+    <!-- Application Scope -->
+    <p>Application Scope: ${applicationScope.applicationAttribute}</p>
+</body>
+</html>
+```
+
+### Summary
+
+- **Request Scope**: Lives for a single request. Visible to the resources handling the same request.
+- **Session Scope**: Lives for the entire session. Visible to the resources handling requests in the same session.
+- **Application Scope**: Lives for the application's lifetime. Visible to all resources in the web application.
+- **Page Scope (JSP only)**: Lives for a single page. Visible only within the same JSP page.
+
+Using these scopes correctly ensures that data is managed appropriately across different parts of your web application, enhancing efficiency and maintainability. If you have specific questions or need further examples, feel free to ask!
