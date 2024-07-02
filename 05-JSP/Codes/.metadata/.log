@@ -6748,3 +6748,16 @@ Java Model Exception: Error in Java Model (code 979): Invalid path: '/JSTLApp/sr
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1481)
 !SUBENTRY 1 org.eclipse.jdt.core 4 979 2024-06-30 17:17:55.171
 !MESSAGE Invalid path: '/JSTLApp/src/main/webapp/index.jsp'
+!SESSION 2024-07-02 12:03:44.550 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=21.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-07-02 12:04:07.320
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-07-02 12:04:34.759
+!MESSAGE Logback config file: C:\Users\sagar\Documents\full-stack-java-devloper1\05-JSP\Codes\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
