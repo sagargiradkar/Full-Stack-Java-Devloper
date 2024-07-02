@@ -370,3 +370,305 @@ public class UserController {
 ### Conclusion
 
 The layered approach in software architecture is a proven strategy for building scalable, maintainable, and testable applications. By separating the application into UI, business, and persistence layers, developers can manage complexity more effectively and create more robust software solutions.
+
+
+### Annotations in Spring
+
+Spring Framework uses annotations to simplify the configuration and wiring of components, making the code more readable and maintainable. Annotations allow developers to configure beans, define injection points, and manage transaction behaviors directly in the code, rather than using XML configuration files.
+
+#### Key Annotations in Spring
+
+1. **Component Scanning and Stereotypes**
+    - `@Component`
+    - `@Repository`
+    - `@Service`
+    - `@Controller`
+
+2. **Dependency Injection**
+    - `@Autowired`
+    - `@Qualifier`
+    - `@Resource`
+
+3. **Configuration**
+    - `@Configuration`
+    - `@Bean`
+
+4. **Aspect-Oriented Programming (AOP)**
+    - `@Aspect`
+    - `@Before`
+    - `@After`
+    - `@Around`
+
+5. **Transactional Management**
+    - `@Transactional`
+
+### Component Scanning and Stereotypes
+
+#### `@Component`
+Marks a Java class as a Spring component. Spring automatically detects these classes through classpath scanning.
+
+```java
+@Component
+public class MyComponent {
+    public void doSomething() {
+        System.out.println("Doing something...");
+    }
+}
+```
+
+#### `@Repository`
+Specialization of `@Component` for the persistence layer. Indicates that the class is a DAO (Data Access Object).
+
+```java
+@Repository
+public class UserRepository {
+    public void save(User user) {
+        // Code to save user
+    }
+}
+```
+
+#### `@Service`
+Specialization of `@Component` for the service layer. Indicates that the class holds business logic.
+
+```java
+@Service
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+
+    public void registerUser(User user) {
+        userRepository.save(user);
+    }
+}
+```
+
+#### `@Controller`
+Specialization of `@Component` for the presentation layer (Spring MVC). Indicates that the class is a web controller.
+
+```java
+@Controller
+public class UserController {
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/users")
+    public String listUsers(Model model) {
+        model.addAttribute("users", userService.getAllUsers());
+        return "userList";
+    }
+}
+```
+
+### Dependency Injection
+
+#### `@Autowired`
+Marks a constructor, field, setter method, or config method to be autowired by Spring's dependency injection facilities.
+
+```java
+@Service
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+}
+```
+
+#### `@Qualifier`
+Used alongside `@Autowired` to specify which bean should be injected when multiple beans of the same type are present.
+
+```java
+@Autowired
+@Qualifier("specificRepository")
+private UserRepository userRepository;
+```
+
+#### `@Resource`
+Another way to inject dependencies, but it's part of the JSR-250 specification. It allows specifying the bean name to inject.
+
+```java
+@Resource(name = "myBean")
+private MyBean myBean;
+```
+
+### Configuration
+
+#### `@Configuration`
+Indicates that a class declares one or more `@Bean` methods and may be processed by the Spring container to generate bean definitions.
+
+```java
+@Configuration
+public class AppConfig {
+    @Bean
+    public MyBean myBean() {
+        return new MyBean();
+    }
+}
+```
+
+#### `@Bean`
+Indicates that a method produces a bean to be managed by the Spring container.
+
+```java
+@Bean
+public MyService myService() {
+    return new MyServiceImpl();
+}
+```
+
+### Aspect-Oriented Programming (AOP)
+
+#### `@Aspect`
+Marks a class as an aspect, which can contain advice (methods) that will be executed at specific points during program execution.
+
+```java
+@Aspect
+public class LoggingAspect {
+    @Before("execution(* com.example.service.*.*(..))")
+    public void logBefore(JoinPoint joinPoint) {
+        System.out.println("Logging before method: " + joinPoint.getSignature().getName());
+    }
+}
+```
+
+#### `@Before`, `@After`, `@Around`
+Annotations for defining advice to run before, after, or around method executions.
+
+```java
+@Before("execution(* com.example.service.*.*(..))")
+public void logBefore(JoinPoint joinPoint) {
+    System.out.println("Logging before method: " + joinPoint.getSignature().getName());
+}
+
+@After("execution(* com.example.service.*.*(..))")
+public void logAfter(JoinPoint joinPoint) {
+    System.out.println("Logging after method: " + joinPoint.getSignature().getName());
+}
+
+@Around("execution(* com.example.service.*.*(..))")
+public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
+    System.out.println("Logging around method: " + joinPoint.getSignature().getName());
+    Object result = joinPoint.proceed();
+    System.out.println("Logging around method: " + joinPoint.getSignature().getName() + " completed");
+    return result;
+}
+```
+
+### Transactional Management
+
+#### `@Transactional`
+Declares a method or class to be transactional. It can be applied at the method or class level.
+
+```java
+@Service
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+
+    @Transactional
+    public void registerUser(User user) {
+        userRepository.save(user);
+    }
+}
+```
+
+### Example: Complete Application with Annotations
+
+#### Entity Class
+```java
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String email;
+
+    // Getters and setters
+}
+```
+
+#### Repository Interface
+```java
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+}
+```
+
+#### Service Class
+```java
+@Service
+public class UserService {
+    @Autowired
+    private UserRepository userRepository;
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    @Transactional
+    public void registerUser(User user) {
+        userRepository.save(user);
+    }
+}
+```
+
+#### Controller Class
+```java
+@Controller
+public class UserController {
+    @Autowired
+    private UserService userService;
+
+    @GetMapping("/users")
+    public String listUsers(Model model) {
+        List<User> users = userService.getAllUsers();
+        model.addAttribute("users", users);
+        return "userList";
+    }
+
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute User user) {
+        userService.registerUser(user);
+        return "redirect:/users";
+    }
+}
+```
+
+#### Configuration Class
+```java
+@Configuration
+@ComponentScan(basePackages = "com.example")
+@EnableJpaRepositories(basePackages = "com.example.repository")
+public class AppConfig {
+    @Bean
+    public DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/mydb");
+        dataSource.setUsername("root");
+        dataSource.setPassword("password");
+        return dataSource;
+    }
+
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+        em.setDataSource(dataSource());
+        em.setPackagesToScan("com.example.entity");
+        JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        em.setJpaVendorAdapter(vendorAdapter);
+        return em;
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(emf);
+        return transactionManager;
+    }
+}
+```
+
+### Conclusion
+
+Annotations in Spring simplify configuration and enable developers to write clean, maintainable, and testable code. By using annotations like `@Component`, `@Autowired`, `@Service`, and `@Transactional`, developers can easily define and manage Spring beans, inject dependencies, and handle transactions. This leads to more readable code and reduces the need for extensive XML configuration.
