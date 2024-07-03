@@ -9,38 +9,42 @@ import in.ineuron.model.Student;
 
 public class TestApp {
 
-    public static void main(String[] args) {
-        // 1. Inform JVM to activate HIBERNATE
-        Configuration configuration = new Configuration();
-        configuration.configure(); // by default reads hibernate.cfg.xml from classpath
+	public static void main(String[] args) throws Exception {
 
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
+		// 1. Inform JVM to activate HIBERNATE
+		Configuration configuration = new Configuration();
+		configuration.configure();
 
-        Session session = sessionFactory.openSession();
-        Transaction transaction = null;
+		// Creating a SessionFactory object to hold many other objects required for
+		// HIBERNATE
+		SessionFactory sessionFactory = configuration.buildSessionFactory();
 
-        try {
-            transaction = session.beginTransaction();
+		// Using SessionFactory object, get only one Session object to perform our
+		// persistence operation
+		Session session = sessionFactory.openSession();// connection object,ORM-dialects,L1-Cache,TXTManagement
 
-            // 2. Create PERSISTENCE Object
-            Student student = new Student();
-            student.setSid(10);
-            student.setSname("SAGAR");
-            student.setSaddress("RCB");
-            student.setSage(26);
+		Transaction transaction = session.beginTransaction();// transaction.begin()
 
-            // 3. Perform Persistence operation using Entity/Model/POJO Object
-            session.save(student);
+		// 2. Create PERSITENCE Object
+		Student student = new Student();
+		student.setSid(10);
+		student.setSaddress("MI");
+		student.setSage(49);
+		student.setSname("sachin");
 
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-            sessionFactory.close();
-        }
-    }
+		// 3. Perform PERISTENCE operation using Entity/Model/POJO object
+		session.save(student);
+
+		System.in.read();
+
+		// 4. commit the operation based on the result
+		transaction.commit();
+
+		System.out.println("Object saved to database....");
+
+		session.close();
+		sessionFactory.close();
+
+	}
+
 }

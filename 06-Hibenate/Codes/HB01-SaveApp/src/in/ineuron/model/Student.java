@@ -1,65 +1,59 @@
 package in.ineuron.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "STDTAB")
 public class Student {
 
-    @Id
-    @Column(name = "stdId")
-    private Integer sid;
+	@Id
+	private Integer sid;
+	
+	private String sname;
 
-    @Column(name = "stdName", length = 20)
-    private String sname;
+	private String saddress;
 
-    @Column(name = "stdAddr", length = 20)
-    private String saddress;
+	private Integer sage;
 
-    @Column(name = "stdAge")
-    private Integer sage;
+	public Student() {
+		System.out.println("Hibernate uses Zero argument constructor internally");
+	}
 
-    public Student() {
-        System.out.println("Hibernate uses Zero argument constructor Internally");
-    }
+	public Integer getSid() {
+		return sid;
+	}
 
-    public Integer getSid() {
-        return sid;
-    }
+	public void setSid(Integer sid) {
+		this.sid = sid;
+	}
 
-    public void setSid(Integer sid) {
-        this.sid = sid;
-    }
+	public String getSname() {
+		return sname;
+	}
 
-    public String getSname() {
-        return sname;
-    }
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
 
-    public void setSname(String sname) {
-        this.sname = sname;
-    }
+	public String getSaddress() {
+		return saddress;
+	}
 
-    public String getSaddress() {
-        return saddress;
-    }
+	public void setSaddress(String saddress) {
+		this.saddress = saddress;
+	}
 
-    public void setSaddress(String saddress) {
-        this.saddress = saddress;
-    }
+	public Integer getSage() {
+		return sage;
+	}
 
-    public Integer getSage() {
-        return sage;
-    }
+	public void setSage(Integer sage) {
+		this.sage = sage;
+	}
+	
+	@Override
+	public String toString() {
+		return "Student [sid=" + sid + ", sname=" + sname + ", saddress=" + saddress + ", sage=" + sage + "]";
+	}
 
-    public void setSage(Integer sage) {
-        this.sage = sage;
-    }
-
-    @Override
-    public String toString() {
-        return "Student [sid=" + sid + ", sname=" + sname + ", saddress=" + saddress + ", sage=" + sage + "]";
-    }
 }
