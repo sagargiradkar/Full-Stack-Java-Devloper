@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 import in.ineuron.model.Student;
 import in.ineuron.util.HibernateUtil;
 
-public class UpdateRecord2 {
+public class TestApp {
 
 	public static void main(String[] args) throws IOException {
 
@@ -18,27 +18,18 @@ public class UpdateRecord2 {
 		boolean flag = false;
 		Integer id = null;
 		try {
+			id=18;
 			session = HibernateUtil.getSession();
-			Student student = session.get(Student.class, 18);
-
-			if (session != null)
-				transaction = session.beginTransaction();
-
-			if (transaction != null) {
-				if(student!=null) {
-					System.out.println(student);
-					System.out.println();
-					
-					student.setSaddress("Pune");
-					session.update(student);
-					 
-					flag = true;
-				}else {
-					System.out.println("RECORD NOT AVAILABLE FOR UPDATION..");
-				}
-				
+			Student student = session.get(Student.class, id);
+			System.out.println("Before updation in the table :: "+student);
+			
+			if(student != null) {
+				System.in.read();
+				session.refresh(student);
+				System.out.println("After updation in the table :: "+student);
+			}else {
+				System.out.println("Record available for the given id :: "+id);
 			}
-
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -46,10 +37,10 @@ public class UpdateRecord2 {
 		} finally {
 			if (flag) {
 				transaction.commit();
-				System.out.println("OBJECT UPDATED TO DATABASE....");
+				System.out.println("Object delete from database....");
 			} else {
 				transaction.rollback();
-				System.out.println("OBJECT NOT UPDATED TO DATABASE...");
+				System.out.println("Object not deleted from database...");
 				
 			}
 

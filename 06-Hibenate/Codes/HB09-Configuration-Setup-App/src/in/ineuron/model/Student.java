@@ -4,10 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@DynamicUpdate(value = true)
+@DynamicInsert
 public class Student {
 
 	@Id
