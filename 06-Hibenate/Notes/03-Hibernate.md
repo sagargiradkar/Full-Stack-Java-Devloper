@@ -95,3 +95,11 @@ Generators in Hibernate are used to generate unique identifiers for entities. Th
 
 - **@DynamicUpdate**: Optimizes update queries by only updating changed fields.
 - **Generators**: Various strategies for generating unique identifiers in Hibernate.
+
+Gererators in hibernate
+1.Hibernate supplied generators
+    a.@GeneratedValue
+    b.@GenericGenerator
+2.JPA supplied generators
+    a.@GeneratedValue
+3.Custom generator(** realtime projects)
