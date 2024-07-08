@@ -4,8 +4,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import in.ineuron.model.MobileCustomer;
-import in.ineuron.model.PersonInfo;
+import in.ineuron.model.BankAccount;
+
 
 public class HibernateUtil {
 
@@ -16,13 +16,16 @@ public class HibernateUtil {
 	}
 
 	static {
-		sessionFactory = new Configuration().configure().addAnnotatedClass(MobileCustomer.class)
-				.buildSessionFactory();
+		sessionFactory = new Configuration()
+				  			 .configure()
+				  			 .addAnnotatedClass(BankAccount.class)
+				  			 .buildSessionFactory();
 	}
 
 	public static Session getSession() {
 		if (session == null)
-			session = sessionFactory.openSession();
+			session = sessionFactory
+					  .openSession();
 		return session;
 	}
 

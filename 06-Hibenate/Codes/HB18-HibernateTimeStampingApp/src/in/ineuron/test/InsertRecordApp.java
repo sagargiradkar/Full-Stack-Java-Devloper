@@ -1,23 +1,21 @@
 package in.ineuron.test;
 
-import java.io.IOException;
-
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-
+import in.ineuron.model.BankAccount;
 import in.ineuron.util.HibernateUtil;
 
 public class InsertRecordApp {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 
 		Session session = null;
 		Transaction transaction = null;
+		Long id = null;
 		boolean flag = false;
-		Integer id = null;
+
 		try {
 			session = HibernateUtil.getSession();
 
@@ -25,11 +23,14 @@ public class InsertRecordApp {
 				transaction = session.beginTransaction();
 
 			if (transaction != null) {
+				BankAccount account = new BankAccount();
+				account.setBalance(3334455.5);
+				account.setHolderName("sachin");
+				account.setType("savings");
 
-				
+				id = (Long) session.save(account);
 				flag = true;
 			}
-
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -37,14 +38,11 @@ public class InsertRecordApp {
 		} finally {
 			if (flag) {
 				transaction.commit();
-				System.out.println("OBJECT INSERTED TO DATABASE....WITH THE ID :: "+id);
+				System.out.println("Object inserted to  the database with the id :: " + id);
 			} else {
 				transaction.rollback();
-				System.out.println("OBJECT NOT INSERTED TO DATABASE...");
-				
+				System.out.println("Object not inserted to the database...");
 			}
-
-			System.in.read();
 			HibernateUtil.closeSession(session);
 			HibernateUtil.closeSessionFactory();
 		}

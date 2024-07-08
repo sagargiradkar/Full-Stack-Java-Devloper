@@ -1,31 +1,35 @@
 package in.ineuron.test;
 
-import java.io.IOException;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-
+import in.ineuron.model.BankAccount;
 import in.ineuron.util.HibernateUtil;
 
 public class SelectRecordApp {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 
 		Session session = null;
+		BankAccount account = null;
+		long id = 1L;
 		Transaction transaction = null;
-		boolean flag = false;
+		Boolean flag = false;
+
 		try {
 			session = HibernateUtil.getSession();
-			if (session != null) {
+			account = session.get(BankAccount.class, id);
+			System.out.println("Before modification :: " + account);
 
-				
-				flag=true;
+			if (account != null) {
+				transaction = session.beginTransaction();
+				account.setBalance(account.getBalance() + 10000);
+				flag = true;
+			} else {
+				System.out.println("Record not available for the given id :: " + id);
+				System.exit(0);
 			}
-			
-				
-
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -33,18 +37,16 @@ public class SelectRecordApp {
 		} finally {
 			if (flag) {
 				transaction.commit();
-				System.out.println("OBJECT INSERTED TO DATABASE....WITH THE ID :: ");
+				System.out.println("Object updated...");
+				System.out.println("Account opening date    :: " + account.getOpeningDate());
+				System.out.println("Account lastly modified :: " + account.getLastUpdated());
+				System.out.println("Account version count   :: " + account.getCount());
 			} else {
 				transaction.rollback();
-				System.out.println("OBJECT NOT INSERTED TO DATABASE...");
-				
+				System.out.println("object not updated....");
 			}
-
-			System.in.read();
 			HibernateUtil.closeSession(session);
 			HibernateUtil.closeSessionFactory();
 		}
-
 	}
-
 }
