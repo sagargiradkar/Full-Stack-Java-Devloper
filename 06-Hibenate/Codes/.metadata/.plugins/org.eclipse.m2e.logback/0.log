@@ -28,3 +28,17 @@
 2024-07-14 13:37:11,118 [main] INFO  org.hibernate.cfg.Environment - Bytecode provider name : javassist
 2024-07-14 13:37:11,124 [main] INFO  org.hibernate.cfg.Environment - using JDK 1.4 java.sql.Timestamp handling
 2024-07-14 13:39:55,111 [main] INFO  org.hibernate.cfg.Configuration - configuring from XML document
+2024-07-14 13:39:55,113 [main] INFO  org.hibernate.cfg.Configuration - Configured SessionFactory: null
+2024-07-14 13:40:05,099 [main] INFO  o.hibernate.cfg.annotations.Version - Hibernate Annotations 3.5.6-Final
+2024-07-14 13:40:05,124 [main] INFO  org.hibernate.cfg.Configuration - configuring from XML document
+2024-07-14 13:40:05,124 [main] INFO  org.hibernate.cfg.Configuration - Configured SessionFactory: null
+2024-07-14 13:40:05,160 [main] INFO  o.h.cfg.AnnotationConfiguration - Hibernate Validator not found: ignoring
+2024-07-14 13:40:08,947 [main] INFO  org.hibernate.cfg.Configuration - configuring from XML document
+2024-07-14 13:40:08,947 [main] INFO  org.hibernate.cfg.Configuration - Configured SessionFactory: null
+2024-07-14 13:40:08,949 [main] INFO  o.h.cfg.AnnotationConfiguration - Hibernate Validator not found: ignoring
+2024-07-14 13:40:16,116 [main] INFO  org.hibernate.cfg.Configuration - configuring from XML document
+2024-07-14 13:40:16,116 [main] INFO  org.hibernate.cfg.Configuration - Configured SessionFactory: null
+2024-07-14 13:40:16,117 [main] INFO  o.h.cfg.AnnotationConfiguration - Hibernate Validator not found: ignoring
+2024-07-14 13:40:17,707 [main] INFO  org.hibernate.cfg.Configuration - configuring from XML document
+2024-07-14 13:40:17,707 [main] INFO  org.hibernate.cfg.Configuration - Configured SessionFactory: null
+2024-07-14 13:40:17,708 [main] INFO  o.h.cfg.AnnotationConfiguration - Hibernate Validator not found: ignoring
