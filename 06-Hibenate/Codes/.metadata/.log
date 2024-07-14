@@ -4227,3 +4227,352 @@ java.lang.IllegalStateException: operation plan must be resolved
 	at org.eclipse.equinox.internal.p2.ui.ProvUI.toCompabilityWithCurrentJREProvisioningPlan(ProvUI.java:325)
 	at org.eclipse.epp.internal.mpc.ui.wizards.MarketplaceWizard.lambda$5(MarketplaceWizard.java:876)
 	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:124)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2024-07-14 13:13:05.842
+!MESSAGE The digest algorithms (md5) used to verify osgi.bundle,org.eclipse.gemini.management,2.0.0.RELEASE have severely compromised security. Please report this concern to the artifact provider.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2024-07-14 13:13:05.842
+!MESSAGE The digest algorithms (md5) used to verify osgi.bundle,com.sun.syndication,0.9.0.v200803061811 have severely compromised security. Please report this concern to the artifact provider.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2024-07-14 13:13:05.844
+!MESSAGE The digest algorithms (md5) used to verify osgi.bundle,javax.inject,1.0.0.v20091030 have severely compromised security. Please report this concern to the artifact provider.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2024-07-14 13:13:05.845
+!MESSAGE The digest algorithms (md5) used to verify osgi.bundle,org.apache.commons.exec,1.1.0.v201301240602 have severely compromised security. Please report this concern to the artifact provider.
+!SESSION 2024-07-14 13:18:01.174 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=21.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product -data file:/C:/Users/sagar/Documents/full-stack-java-devloper1/06-Hibenate/Codes/
+
+!ENTRY ch.qos.logback.classic 1 0 2024-07-14 13:18:08.186
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-07-14 13:18:10.299
+!MESSAGE Logback config file: C:\Users\sagar\Documents\full-stack-java-devloper1\06-Hibenate\Codes\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-07-14 13:18:21.395
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\sagar'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2024-07-14 13:20:05.427
+!MESSAGE The digest algorithms (md5) used to verify osgi.bundle,org.apache.commons.exec,1.1.0.v201301240602 have severely compromised security. Please report this concern to the artifact provider.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2024-07-14 13:20:05.428
+!MESSAGE The digest algorithms (md5) used to verify osgi.bundle,com.sun.syndication,0.9.0.v200803061811 have severely compromised security. Please report this concern to the artifact provider.
+!SESSION 2024-07-14 13:22:54.540 -----------------------------------------------
+eclipse.buildId=4.32.0.20240606-1231
+java.version=21.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_IN
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product -data file:/C:/Users/sagar/Documents/full-stack-java-devloper1/06-Hibenate/Codes/
+
+!ENTRY ch.qos.logback.classic 1 0 2024-07-14 13:23:11.621
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-07-14 13:23:15.991
+!MESSAGE Logback config file: C:\Users\sagar\Documents\full-stack-java-devloper1\06-Hibenate\Codes\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-07-14 13:23:28.947
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\sagar'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.ui.workbench 4 2 2024-07-14 13:23:29.914
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 0
+java.lang.ClassCastException: class org.eclipse.jdt.internal.core.JavaNature cannot be cast to class org.eclipse.jdt.core.IJavaProject (org.eclipse.jdt.internal.core.JavaNature and org.eclipse.jdt.core.IJavaProject are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @2a02646)
+	at org.jboss.tools.quarkus.lsp4e.internal.qute.QuteProjectListener.configureProject(QuteProjectListener.java:101)
+	at org.jboss.tools.quarkus.lsp4e.internal.qute.QuteProjectListener.<init>(QuteProjectListener.java:49)
+	at org.jboss.tools.quarkus.lsp4e.internal.startup.qute.QuteStartup.earlyStartup(QuteStartup.java:24)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:79)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.Workbench$39.run(Workbench.java:2706)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.ui 4 0 2024-07-14 13:23:29.917
+!MESSAGE Unable to execute early startup code for the org.eclipse.ui.IStartup extension contributed by the 'org.jboss.tools.quarkus.lsp4e' plug-in.
+!STACK 0
+java.lang.ClassCastException: class org.eclipse.jdt.internal.core.JavaNature cannot be cast to class org.eclipse.jdt.core.IJavaProject (org.eclipse.jdt.internal.core.JavaNature and org.eclipse.jdt.core.IJavaProject are in unnamed module of loader org.eclipse.osgi.internal.loader.EquinoxClassLoader @2a02646)
+	at org.jboss.tools.quarkus.lsp4e.internal.qute.QuteProjectListener.configureProject(QuteProjectListener.java:101)
+	at org.jboss.tools.quarkus.lsp4e.internal.qute.QuteProjectListener.<init>(QuteProjectListener.java:49)
+	at org.jboss.tools.quarkus.lsp4e.internal.startup.qute.QuteStartup.earlyStartup(QuteStartup.java:24)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.runEarlyStartup(EarlyStartupRunnable.java:79)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.Workbench$39.run(Workbench.java:2706)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.jboss.tools.discovery.core 4 0 2024-07-14 13:23:35.442
+!MESSAGE All attempts to discover connectors have failed
+!SUBENTRY 1 org.eclipse.equinox.p2.discovery 4 0 2024-07-14 13:23:35.442
+!MESSAGE Failed to get connectors from RemoteProxyWizardDiscoveryStrategy
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: An error occurred while downloading https://download.jboss.org/jbosstools/photon/stable/updates/discovery.central/4.29.1.Final/jbosstools-directory.xml. The cache file C:\Users\sagar\Documents\full-stack-java-devloper1\06-Hibenate\Codes\.metadata\.plugins\org.eclipse.equinox.p2.discovery.compatibility\cache\downloading\discovery1860073685 could not be renamed to C:\Users\sagar\Documents\full-stack-java-devloper1\06-Hibenate\Codes\.metadata\.plugins\org.eclipse.equinox.p2.discovery.compatibility\cache\discovery1860073685.
+	at org.eclipse.equinox.internal.p2.discovery.compatibility.util.CacheManager.updateCache(CacheManager.java:228)
+	at org.eclipse.equinox.internal.p2.discovery.compatibility.util.CacheManager.createCache(CacheManager.java:137)
+	at org.eclipse.equinox.internal.p2.discovery.compatibility.util.TransportUtil.readResource(TransportUtil.java:99)
+	at org.jboss.tools.discovery.core.internal.connectors.xpl.RemoteExternalBundleDiscoveryStrategy.loadRegistry(RemoteExternalBundleDiscoveryStrategy.java:91)
+	at org.jboss.tools.discovery.core.internal.connectors.xpl.ExternalBundleDiscoveryStrategy.performDiscovery(ExternalBundleDiscoveryStrategy.java:118)
+	at org.jboss.tools.discovery.core.internal.connectors.ChainedDiscoveryStrategy.performDiscovery(ChainedDiscoveryStrategy.java:69)
+	at org.eclipse.equinox.internal.p2.discovery.Catalog.performDiscovery(Catalog.java:88)
+	at org.jboss.tools.central.internal.discovery.wizards.ProxyWizardManager.loadWizards(ProxyWizardManager.java:107)
+	at org.jboss.tools.central.internal.discovery.wizards.ProxyWizardUpdateJob.run(ProxyWizardUpdateJob.java:47)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 2 org.eclipse.equinox.p2.discovery.compatibility 4 0 2024-07-14 13:23:35.443
+!MESSAGE An error occurred while downloading https://download.jboss.org/jbosstools/photon/stable/updates/discovery.central/4.29.1.Final/jbosstools-directory.xml. The cache file C:\Users\sagar\Documents\full-stack-java-devloper1\06-Hibenate\Codes\.metadata\.plugins\org.eclipse.equinox.p2.discovery.compatibility\cache\downloading\discovery1860073685 could not be renamed to C:\Users\sagar\Documents\full-stack-java-devloper1\06-Hibenate\Codes\.metadata\.plugins\org.eclipse.equinox.p2.discovery.compatibility\cache\discovery1860073685.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.215
+!MESSAGE Ignored property with key: null value: null
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.374
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.376
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.378
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.380
+!MESSAGE Could not send STARTUP event 'startup': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.382
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.383
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.386
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.387
+!MESSAGE Could not send ACTION event 'installed': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.390
+!MESSAGE Ignored property with key: null value: null
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.393
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.394
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.396
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.397
+!MESSAGE Could not send STARTUP event 'startup': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.399
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.401
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.402
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.404
+!MESSAGE Could not send ACTION event 'showOnStartup': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.407
+!MESSAGE Ignored property with key: null value: null
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.409
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.410
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.414
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.415
+!MESSAGE Could not send STARTUP event 'startup': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.416
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.417
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.419
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:23:43.420
+!MESSAGE Could not send ACTION event 'browser': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:37:11.074
+!MESSAGE Ignored property with key: null value: null
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:37:11.080
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:37:11.081
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:37:11.082
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:37:11.084
+!MESSAGE Could not send STARTUP event 'startup': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:37:11.085
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:37:11.086
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:37:11.087
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:37:11.089
+!MESSAGE Could not send ACTION event 'new-configuration': no analytics instance present.
+
+!ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2024-07-14 13:39:28.057
+!MESSAGE The given URI https://jakarta.ee/xml/ns/jakartaee/application-client_9.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2024-07-14 13:39:28.062
+!MESSAGE The given URI https://jakarta.ee/xml/ns/jakartaee/jobXML_2_0.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2024-07-14 13:39:28.064
+!MESSAGE The given URI https://jakarta.ee/xml/ns/jakartaee/beans_3_0.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2024-07-14 13:39:28.069
+!MESSAGE The given URI https://jakarta.ee/xml/ns/jaxb/bindingschema_3_0.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2024-07-14 13:39:28.097
+!MESSAGE The given URI https://jakarta.ee/xml/ns/validation/validation-configuration-3.0.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2024-07-14 13:39:28.117
+!MESSAGE The given URI http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_1.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:39:55.054
+!MESSAGE Ignored property with key: null value: null
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:39:55.059
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:39:55.060
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:39:55.061
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:39:55.062
+!MESSAGE Could not send ACTION event 'new-configuration': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:05.089
+!MESSAGE Ignored property with key: null value: null
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:05.091
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:05.092
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:05.093
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:05.094
+!MESSAGE Could not send ACTION event 'new-configuration': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:08.936
+!MESSAGE Ignored property with key: null value: null
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:08.937
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:08.939
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:08.941
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:08.942
+!MESSAGE Could not send ACTION event 'new-configuration': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:16.106
+!MESSAGE Ignored property with key: null value: null
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:16.108
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:16.109
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:16.110
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:16.112
+!MESSAGE Could not send ACTION event 'new-configuration': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:17.699
+!MESSAGE Ignored property with key: null value: null
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:17.701
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:17.702
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:17.703
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:17.704
+!MESSAGE Could not send ACTION event 'new-configuration': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:32.948
+!MESSAGE Ignored property with key: null value: null
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:32.950
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:32.952
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:32.957
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:32.958
+!MESSAGE Could not send ACTION event 'new-configuration': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:47.310
+!MESSAGE Ignored property with key: null value: null
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:47.311
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:47.312
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:47.313
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:40:47.314
+!MESSAGE Could not send ACTION event 'new-configuration': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:41:15.240
+!MESSAGE Ignored property with key: null value: null
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:41:15.242
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:41:15.243
+!MESSAGE Could not send USER event 'Anonymous ID: 142a54fe-bc13-4423-a5ea-47629b09126b': no analytics instance present.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:41:15.245
+!MESSAGE Could not create Segment Analytics instance, missing writeKey.
+
+!ENTRY org.jboss.tools.usage 2 0 2024-07-14 13:41:15.246
+!MESSAGE Could not send ACTION event 'new-configuration': no analytics instance present.
