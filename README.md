@@ -17,7 +17,7 @@ Welcome to my Full Stack Java Developer Learning Repository! This repository is 
     - [Spring Data JPA](#spring-data-jpa)
     - [Spring Boot](#spring-boot)
     - [Microservices](#microservices)
-  - [Daily Learning Logs](#daily-learning-logs)
+  - [Daily Learning Logs](#daily-learning-log)
     - [Example Log Structure](#example-log-structure)
     - [Exercises:](#exercises)
     - [Issues Encountered:](#issues-encountered)
