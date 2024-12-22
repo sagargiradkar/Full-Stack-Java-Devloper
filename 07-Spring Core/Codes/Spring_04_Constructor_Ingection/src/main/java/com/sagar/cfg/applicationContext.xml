@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="std1" class="com.sagar.comp.Student">
+        <constructor-arg type="java.lang.Integer" value="10"/>
+        <constructor-arg type="java.lang.String" value="sagar"/>
+        <constructor-arg type="float" value="22.5f"/>
+        <constructor-arg type="java.lang.String" value="Pune"/>
+    </bean>
+
+<!--    <bean id="std2" class="com.sagar.comp.Student">-->
+<!--        <constructor-arg index="0" value="10"/>-->
+<!--        <constructor-arg index="1" value="sham"/>-->
+<!--        <constructor-arg index="2" value="22.5"/>-->
+<!--        <constructor-arg index="3" value="Pune"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="std3" class="com.sagar.comp.Student">-->
+<!--        <constructor-arg name="sno" value="10"/>-->
+<!--        <constructor-arg name="sname" value="ram"/>-->
+<!--        <constructor-arg name="saddr" value="Pune"/>-->
+<!--        <constructor-arg name="avg" value="22.5"/>-->
+<!--    </bean>-->
+
+
+<!--    <bean id="std4" class="com.sagar.comp.Student">-->
+<!--        <constructor-arg index="0" value="10"/>-->
+<!--        <constructor-arg index="1" value="ram"/>-->
+<!--        <constructor-arg index="2" value="Pune"/>-->
+<!--        <constructor-arg index="3" value="22.5"/>-->
+<!--    </bean>-->
+
+
+</beans>
