@@ -1,4 +1,16 @@
 package in.ineuron.comp;
 
-public class BlueDart {
+public class BlueDart implements Courier{
+
+    static {
+        System.out.println("BlueDart.class file is loading....");
+    }
+
+    public BlueDart(){
+        System.out.println("BlueDart:: Zero parameterized constructor ...");
+    }
+    @Override
+    public String deliver(int oid) {
+        return null;
+    }
 }

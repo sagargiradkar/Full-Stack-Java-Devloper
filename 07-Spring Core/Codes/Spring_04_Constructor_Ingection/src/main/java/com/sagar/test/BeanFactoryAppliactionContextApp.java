@@ -1,19 +1,13 @@
 package com.sagar.test;
 
 import com.sagar.comp.Student;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 
-public class TestApp {
+public class BeanFactoryAppliactionContextApp {
     public static void main(String[] args) {
-//        ApplicationContext context = new FileSystemXmlApplicationContext("src/main/java/com/sagar/cfg/applicationContext.xml");
-//
-//        Student std1 = context.getBean("std1", Student.class);
-//        System.out.println(std1);
-
-        FileSystemResource resource = new FileSystemResource("src/main/java/com/sagar/cfg/applicationContext.xml");
-        XmlBeanFactory factory  = new XmlBeanFactory(resource);
+        ApplicationContext factory = new FileSystemXmlApplicationContext("src/main/java/com/sagar/cfg/applicationContext.xml");
 
         Student std1 = factory.getBean("std1",Student.class);
         System.out.println(std1);

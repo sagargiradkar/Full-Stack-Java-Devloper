@@ -9,7 +9,7 @@
     <bean id="dtdc" class="in.ineuron.comp.DTDC"/>
     <bean id="fFlight" class="in.ineuron.comp.FirstFlight"/>
 
-    <bean id="fpkt" class="">
+    <bean id="fpkt" class="in.ineuron.comp.Flipkart">
         <property name="discount" value="30"/>
         <property name="courier" ref="dtdc"/>
     </bean>
