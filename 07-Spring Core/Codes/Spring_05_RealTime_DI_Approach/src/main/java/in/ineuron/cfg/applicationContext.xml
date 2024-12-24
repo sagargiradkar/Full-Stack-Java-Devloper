@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="bDart" class="in.ineuron.comp.BlueDart"/>
+    <bean id="dtdc" class="in.ineuron.comp.DTDC"/>
+    <bean id="fFlight" class="in.ineuron.comp.FirstFlight"/>
+
+    <bean id="fpkt" class="">
+        <property name="discount" value="30"/>
+        <property name="courier" ref="dtdc"/>
+    </bean>
+</beans>
