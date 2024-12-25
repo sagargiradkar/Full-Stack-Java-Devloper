@@ -1,8 +1,7 @@
 package in.ineuron.test;
 
-import in.ineuron.comp.Flipkart;
-import org.springframework.beans.factory.support.DefaultListableBeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import in.ineuron.comp.A;
+import in.ineuron.comp.B;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -15,14 +14,16 @@ public class TestApp {
 //        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
 //        reader.loadBeanDefinitions("in/ineuron/cfg/applicationContext.xml");
         System.out.println("****** Container Started ********\n");
-        ClassPathXmlApplicationContext factory = new ClassPathXmlApplicationContext("in/ineuron/cfg/applicationContext.xml");
-        //ApplicationContext factory = new FileSystemXmlApplicationContext("src/main/java/in/ineuron/cfg/applicationContext.xml");
+        //ClassPathXmlApplicationContext factory = new ClassPathXmlApplicationContext("in/ineuron/cfg/applicationContext.xml");
+        ApplicationContext factory = new FileSystemXmlApplicationContext("src/main/java/in/ineuron/cfg/applicationContext.xml");
         System.out.println();
         System.in.read();
-        Flipkart flipkart = factory.getBean("fpkt", Flipkart.class);
-        System.out.println(flipkart);
-        String result = flipkart.doShopping(new String[]{"fossils","tissot"},new Float[]{2344.34f,324.345f});
-        System.out.println(result);
+        A aObj = factory.getBean("a1", A.class);
+        System.out.println();
+
+        B bObj = factory.getBean("b1", B.class);
+        System.out.println();
+
         System.out.println("****** Container Ended ********");
     }
 }

@@ -11,6 +11,9 @@ public class DTDC implements Courier{
     }
     @Override
     public String deliver(int oid) {
-        return null;
+        System.out.println("DTDC.Deliver()");
+
+        return "DTDC Courier will delivered with the order is ::"+oid+" for the orderd products";
+
     }
 }

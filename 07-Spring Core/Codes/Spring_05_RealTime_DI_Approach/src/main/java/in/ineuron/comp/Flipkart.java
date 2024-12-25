@@ -1,5 +1,8 @@
 package in.ineuron.comp;
 
+import java.util.Arrays;
+import java.util.Random;
+
 //Target Object
 public class Flipkart {
     //dependent object
@@ -29,7 +32,20 @@ public class Flipkart {
         System.out.println("Flipkart .doShopping");
         System.out.println("Implementation class is ::"+courier.getClass().getName());
         System.out.println("Discount ammount is "+discount);
-        return "";
+
+        int oid = 0;
+        Random random = null;
+        float billAmt = 0.0f;
+        for(float price:prices){
+            billAmt+=price;
+        }
+        billAmt = billAmt - (discount/100.0f);
+        random = new Random();
+        oid = random.nextInt(1000);
+        String msg = courier.deliver(oid);
+
+
+        return Arrays.toString(item) +" with billAmount of "+billAmt+" ----------> "+msg;
     }
 
     @Override
