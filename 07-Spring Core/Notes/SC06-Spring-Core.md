@@ -266,3 +266,123 @@ public class Main {
 3. **Leverage Dependency Injection**: Inject collections instead of creating them manually within the bean.
 
 This concludes the detailed notes on **Spring Collection Injection**. Let me know if you need help with any specific part!
+
+
+In Spring, the `DriverManagerDataSource` is a simple implementation of the `javax.sql.DataSource` interface. It is used to configure database connections in Spring applications, especially in scenarios where connection pooling is not required. Here's an explanation and example for using the three main properties: `driverClassName`, `url`, and `connectionProperties`.
+
+---
+
+### **1. `driverClassName`**
+- **Definition**: Specifies the fully qualified class name of the JDBC driver that connects to the database.
+- **Example**:
+  - For MySQL: `com.mysql.cj.jdbc.Driver`
+  - For PostgreSQL: `org.postgresql.Driver`
+
+---
+
+### **2. `url`**
+- **Definition**: The JDBC URL used to establish a connection to the database. It typically includes the protocol, host, port, and database name.
+- **Format Examples**:
+  - MySQL:
+    ```plaintext
+    jdbc:mysql://localhost:3306/yourDatabase
+    ```
+  - PostgreSQL:
+    ```plaintext
+    jdbc:postgresql://localhost:5432/yourDatabase
+    ```
+
+---
+
+### **3. `connectionProperties`**
+- **Definition**: A set of optional properties to customize the database connection further. These properties are key-value pairs and can include options like SSL, time zone, etc.
+- **Example Properties**:
+  - `useSSL=true` (For secure connections)
+  - `serverTimezone=UTC` (For specifying the server's time zone)
+  - `characterEncoding=UTF-8` (For character encoding)
+
+The `connectionProperties` are typically specified in a `Properties` object or as a semicolon-separated list.
+
+---
+
+### **Configuration Example in Spring XML**
+
+Here’s how you can configure `DriverManagerDataSource` with all three properties in an XML file:
+
+```xml
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <!-- Driver Class Name -->
+    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+    
+    <!-- JDBC URL -->
+    <property name="url" value="jdbc:mysql://localhost:3306/yourDatabase" />
+    
+    <!-- Connection Properties -->
+    <property name="connectionProperties">
+        <props>
+            <prop key="useSSL">true</prop>
+            <prop key="serverTimezone">UTC</prop>
+            <prop key="characterEncoding">UTF-8</prop>
+        </props>
+    </property>
+</bean>
+```
+
+---
+
+### **Equivalent Java Configuration**
+
+If you're using Java-based configuration:
+
+```java
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+import javax.sql.DataSource;
+import java.util.Properties;
+
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+
+        // Driver Class Name
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+
+        // JDBC URL
+        dataSource.setUrl("jdbc:mysql://localhost:3306/yourDatabase");
+
+        // Connection Properties
+        Properties connectionProps = new Properties();
+        connectionProps.put("useSSL", "true");
+        connectionProps.put("serverTimezone", "UTC");
+        connectionProps.put("characterEncoding", "UTF-8");
+
+        dataSource.setConnectionProperties(connectionProps);
+
+        return dataSource;
+    }
+}
+```
+
+---
+
+### **Key Points to Note**
+1. **`connectionProperties` Format**: Each property is defined as a `<prop key="...">...</prop>` in XML or as a `Properties` object in Java.
+2. **Database Driver Dependency**:
+   - Ensure the appropriate JDBC driver (e.g., MySQL, PostgreSQL) is added to your project dependencies (Maven/Gradle).
+     - Maven example for MySQL:
+       ```xml
+       <dependency>
+           <groupId>mysql</groupId>
+           <artifactId>mysql-connector-java</artifactId>
+           <version>8.0.34</version>
+       </dependency>
+       ```
+3. **Use with Property Placeholder**:
+   - You can externalize these properties into an `application.properties` file and use `<context:property-placeholder>` or `@PropertySource`.
+
+This configuration is ideal for simple setups. For production use, consider connection pooling libraries like HikariCP for better performance.
