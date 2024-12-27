@@ -1,232 +1,120 @@
-### Limitations of JDBC with Example Explanation
+# IOC Project: Real-Time Dependency Injection Using XML
 
-1. **Boilerplate Code**
-   - **Example**: Establishing a connection, executing a query, and processing the results require multiple lines of repetitive code.
-   ```java
-   Connection connection = null;
-   Statement statement = null;
-   ResultSet resultSet = null;
-   try {
-       connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "user", "password");
-       statement = connection.createStatement();
-       resultSet = statement.executeQuery("SELECT * FROM users");
-       while (resultSet.next()) {
-           System.out.println("User ID: " + resultSet.getInt("id"));
-           System.out.println("Username: " + resultSet.getString("username"));
-       }
-   } catch (SQLException e) {
-       e.printStackTrace();
-   } finally {
-       try {
-           if (resultSet != null) resultSet.close();
-           if (statement != null) statement.close();
-           if (connection != null) connection.close();
-       } catch (SQLException e) {
-           e.printStackTrace();
-       }
-   }
-   ```
-   - **Explanation**: The code involves a lot of boilerplate for managing connections, statements, and result sets, which makes it verbose and error-prone.
+## Introduction
+In this project, we will explore how to implement real-time dependency injection (DI) using XML configuration in a Spring Core application.
 
-2. **Manual Mapping**
-   - **Example**: Mapping SQL result sets to Java objects manually.
-   ```java
-   List<User> users = new ArrayList<>();
-   try {
-       resultSet = statement.executeQuery("SELECT * FROM users");
-       while (resultSet.next()) {
-           User user = new User();
-           user.setId(resultSet.getInt("id"));
-           user.setUsername(resultSet.getString("username"));
-           users.add(user);
-       }
-   } catch (SQLException e) {
-       e.printStackTrace();
-   }
-   ```
-   - **Explanation**: The manual mapping of result set data to Java objects is tedious and error-prone, especially for large and complex queries.
+## Project Structure
+```
+src/
+|-- main/
+|   |-- java/
+|   |   |-- com/
+|   |   |   |-- example/
+|   |   |   |   |-- AppConfig.java
+|   |   |   |   |-- MainApp.java
+|   |-- resources/
+|       |-- applicationContext.xml
+|-- test/
+    |-- java/
+        |-- com/
+            |-- example/
+                |-- AppTest.java
+```
 
-3. **Error Handling**
-   - **Example**: Handling SQL exceptions.
-   ```java
-   try {
-       connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "user", "password");
-       statement = connection.createStatement();
-       resultSet = statement.executeQuery("SELECT * FROM users");
-   } catch (SQLException e) {
-       e.printStackTrace();
-       // Additional error handling logic
-   }
-   ```
-   - **Explanation**: Error handling with JDBC involves catching and managing SQL exceptions explicitly, which can clutter the code and make it harder to follow.
+## Step-by-Step Guide
 
-4. **Resource Management**
-   - **Example**: Ensuring all resources are closed.
-   ```java
-   try {
-       if (resultSet != null) resultSet.close();
-       if (statement != null) statement.close();
-       if (connection != null) connection.close();
-   } catch (SQLException e) {
-       e.printStackTrace();
-   }
-   ```
-   - **Explanation**: Properly managing resources is complex and easy to get wrong, potentially leading to memory leaks and other resource-related issues.
+### 1. Create the Application Configuration File
+Create an `applicationContext.xml` file in the `resources` directory.
 
-5. **Lack of Abstraction**
-   - **Example**: Changing database structure requires code changes.
-   ```java
-   String query = "SELECT id, username FROM users";
-   resultSet = statement.executeQuery(query);
-   while (resultSet.next()) {
-       int id = resultSet.getInt("id");
-       String username = resultSet.getString("username");
-   }
-   ```
-   - **Explanation**: Directly working with SQL queries means any change in the database structure requires corresponding changes in the code, making maintenance harder.
+```xml
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-6. **No Caching Mechanism**
-   - **Example**: Querying the database for frequently accessed data.
-   ```java
-   resultSet = statement.executeQuery("SELECT * FROM users WHERE id = 1");
-   if (resultSet.next()) {
-       System.out.println("Username: " + resultSet.getString("username"));
-   }
-   ```
-   - **Explanation**: JDBC does not provide caching, leading to potential performance issues for frequently accessed data.
+    <!-- Define your beans here -->
+    <bean id="exampleBean" class="com.example.ExampleBean">
+        <property name="propertyName" value="propertyValue"/>
+    </bean>
 
-7. **Database Vendor Dependency**
-   - **Example**: Vendor-specific SQL syntax.
-   ```java
-   String query = "SELECT TOP 10 * FROM users"; // SQL Server syntax
-   resultSet = statement.executeQuery(query);
-   ```
-   - **Explanation**: SQL syntax and features can vary between database vendors, leading to compatibility issues when switching databases.
+</beans>
+```
 
-8. **Scalability Issues**
-   - **Example**: Managing complex transactions.
-   ```java
-   connection.setAutoCommit(false);
-   try {
-       statement.executeUpdate("UPDATE accounts SET balance = balance - 100 WHERE id = 1");
-       statement.executeUpdate("UPDATE accounts SET balance = balance + 100 WHERE id = 2");
-       connection.commit();
-   } catch (SQLException e) {
-       connection.rollback();
-       e.printStackTrace();
-   }
-   ```
-   - **Explanation**: As applications grow, managing complex transactions and batch processing with JDBC can lead to intricate and hard-to-maintain code.
+### 2. Define Your Beans
+Create a Java class for the bean defined in the XML configuration.
 
-9. **Concurrency Control**
-   - **Example**: Handling concurrent updates.
-   ```java
-   connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
-   ```
-   - **Explanation**: Properly managing concurrent database access and transactions can be challenging and requires careful coding to avoid issues like deadlocks and data inconsistencies.
+```java
+package com.example;
 
-10. **Lack of Advanced Features**
-    - **Example**: No built-in support for advanced query features.
-    ```java
-    // No automatic change tracking or lazy loading
+public class ExampleBean {
+    private String propertyName;
+
+    public void setPropertyName(String propertyName) {
+        this.propertyName = propertyName;
+    }
+
+    public void display() {
+        System.out.println("Property Value: " + propertyName);
+    }
+}
+```
+
+### 3. Load the Application Context
+Create a main application class to load the Spring application context and retrieve the bean.
+
+```java
+package com.example;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MainApp {
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ExampleBean exampleBean = (ExampleBean) context.getBean("exampleBean");
+        exampleBean.display();
+    }
+}
+```
+
+### 4. Run the Application
+Compile and run the `MainApp` class to see the output.
+
+```sh
+javac -cp .;path/to/spring-context.jar com/example/*.java
+java -cp .;path/to/spring-context.jar com.example.MainApp
+```
+
+## Conclusion
+This project demonstrates how to use XML configuration to perform dependency injection in a Spring Core application. By following these steps, you can set up and run a simple Spring application with XML-based DI.
+## Spring Bean Scopes
+
+In Spring, a bean's scope refers to the lifecycle and visibility of that bean within the application context. The following are the most commonly used bean scopes:
+
+1. **Singleton**: This is the default scope. A single instance of the bean is created and shared across the entire Spring container.
+    ```xml
+    <bean id="exampleBean" class="com.example.ExampleBean" scope="singleton"/>
     ```
-    - **Explanation**: JDBC lacks advanced features such as automatic change tracking, lazy loading, and built-in support for complex queries that ORM frameworks offer, leading to more manual effort for developers.
 
+2. **Prototype**: A new instance of the bean is created every time it is requested from the Spring container.
+    ```xml
+    <bean id="exampleBean" class="com.example.ExampleBean" scope="prototype"/>
+    ```
 
-### Why We Go for ORM (Object-Relational Mapping)
+3. **Request**: A new instance of the bean is created for each HTTP request. This scope is only valid in a web-aware Spring application context.
+    ```xml
+    <bean id="exampleBean" class="com.example.ExampleBean" scope="request"/>
+    ```
 
-ORM frameworks are used to simplify and streamline the process of interacting with databases by abstracting the database interactions and providing a higher level of abstraction over JDBC. Here are some key reasons to use ORM with examples and explanations:
+4. **Session**: A new instance of the bean is created for each HTTP session. This scope is also only valid in a web-aware Spring application context.
+    ```xml
+    <bean id="exampleBean" class="com.example.ExampleBean" scope="session"/>
+    ```
 
-1. **Simplified Development**
-   - **Example**:
-     ```java
-     // Using Hibernate ORM to save a User object
-     Session session = sessionFactory.openSession();
-     session.beginTransaction();
-     User user = new User();
-     user.setUsername("john_doe");
-     session.save(user);
-     session.getTransaction().commit();
-     session.close();
-     ```
-   - **Explanation**: ORM frameworks reduce the amount of boilerplate code required to perform database operations. In this example, saving a `User` object to the database requires only a few lines of code, without needing to write SQL statements or manage connections manually.
+5. **Global Session**: A new instance of the bean is created for each global HTTP session. This scope is only valid in a web-aware Spring application context and is typically used in a Portlet context.
+    ```xml
+    <bean id="exampleBean" class="com.example.ExampleBean" scope="globalSession"/>
+    ```
 
-2. **Automatic Mapping**
-   - **Example**:
-     ```java
-     @Entity
-     @Table(name = "users")
-     public class User {
-         @Id
-         @GeneratedValue(strategy = GenerationType.IDENTITY)
-         private int id;
-         
-         @Column(name = "username")
-         private String username;
-         
-         // Getters and setters
-     }
-     ```
-   - **Explanation**: ORM frameworks automatically map Java objects to database tables based on annotations or XML configurations. This reduces the need for manual mapping and minimizes the risk of errors. In this example, the `User` class is automatically mapped to the `users` table in the database.
+Understanding and using the appropriate bean scope is crucial for managing the lifecycle and performance of your Spring applications.
 
-3. **Improved Productivity**
-   - **Example**:
-     ```java
-     // Using JPA (Java Persistence API) with Spring Data
-     @Repository
-     public interface UserRepository extends JpaRepository<User, Integer> {
-         List<User> findByUsername(String username);
-     }
-     ```
-   - **Explanation**: ORM frameworks like JPA, combined with libraries like Spring Data, provide built-in repository interfaces that handle common database operations. This allows developers to focus on business logic rather than writing repetitive CRUD operations. The `UserRepository` interface in this example provides methods for querying users by username without writing SQL.
-
-4. **Performance Optimization**
-   - **Example**:
-     ```java
-     // Enabling second-level cache in Hibernate
-     @Entity
-     @Cacheable
-     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-     public class User {
-         // Class definition
-     }
-     ```
-   - **Explanation**: Many ORM frameworks offer caching mechanisms to improve performance, especially for read-heavy applications. In this example, Hibernate's second-level cache is enabled for the `User` entity, reducing the number of database hits for frequently accessed data.
-
-5. **Database Independence**
-   - **Example**:
-     ```java
-     // Switching from MySQL to PostgreSQL with minimal changes
-     spring.datasource.url=jdbc:postgresql://localhost:5432/mydb
-     spring.datasource.username=postgres
-     spring.datasource.password=password
-     ```
-   - **Explanation**: ORM frameworks provide a layer of abstraction that makes it easier to switch between different databases. By changing the database connection properties, the underlying ORM framework handles the differences in SQL dialects and database features, requiring minimal code changes.
-
-6. **Transaction Management**
-   - **Example**:
-     ```java
-     @Transactional
-     public void transferFunds(int fromAccountId, int toAccountId, double amount) {
-         Account fromAccount = accountRepository.findById(fromAccountId).orElseThrow();
-         Account toAccount = accountRepository.findById(toAccountId).orElseThrow();
-         fromAccount.setBalance(fromAccount.getBalance() - amount);
-         toAccount.setBalance(toAccount.getBalance() + amount);
-         accountRepository.save(fromAccount);
-         accountRepository.save(toAccount);
-     }
-     ```
-   - **Explanation**: ORM frameworks often include built-in support for transaction management. In this example, the `@Transactional` annotation ensures that the entire method executes within a transaction, simplifying the handling of complex transactional operations and ensuring data consistency.
-
-7. **Advanced Query Capabilities**
-   - **Example**:
-     ```java
-     // Using JPQL (Java Persistence Query Language)
-     String jpql = "SELECT u FROM User u WHERE u.username = :username";
-     TypedQuery<User> query = entityManager.createQuery(jpql, User.class);
-     query.setParameter("username", "john_doe");
-     List<User> results = query.getResultList();
-     ```
-   - **Explanation**: ORM frameworks provide advanced query languages like JPQL (Java Persistence Query Language) or HQL (Hibernate Query Language) that allow developers to write database queries in an object-oriented manner. This example demonstrates querying users by username using JPQL, which is more intuitive and easier to maintain than raw SQL.
-
-By using ORM frameworks, developers can focus more on business logic and less on boilerplate code and manual database interactions. This leads to more maintainable, readable, and efficient code.
