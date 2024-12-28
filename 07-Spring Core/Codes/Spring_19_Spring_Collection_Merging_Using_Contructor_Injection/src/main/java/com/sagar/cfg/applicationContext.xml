@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- Helper bean for first-year subjects -->
+    <util:set id="firstYearSubjects">
+        <value>M1</value>
+        <value>CAD</value>
+        <value>Physics</value>
+    </util:set>
+
+    <!-- CSE bean, merging first-year subjects manually -->
+    <bean id="CSE" class="com.sagar.comp.EnggCourse">
+        <constructor-arg>
+            <util:set>
+                <ref bean="firstYearSubjects" />
+                <value>DSA</value>
+                <value>M3</value>
+                <value>DBMS</value>
+            </util:set>
+        </constructor-arg>
+    </bean>
+</beans>

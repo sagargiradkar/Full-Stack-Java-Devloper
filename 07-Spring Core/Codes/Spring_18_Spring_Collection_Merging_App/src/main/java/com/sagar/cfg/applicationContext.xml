@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="firstYear" class="com.sagar.comp.EnggCourse" abstract="true">
+        <property name="subjects">
+            <set>
+                <value>M1</value>
+                <value>CAD</value>
+                <value>Physics</value>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="CSE" class="com.sagar.comp.EnggCourse" parent="firstYear">
+        <property name="subjects">
+            <set  merge="true">
+                <value>DSA</value>
+                <value>M3</value>
+                <value>DBMS</value>
+            </set>
+        </property>
+    </bean>
+
+</beans>
