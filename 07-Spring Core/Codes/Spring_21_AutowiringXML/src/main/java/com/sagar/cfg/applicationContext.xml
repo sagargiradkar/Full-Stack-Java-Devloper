@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="fFlight" class="com.sagar.comp.FirstFlight"/>
+    <bean id="bDart" class="com.sagar.comp.BlueDart" primary="true"/>
+    <bean id="dtdc" class="com.sagar.comp.DTDC"/>
+
+    <!-- Confifuring Target Bean -->
+
+    <bean id="fpkt" class="com.sagar.comp.Flipkart" autowire="byType">
+        <property name="discount" value="30"/>
+
+    </bean>
+
+
+</beans>
