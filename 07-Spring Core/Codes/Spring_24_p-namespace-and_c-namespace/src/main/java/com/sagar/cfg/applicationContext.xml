@@ -9,7 +9,7 @@
                            http://www.springframework.org/schema/p/spring-p.xsd
                            http://www.springframework.org/schema/c
                            http://www.springframework.org/schema/c/spring-c.xsd
-http://www.springframework.org/schema/c 
+http://www.springframework.org/schema/c
 http://www.springframework.org/schema/p ">
     <!-- Bean definitions here -->
 
