@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/p
+                           http://www.springframework.org/schema/p/spring-p.xsd
+                           http://www.springframework.org/schema/c
+                           http://www.springframework.org/schema/c/spring-c.xsd
+http://www.springframework.org/schema/c 
+http://www.springframework.org/schema/p ">
+    <!-- Bean definitions here -->
+
+    <bean id="dob" class="java.util.Date" p:date="24" p:month="3"
+          p:year="73"/>
+
+    <bean id="doj" class="java.util.Date"/>
+
+    <bean id="employee" class="com.sagar.comp.Employee" p:eno="10"
+          p:ename="sachin" p:dob-ref="dob" p:dept-ref="dept"/>
+
+
+    <bean id="dept" class="com.sagar.comp.Department" c:dno="100">
+        <constructor-arg name="dname" value="CSE"/>
+        <constructor-arg name="doj" ref="doj"/>
+    </bean>
+</beans>

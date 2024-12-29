@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectResources">
+    <resource url="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd " location="$PROJECT_DIR$" />
+    <resource url="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd " location="$PROJECT_DIR$" />
+    <resource url="http://www.springframework.org/schema/c http://www.springframework.org/schema/c/spring-c.xsd " location="$PROJECT_DIR$" />
+    <resource url="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd " location="$PROJECT_DIR$" />
+    <resource url="http://www.springframework.org/schema/p http://www.springframework.org/schema/p/spring-p.xsd " location="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
