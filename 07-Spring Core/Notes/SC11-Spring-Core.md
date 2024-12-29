@@ -515,3 +515,342 @@ public class Employee {
    - For modern applications, use `@Autowired` with constructors to reduce XML configuration.
 
 Constructor-based autowiring is a powerful mechanism for creating immutable, well-defined beans, ensuring that dependencies are injected consistently at the time of bean initialization.
+
+### **@Autowired and @Qualifier with `@AutowireCandidate` in Spring**
+
+The `@Autowired` annotation in Spring is used to automatically inject dependencies. However, when there are multiple beans of the same type in the Spring container, Spring might encounter ambiguity about which bean to inject. 
+
+To resolve this, the `autowire-candidate` attribute in XML or `@Primary` annotation in Java can be used to specify which beans are eligible for autowiring.
+
+---
+
+### **What is `autowire-candidate`?**
+
+The `autowire-candidate` attribute in XML configuration specifies whether a bean should be considered a candidate for autowiring. By default, this attribute is set to `true`, meaning all beans are eligible for autowiring. 
+
+Setting `autowire-candidate="false"` on a bean excludes it from being selected as a candidate for dependency injection.
+
+---
+
+### **Use Case**
+
+Suppose you have multiple beans of the same type, and you want to exclude certain beans from being considered for autowiring. You can use the `autowire-candidate` attribute for this purpose.
+
+---
+
+### **Example: Using `autowire-candidate` in XML Configuration**
+
+#### **Java Classes**
+
+**Employee.java**:
+```java
+public class Employee {
+    private Address address;
+
+    // Setter for autowiring
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void displayInfo() {
+        System.out.println("Employee Address: " + address.getCity());
+    }
+}
+```
+
+**Address.java**:
+```java
+public class Address {
+    private String city;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+}
+```
+
+---
+
+#### **Spring XML Configuration**
+
+**spring-config.xml**:
+```xml
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Employee bean -->
+    <bean id="employee" class="com.example.Employee" autowire="byType"/>
+
+    <!-- Address beans -->
+    <bean id="address1" class="com.example.Address" autowire-candidate="false">
+        <property name="city" value="New York"/>
+    </bean>
+
+    <bean id="address2" class="com.example.Address">
+        <property name="city" value="Los Angeles"/>
+    </bean>
+</beans>
+```
+
+---
+
+#### **Explanation**
+
+1. **Two Address Beans**:
+   - `address1` and `address2` are both beans of type `Address`.
+   - However, `address1` is excluded from autowiring by setting `autowire-candidate="false"`.
+
+2. **Autowire by Type**:
+   - When the `Employee` bean is autowired, Spring will look for a bean of type `Address`.
+   - Since `address1` is not a candidate, Spring will inject `address2` into the `Employee` bean.
+
+3. **Output**:
+   - When the `displayInfo` method is called, it prints:
+     ```
+     Employee Address: Los Angeles
+     ```
+
+---
+
+### **Best Practices with `autowire-candidate`**
+
+1. **Selective Exclusion**:
+   - Use `autowire-candidate="false"` to exclude beans that are not meant for general autowiring but may still be accessed explicitly.
+
+2. **Combine with Qualifiers**:
+   - Use `@Qualifier` in Java or `qualifier` attribute in XML for explicit selection of beans when there are multiple candidates.
+
+3. **Avoid Overuse**:
+   - Prefer using `@Primary` or `@Qualifier` for modern configurations, as they provide better control and readability.
+
+---
+
+### **Example: Using `@Primary` and `@Qualifier` in Java**
+
+**Java Classes**
+
+**Configuration.java**:
+```java
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+
+@Configuration
+public class AppConfig {
+
+    @Bean
+    @Primary
+    public Address address1() {
+        Address address = new Address();
+        address.setCity("New York");
+        return address;
+    }
+
+    @Bean
+    public Address address2() {
+        Address address = new Address();
+        address.setCity("Los Angeles");
+        return address;
+    }
+}
+```
+
+**Employee.java**:
+```java
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+public class Employee {
+    private Address address;
+
+    // Constructor injection
+    @Autowired
+    @Qualifier("address2")
+    public Employee(Address address) {
+        this.address = address;
+    }
+
+    public void displayInfo() {
+        System.out.println("Employee Address: " + address.getCity());
+    }
+}
+```
+
+---
+
+### **When to Use `autowire-candidate`**
+
+1. **Legacy XML Configurations**:
+   - Useful when working with older Spring XML-based projects.
+2. **Complex Bean Configurations**:
+   - Helps in managing large applications with multiple beans of the same type.
+3. **Default Bean Exclusion**:
+   - For beans not meant for autowiring but required for other explicit configurations.
+
+Using `autowire-candidate` gives you granular control over which beans are eligible for autowiring, ensuring clarity and preventing accidental injections.
+
+### **Autowire = "no" in Spring**
+
+In Spring, the `autowire="no"` attribute explicitly disables autowiring for a bean. This means that Spring will not attempt to inject any dependencies automatically for that bean, and you must configure all dependencies explicitly through `<property>` tags in the XML configuration.
+
+---
+
+### **Key Characteristics of `autowire="no"`**
+
+1. **Explicit Dependency Configuration**:
+   - All dependencies must be manually specified in the XML configuration.
+   
+2. **Default Behavior**:
+   - If the `autowire` attribute is not specified, it defaults to `no`.
+
+3. **Use Case**:
+   - Ideal when you want complete control over dependency injection or when automatic wiring may cause ambiguity.
+
+---
+
+### **Example: Autowire = "no"**
+
+#### **Java Classes**
+
+**Employee.java**:
+```java
+public class Employee {
+    private Address address;
+
+    // Setter for dependency injection
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void displayInfo() {
+        System.out.println("Employee Address: " + address.getCity());
+    }
+}
+```
+
+**Address.java**:
+```java
+public class Address {
+    private String city;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+}
+```
+
+---
+
+#### **Spring XML Configuration**
+
+**spring-config.xml**:
+```xml
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Bean with autowire="no" -->
+    <bean id="employee" class="com.example.Employee" autowire="no">
+        <property name="address" ref="address"/>
+    </bean>
+
+    <!-- Dependency bean -->
+    <bean id="address" class="com.example.Address">
+        <property name="city" value="New York"/>
+    </bean>
+</beans>
+```
+
+---
+
+#### **Main Method**
+
+**Main.java**:
+```java
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Main {
+    public static void main(String[] args) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+
+        // Retrieve the employee bean
+        Employee employee = (Employee) context.getBean("employee");
+        employee.displayInfo();
+    }
+}
+```
+
+---
+
+### **Explanation of the Example**
+
+1. **Autowire Disabled**:
+   - The `employee` bean is configured with `autowire="no"`.
+   - Spring does not attempt to automatically wire the `address` dependency.
+
+2. **Explicit Configuration**:
+   - The `address` property is explicitly set in the XML configuration using the `<property>` tag.
+
+3. **Output**:
+   - When the `displayInfo` method is called, it prints:
+     ```
+     Employee Address: New York
+     ```
+
+---
+
+### **When to Use `autowire="no"`**
+
+1. **Complex Dependencies**:
+   - When a bean has multiple dependencies, and you want explicit control over how they are set.
+
+2. **Avoid Ambiguity**:
+   - Prevents Spring from mistakenly wiring the wrong dependency in case of multiple beans of the same type.
+
+3. **Legacy or Large Applications**:
+   - Useful in applications where automatic wiring may lead to hard-to-debug issues.
+
+---
+
+### **Advantages**
+
+1. **Explicit Control**:
+   - Dependencies are clearly defined, making the configuration easier to understand and debug.
+
+2. **Predictability**:
+   - No surprises due to unexpected or incorrect automatic wiring.
+
+---
+
+### **Disadvantages**
+
+1. **Verbose Configuration**:
+   - Requires manually specifying each dependency, which can be tedious in large applications.
+
+2. **Less Dynamic**:
+   - Relies entirely on static XML configuration rather than leveraging Spring's dynamic autowiring capabilities.
+
+---
+
+### **Comparison with Other Autowire Modes**
+
+| **Autowire Mode**   | **Description**                                               |
+|----------------------|---------------------------------------------------------------|
+| `no`                | Disables autowiring. Dependencies must be configured explicitly. |
+| `byName`            | Matches property names with bean IDs in the container.         |
+| `byType`            | Matches property types with available beans in the container.  |
+| `constructor`       | Matches constructor parameters with bean types in the container.|
+
+By using `autowire="no"`, you can ensure precise and predictable dependency injection, which is particularly beneficial in complex or legacy projects.
