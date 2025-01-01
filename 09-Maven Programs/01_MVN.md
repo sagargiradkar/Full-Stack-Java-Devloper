@@ -150,3 +150,52 @@ Maven's default lifecycle consists of **phases**, each performing specific tasks
 7. **deploy**: Uploads the package to a remote repository for sharing.
 
 By following these steps, you can manage your Maven projects efficiently. Let me know if you want more details on any part!
+
+Here are the Maven commands corresponding to each phase of the default lifecycle:
+
+### **1. Validate**
+Validates the project structure and configuration.
+```bash
+mvn validate
+```
+
+### **2. Compile**
+Compiles the source code.
+```bash
+mvn compile
+```
+
+### **3. Test**
+Executes unit tests using the appropriate testing framework (e.g., JUnit).
+```bash
+mvn test
+```
+
+### **4. Package**
+Packages the compiled code into a distributable format, such as a JAR or WAR.
+```bash
+mvn package
+```
+
+### **5. Verify**
+Verifies the integrity of the package, ensuring it meets quality criteria.
+```bash
+mvn verify
+```
+
+### **6. Install**
+Installs the package into the local Maven repository for use in other projects.
+```bash
+mvn install
+```
+
+### **7. Deploy**
+Deploys the package to a remote repository, making it available to other developers or projects.
+```bash
+mvn deploy
+```
+
+You can execute these commands in sequence as needed, or run a specific phase to execute that and all preceding phases automatically. For example:
+
+- Running `mvn package` will execute `validate`, `compile`, `test`, and `package`.
+- Running `mvn install` will execute all preceding phases, up to and including `install`.
