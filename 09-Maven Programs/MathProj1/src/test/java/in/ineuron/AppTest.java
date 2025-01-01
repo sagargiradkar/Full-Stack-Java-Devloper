@@ -35,4 +35,38 @@ public class AppTest
     {
         assertTrue( true );
     }
+
+    /**
+     * Test cases for the add method in App class
+     */
+
+    public void testAdditionOfTwoPositiveNumbers() {
+        App app = new App();
+        int result = app.add(10, 20);
+        assertEquals(30, result);
+    }
+
+    public void testAdditionOfPositiveAndNegativeNumber() {
+        App app = new App();
+        int result = app.add(10, -5);
+        assertEquals(5, result);
+    }
+
+    public void testAdditionOfTwoNegativeNumbers() {
+        App app = new App();
+        int result = app.add(-10, -20);
+        assertEquals(-30, result);
+    }
+
+    public void testAdditionWithZero() {
+        App app = new App();
+        int result = app.add(10, 0);
+        assertEquals(10, result);
+    }
+
+    public void testAdditionOfLargeNumbers() {
+        App app = new App();
+        int result = app.add(1000000, 2000000);
+        assertEquals(3000000, result);
+    }
 }

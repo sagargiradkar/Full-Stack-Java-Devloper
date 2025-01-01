@@ -1,144 +1,152 @@
-# Download and Setup Maven
+Here's a summary and expansion of the notes you've shared, with additional details for clarity:
 
-1. **Download Maven**
-    - Go to the [Maven download page](https://maven.apache.org/download.cgi) and download the binary zip archive.
+---
 
-2. **Extract the Archive**
-    - Extract the downloaded zip file to a directory of your choice, for example, `C:\Program Files\Apache\Maven`.
+## **Download and Setup Maven**
 
-3. **Set Up Environment Variables**
-    - Add the `MAVEN_HOME` environment variable:
-        - Open the System Properties dialog (`Win + Pause` -> Advanced system settings -> Environment Variables).
-        - Click on `New` under System variables and add `MAVEN_HOME` with the path to your Maven directory, e.g., `C:\Program Files\Apache\Maven`.
+### 1. **Download Maven**
+   - Visit the [Maven download page](https://maven.apache.org/download.cgi).
+   - Download the binary zip archive suitable for your operating system.
 
-    - Add Maven to the `PATH` environment variable:
-        - Find the `Path` variable under System variables, select it, and click `Edit`.
-        - Add a new entry with `%MAVEN_HOME%\bin`.
+### 2. **Extract the Archive**
+   - Extract the zip file to a directory, such as:
+     - Windows: `C:\Program Files\Apache\Maven`
+     - Linux/Mac: `/usr/local/apache-maven`
 
-4. **Verify Maven Installation**
-    - Open a new command prompt and run:
-    ```sh
-    mvn -version
-    ```
-    - You should see Maven version information displayed.
+### 3. **Set Up Environment Variables**
+   - **On Windows:**
+     1. Open System Properties (`Win + Pause` -> Advanced system settings -> Environment Variables).
+     2. Under "System Variables":
+        - Click `New`, set `Variable name` as `MAVEN_HOME`, and `Variable value` as your Maven directory (e.g., `C:\Program Files\Apache\Maven`).
+        - Edit the `Path` variable, adding `%MAVEN_HOME%\bin`.
 
-# Steps to Create a Maven Project Using Command Line
+   - **On Linux/Mac:**
+     1. Open the terminal and edit the shell configuration file (`~/.bashrc` or `~/.zshrc`):
+        ```bash
+        export MAVEN_HOME=/path/to/maven
+        export PATH=$MAVEN_HOME/bin:$PATH
+        ```
+     2. Save and reload the shell configuration:
+        ```bash
+        source ~/.bashrc
+        ```
 
-1. **Open Command Line Interface (CLI)**
-    - Open your terminal or command prompt.
+### 4. **Verify Maven Installation**
+   - Open a terminal or command prompt and run:
+     ```bash
+     mvn -version
+     ```
+   - A successful setup displays Maven version details.
 
-2. **Navigate to the Desired Directory**
-    - Use the `cd` command to navigate to the directory where you want to create your Maven project.
-    ```sh
-    cd path/to/your/directory
-    ```
+---
 
-3. **Generate a New Maven Project**
-    - Use the following Maven command to generate a new project:
-    ```sh
-    mvn archetype:generate -DgroupId=com.example -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
-    ```
-    - Replace `com.example` with your desired group ID and `my-app` with your desired artifact ID.
+## **Steps to Create a Maven Project Using Command Line**
 
-4. **Navigate to the Project Directory**
-    - Change to the newly created project directory:
-    ```sh
-    cd my-app
-    ```
+### 1. **Open Command Line Interface**
+   - Use the terminal/command prompt.
 
-5. **Build the Project**
-    - Run the following command to build the project:
-    ```sh
-    mvn package
-    ```
+### 2. **Navigate to the Desired Directory**
+   - Move to the directory where you want to create the project:
+     ```bash
+     cd path/to/your/directory
+     ```
 
-6. **Run the Project**
-    - Execute the project using the following command:
-    ```sh
-    mvn exec:java -Dexec.mainClass="com.example.App"
-    ```
-    - Replace `com.example.App` with the fully qualified name of your main class.
+### 3. **Generate a New Maven Project**
+   - Use the following command:
+     ```bash
+     mvn archetype:generate \
+       -DgroupId=com.example \
+       -DartifactId=my-app \
+       -DarchetypeArtifactId=maven-archetype-quickstart \
+       -DinteractiveMode=false
+     ```
+   - Replace:
+     - `com.example` with your group ID.
+     - `my-app` with your artifact ID.
 
-7. **Verify the Project Structure**
-    - Ensure that your project structure looks like this:
-    ```
-    my-app
-    ├── pom.xml
-    └── src
-         ├── main
-         │   └── java
-         │       └── com
-         │           └── example
-         │               └── App.java
-         └── test
-              └── java
-                    └── com
-                         └── example
-                              └── AppTest.java
-    ```
+### 4. **Navigate to the Project Directory**
+   ```bash
+   cd my-app
+   ```
 
-You have successfully created and run a Maven project using the command line.
+### 5. **Build the Project**
+   ```bash
+   mvn package
+   ```
 
-# Compile and Execute the Code
+### 6. **Run the Project**
+   - Run the main class:
+     ```bash
+     mvn exec:java -Dexec.mainClass="com.example.App"
+     ```
+   - Replace `com.example.App` with your main class name.
 
-1. **Compile the Code**
-    - Navigate to the project directory if you are not already there:
-    ```sh
-    cd my-app
-    ```
-    - Run the following command to compile the code:
-    ```sh
-    mvn compile
-    ```
+---
 
-2. **Execute the Code**
-    - Use the following command to execute the compiled code:
-    ```sh
-    mvn exec:java -Dexec.mainClass="com.example.App"
-    ```
-    - Replace `com.example.App` with the fully qualified name of your main class if it is different.
+## **Compile and Execute the Code**
 
-You have successfully compiled and executed your Maven project.
-# Clean the Project
+### 1. **Compile the Code**
+   ```bash
+   mvn compile
+   ```
 
-1. **Clean the Project**
-    - Navigate to the project directory if you are not already there:
-    ```sh
-    cd my-app
-    ```
-    - Run the following command to clean the project:
-    ```sh
-    mvn clean
-    ```
-    - This command removes the `target` directory, which contains the compiled classes and built packages.
+### 2. **Execute the Code**
+   ```bash
+   mvn exec:java -Dexec.mainClass="com.example.App"
+   ```
 
-You have successfully cleaned your Maven project.
+---
 
-# Install Project Dependencies
+## **Clean the Project**
+   ```bash
+   mvn clean
+   ```
+   - Removes temporary files (e.g., `target` directory).
 
-1. **Install Dependencies**
-    - Navigate to the project directory if you are not already there:
-    ```sh
-    cd my-app
-    ```
-    - Run the following command to install the project dependencies:
-    ```sh
-    mvn install
-    ```
-    - This command will download and install all the dependencies specified in the `pom.xml` file.
+---
 
-You have successfully installed the project dependencies.
-# Run the Project from the JAR File
+## **Install Project Dependencies**
+   ```bash
+   mvn install
+   ```
+   - Installs project dependencies and builds artifacts in the local Maven repository.
 
-1. **Run the Project**
-    - Navigate to the project directory if you are not already there:
-    ```sh
-    cd my-app
-    ```
-    - Use the following command to run the project from the JAR file:
-    ```sh
-    java -cp target\MathProj1-1.0.jar in.ineuron.App
-    ```
-    - Replace `in.ineuron.App` with the fully qualified name of your main class if it is different.
+---
 
-You have successfully run your Maven project from the JAR file.
+## **Run the Project from the JAR File**
+
+1. **Package the JAR File**
+   ```bash
+   mvn package
+   ```
+
+2. **Run the JAR File**
+   ```bash
+   java -cp target/my-app-1.0-SNAPSHOT.jar com.example.App
+   ```
+   - Replace `com.example.App` with your main class.
+
+---
+
+## **Clean and Package the Project**
+
+1. **Clean and Package**
+   ```bash
+   mvn clean package
+   ```
+
+---
+
+## **Default Lifecycle of Maven**
+
+Maven's default lifecycle consists of **phases**, each performing specific tasks:
+
+1. **validate**: Validates project structure and configuration.
+2. **compile**: Compiles the source code.
+3. **test**: Executes unit tests.
+4. **package**: Packages compiled code into distributable formats (e.g., JAR, WAR).
+5. **verify**: Verifies package integrity.
+6. **install**: Installs the package into the local Maven repository.
+7. **deploy**: Uploads the package to a remote repository for sharing.
+
+By following these steps, you can manage your Maven projects efficiently. Let me know if you want more details on any part!
