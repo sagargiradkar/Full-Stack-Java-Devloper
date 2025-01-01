@@ -1,0 +1,35 @@
+# Conversion to YAML from Properties formar report
+# Warnings:
+# - The yaml file had comments which are lost in the refactoring!
+spring:
+  application:
+    name: BootProj05-ValueAnnotationApp
+emp:
+  info:
+    name: sachin
+    id: 10
+    skills:
+    - java
+    - SQL
+    - JEE
+    - ORM
+    team-members:
+    - sagar
+    - prakash
+    - premkant
+    - pratima
+    phone-numbers:
+    - 9923621820
+    - 9999999999
+    - 9898998989
+    - 9090909090
+    - 9923621880
+    id-details:
+      adharNo: 472755505340
+      bankNo: 472755505340
+      mobNo: 472755505340
+      adhar1No: 472755505340
+    company:
+      title: pwskills
+      location: pune
+      size: 98765
