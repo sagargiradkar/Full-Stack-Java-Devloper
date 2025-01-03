@@ -1,0 +1,139 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f0f8ff; /* Light sky blue background */
+    color: #333; /* Dark text for readability */
+}
+
+header {
+    background-color: #87CEEB; /* Sky Blue */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid #ADD8E6; /* Lighter sky blue border */
+}
+
+nav {
+    background-color: #ADD8E6; /* Light Sky Blue */
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #007ACC; /* Sky blue color on hover */
+}
+
+footer {
+    background-color: #87CEEB; /* Sky Blue */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Sections */
+.page-section {
+    padding: 40px;
+    text-align: center;
+    margin: 20px 0;
+    background-color: white; /* White background for sections */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for sections */
+}
+
+#home {
+    background-color: #f0f8ff; /* Very light sky blue for home section */
+}
+
+#about {
+    background-color: #fafafa; /* Very light gray for about section */
+}
+
+#contact {
+    background-color: #f0f8ff; /* Light sky blue for contact section */
+}
+
+h2, h3 {
+    color: #333; /* Dark text color for headings */
+}
+
+ul {
+    list-style-type: none;
+}
+
+ul li {
+    margin: 5px 0;
+}
+
+button.cta-button {
+    background-color: #00BFFF; /* Deep sky blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button.cta-button:hover {
+    background-color: #007ACC; /* Darker sky blue on hover */
+}
+
+/* Form Styling */
+form {
+    margin: 20px auto;
+    width: 60%;
+    max-width: 500px;
+    text-align: left;
+}
+
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input, form textarea, form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #00BFFF; /* Deep sky blue */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #007ACC; /* Darker sky blue on hover */
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
