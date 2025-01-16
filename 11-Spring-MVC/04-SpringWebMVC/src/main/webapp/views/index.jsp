@@ -42,8 +42,8 @@
         <h1>Welcome to Spring Web Application</h1>
     </header>
     <main>
-        <h1>${message}</h1>
-         <h1>${work}</h1>
+        <h1>${msg}</h1>
+
     </main>
     <footer>
         <p>&copy; 2025 Spring Web App. All Rights Reserved.</p>
