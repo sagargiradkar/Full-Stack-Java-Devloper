@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Ticket {
+public class Tourist {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

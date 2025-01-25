@@ -1,0 +1,25 @@
+{
+  "cno": 10,
+  "cname": "sachin",
+  "billAmount": 54.5,
+  "favColor": [
+    "IND",
+    "MI",
+    "ASia"
+  ],
+  "studies": [
+    "10th",
+    "12th",
+    "Engineering"
+  ],
+  "phoneNumbers": [3434234423, 243243243],
+  "idDetails": {
+    "Adhar": 638746783648
+  },
+  "company": {
+    "cname": "MI",
+    "ctype": "IPL",
+    "caddress": "Mmbai",
+    "size": 45
+  }
+}

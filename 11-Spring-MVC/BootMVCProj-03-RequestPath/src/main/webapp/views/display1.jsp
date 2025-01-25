@@ -42,7 +42,7 @@
      <h1>In Wish Message Screen </h1>
     </header>
     <main>
-        <h1>Hello User :: ${msg}</h1>
+        <h1>Hello User :: Display 1</h1>
     </main>
     <footer>
         <p>&copy; 2025 Spring Web App. All Rights Reserved.</p>
