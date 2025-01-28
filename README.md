@@ -2,7 +2,7 @@
 
 Welcome to my Full Stack Java Developer Learning Repository! This repository is a daily log of my journey to become a proficient full-stack Java developer. Here, I document my learning progress, code examples, projects, and notes on various technologies that I explore. My learning path includes Core Java, SQL, JDBC, JSP & JEE, Spring Framework, Spring MVC, Spring Data JPA, Spring Boot, and Microservices.
 
-## Table of Contents
+## Table of Contents 
 
 - [Full Stack Java Developer Learning Repository](#full-stack-java-developer-learning-repository)
   - [Table of Contents](#table-of-contents)
